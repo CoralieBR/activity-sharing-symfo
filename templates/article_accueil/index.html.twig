@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArticleAccueil index{% endblock %}
+
+{% block body %}
+    <h1>ArticleAccueil index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Texte</th>
+                <th>Image</th>
+                <th>Position</th>
+                <th>Active</th>
+                <th>BoutonTexte</th>
+                <th>BoutonLien</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article_accueil in article_accueils %}
+            <tr>
+                <td>{{ article_accueil.id }}</td>
+                <td>{{ article_accueil.titre }}</td>
+                <td>{{ article_accueil.texte }}</td>
+                <td>{{ article_accueil.image }}</td>
+                <td>{{ article_accueil.position }}</td>
+                <td>{{ article_accueil.active ? 'Yes' : 'No' }}</td>
+                <td>{{ article_accueil.boutonTexte }}</td>
+                <td>{{ article_accueil.boutonLien }}</td>
+                <td>
+                    <a href="{{ path('article_accueil_show', {'id': article_accueil.id}) }}">show</a>
+                    <a href="{{ path('article_accueil_edit', {'id': article_accueil.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('article_accueil_new') }}">Create new</a>
+{% endblock %}

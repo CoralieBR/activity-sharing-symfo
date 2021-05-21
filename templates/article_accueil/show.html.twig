@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArticleAccueil{% endblock %}
+
+{% block body %}
+    <h1>ArticleAccueil</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article_accueil.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ article_accueil.titre }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ article_accueil.texte }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ article_accueil.image }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ article_accueil.position }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ article_accueil.active ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>BoutonTexte</th>
+                <td>{{ article_accueil.boutonTexte }}</td>
+            </tr>
+            <tr>
+                <th>BoutonLien</th>
+                <td>{{ article_accueil.boutonLien }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('article_accueil_index') }}">back to list</a>
+
+    <a href="{{ path('article_accueil_edit', {'id': article_accueil.id}) }}">edit</a>
+
+    {{ include('article_accueil/_delete_form.html.twig') }}
+{% endblock %}
