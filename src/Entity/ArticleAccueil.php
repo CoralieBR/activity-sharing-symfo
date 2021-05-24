@@ -38,11 +38,16 @@ class ArticleAccueil
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="articles", fileNameProperty="image")
      * 
      * @var File|null
      */
     private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -98,7 +103,7 @@ class ArticleAccueil
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -128,6 +133,20 @@ class ArticleAccueil
     public function getImageFile(): ?File
     {
         return $this->imageFile;
+    }
+
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        if(is_null($updatedAt)) $updatedAt = new \DateTimeImmutable();
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 
 

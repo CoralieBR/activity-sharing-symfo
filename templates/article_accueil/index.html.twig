@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ArticleAccueil index{% endblock %}
+{% block title %}Admin Articles{% endblock %}
 
 {% block body %}
-    <h1>ArticleAccueil index</h1>
+    <h1>Articles de l'accueil</h1>
 
     <table class="table">
         <thead>
@@ -14,9 +14,9 @@
                 <th>Image</th>
                 <th>Position</th>
                 <th>Active</th>
-                <th>BoutonTexte</th>
-                <th>BoutonLien</th>
-                <th>actions</th>
+                <th>Texte du bouton</th>
+                <th>Lien du bouton</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -25,23 +25,23 @@
                 <td>{{ article_accueil.id }}</td>
                 <td>{{ article_accueil.titre }}</td>
                 <td>{{ article_accueil.texte }}</td>
-                <td>{{ article_accueil.image }}</td>
+                <td><img src="{{ asset('img/articles/' ~ article_accueil.image) }}" alt="" class="img-admin p-2"></td>
                 <td>{{ article_accueil.position }}</td>
-                <td>{{ article_accueil.active ? 'Yes' : 'No' }}</td>
+                <td>{{ article_accueil.active ? 'Oui' : 'Non' }}</td>
                 <td>{{ article_accueil.boutonTexte }}</td>
                 <td>{{ article_accueil.boutonLien }}</td>
                 <td>
-                    <a href="{{ path('article_accueil_show', {'id': article_accueil.id}) }}">show</a>
-                    <a href="{{ path('article_accueil_edit', {'id': article_accueil.id}) }}">edit</a>
+                    <a href="{{ path('article_accueil_show', {'id': article_accueil.id}) }}">Voir</a>
+                    <a href="{{ path('article_accueil_edit', {'id': article_accueil.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">no records found</td>
+                <td colspan="9">Aucun article</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('article_accueil_new') }}">Create new</a>
+    <a href="{{ path('article_accueil_new') }}">Nouvel article</a>
 {% endblock %}

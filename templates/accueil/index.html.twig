@@ -11,10 +11,18 @@
             background-size: 100% 100%;
             background-attachment: fixed;
         }
+        header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+        }
     </style>
 {% endblock %}
 
 {% block body %}
+{# *********** PAGE 100% avec photo en fond et titre dessus ************** #}
 <div id="image-accueil">
     <h2>Activity Sharing</h2>
     <h1>Du canapé à l'amitié, il n'y a qu'un clic</h1>
@@ -22,12 +30,36 @@
 </div>
 
 
-<div class="formulaire">
-            <h1 class="tittle">Activity Sharing</h1>
-        </div>
+    <div class="formulaire">
+        <h1 class="tittle">Activity Sharing</h1>
+    </div>
 
+    
+    {# *************** AFFICHAGE DES ARTICLES *************** #}
     <div class="d-flex flex-wrap justify-content-center align-items-start">
+
+        {% for article in articles %}
         <div class="card card-accueil cadre-shadow">
+            {% if article.image is defined and article.image is not null  %}
+            <img src="{{ asset('img/articles/' ~ article.image)}}" class="" alt="photo">
+            {% else %}
+            <img src="{{ asset('img/articles/default.jpg')}}" class="" alt="photo">
+            {% endif %}
+            <div class="card-img-overlay">
+                <h5 class="card-title">{{article.titre}}</h5>
+                <p class="card-text overflow-auto">
+                    {{article.texte|raw}}
+                </p>
+                {% if article.boutonTexte is defined and article.boutonTexte is not null  %}
+                <p class="card-text">
+                    <button class="btn" href="{{ article.boutonLien }}">{{article.boutonTexte}}</button>
+                </p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+        {# <div class="card card-accueil cadre-shadow">
             <img src="img/elevate-nYgy58eb9aw-unsplash.jpg" class="" alt="photo">
             <div class="card-img-overlay">
                 <h5 class="card-title">Ta super bande de potes</h5>
@@ -85,6 +117,6 @@
                 <h5 class="card-title">Ta super bande de potes</h5>
                 <p class="card-text">Avec Activity Sharing, fait du roller avec des inconnu.es et en un rien de temps vous deviendrez... <b>une SUPER BANDE DE POTES !!!</b></p>
             </div>
-        </div>
+        </div> #}
     </div>
 {% endblock %}

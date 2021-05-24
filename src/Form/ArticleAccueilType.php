@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ArticleAccueilType extends AbstractType
 {
@@ -16,7 +17,7 @@ class ArticleAccueilType extends AbstractType
             ->add('titre')
             ->add('texte')
             ->remove('image')
-            ->add('imageFile', FileType::class)
+            ->add('imageFile', VichImageType::class, ["required"=>false])
             ->add('position')
             ->add('active')
             ->add('boutonTexte')

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ArticleAccueil{% endblock %}
+{% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>ArticleAccueil</h1>
+    <h1>Article : {{article_accueil.titre}}</h1>
 
     <table class="table">
         <tbody>
@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ article_accueil.image }}</td>
+                <td><img src="{{ asset('img/articles/' ~ article_accueil.image) }}" alt=""></td>
             </tr>
             <tr>
                 <th>Position</th>
@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <th>Active</th>
-                <td>{{ article_accueil.active ? 'Yes' : 'No' }}</td>
+                <td>{{ article_accueil.active ? 'Oui' : 'Non' }}</td>
             </tr>
             <tr>
                 <th>BoutonTexte</th>
@@ -42,9 +42,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('article_accueil_index') }}">back to list</a>
+    <a href="{{ path('article_accueil_index') }}">Retour</a>
 
-    <a href="{{ path('article_accueil_edit', {'id': article_accueil.id}) }}">edit</a>
+    <a href="{{ path('article_accueil_edit', {'id': article_accueil.id}) }}">Modifier</a>
 
     {{ include('article_accueil/_delete_form.html.twig') }}
 {% endblock %}
