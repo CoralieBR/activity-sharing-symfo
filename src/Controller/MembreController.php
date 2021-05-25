@@ -61,12 +61,12 @@ class MembreController extends AbstractController
      */
     public function profileModifier(Request $request, UserPasswordEncoderInterface $encoder, SessionInterface $session): Response
     {
-        // Mise en place du formaulaire d'après les informations de l'utilisateur connecté
+        // Mise en place du formulaire d'après les informations de l'utilisateur connecté
         $user = $this->getUser();
         if(empty($session->get('password'))){
             $session->set('password', $user->getPassword());
         }
-        $form = $this->createForm(UserCompteType::class, $user);
+        $form = $this->createForm(MembreType::class, $user);
         
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -84,13 +84,13 @@ class MembreController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             
-            $this->addFlash("success", "Vos informations ont bien été mises à jour");
+            return $this->redirectToRoute('profile');
 
             // $this->getDoctrine()->getManager()->flush();
             // return $this->redirectToRoute('inscription_index');
         }
 
-        return $this->render('user/compte.html.twig', ['form' => $form->createView()]);
+        return $this->render('membre/profile-modifier.html.twig', ['form' => $form->createView()]);
     }
 
 

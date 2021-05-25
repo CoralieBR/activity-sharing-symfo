@@ -4,6 +4,9 @@ namespace App\Form;
 
 use App\Entity\Membre;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -30,6 +33,7 @@ class MembreType extends AbstractType
             ->remove('longitude')
             ->add('distancekm')
             ->remove('badges')
+            ->add('modifier', SubmitType::class, ['attr'=>["class"=>"mt-3 btn-info"]])
         ;
     }
 

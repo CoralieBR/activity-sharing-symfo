@@ -9,7 +9,7 @@
         {% if app.user.activites.id is defined and app.user.activites.id is not null  %}
             <ul>
                 {% for activite in app.user.activites %}
-                    <li>{{activite.titre}}</li>
+                    <li>{{activite.nomActivite}}</li>
                 {% endfor %}
             </ul>
         {% else %}
@@ -40,5 +40,22 @@
         <li>Téléphone : {{app.user.telephone}}</li>
         <li>Adresse : {{app.user.adresseNumero}}, {{app.user.adresseRue}}<br>{{app.user.cp}}, {{app.user.ville}}, {{app.user.pays}}</li>
     </ul>
+    <a href="{{ path('profile_modifier') }}">Modifier mes informations personnelles</a>
+    {% if app.user.badges.id is defined and app.user.badges.id is not null  %}
+        <h2>Mes badges</h2>
+        <ul>
+            {% for badge in app.user.badges %}
+                <li>{{badge.titre}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {# {% if app.user.badges.id is defined and app.user.badges.id is not null  %}
+        <h2>Mes Ami.es</h2>
+        <ul>
+            {% for badge in app.user.badges %}
+                <li>{{badge.titre}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %} #}
 
 {% endblock %}
