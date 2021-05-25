@@ -23,17 +23,17 @@
                 <td>{{ activite_categorie.description }}</td>
                 <td>{{ activite_categorie.valide ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('activite_categorie_show', {'id': activite_categorie.id}) }}">show</a>
-                    <a href="{{ path('activite_categorie_edit', {'id': activite_categorie.id}) }}">edit</a>
+                    <a href="{{ path('activite_categorie_show', {'id': activite_categorie.id}) }}">Voir</a>
+                    <a href="{{ path('activite_categorie_edit', {'id': activite_categorie.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucune catégorie pour l'instant</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('activite_categorie_new') }}">Create new</a>
+    <a href="{{ path('activite_categorie_new') }}">Nouvelle catégorie</a>
 {% endblock %}
