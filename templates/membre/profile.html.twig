@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue {{app.user.pseudo}} !</h1>
+    <h2>Mes préférences</h2>
+    <h3>Activités choisies</h3>
+        {% if app.user.activites.id is defined and app.user.activites.id is not null  %}
+            <ul>
+                {% for activite in app.user.activites %}
+                    <li>{{activite.titre}}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Je n'ai pas encore choisi d'activités ! En ajouter ?</p>
+        {% endif %}
+    
+    <h3>Les moments où je suis disponible</h3>
+    {% if app.user.moments.id is defined and app.user.moments.id is not null  %}
+        <ul>
+            {% for moment in app.user.moments %}
+                <li>Le {{moment.jour}} de {{moment.heureDebut}}h à {{moment.heureFin}}h</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Je n'ai pas encore choisi mes moments disponibles ! En ajouter ?</p>
+    {% endif %}
+
+    {% if app.user.distancekm is defined and app.user.distancekm is not null  %}
+        <h5>Distance maximale autour de chez moi à laquelle je fais des activités : {{app.user.distancekm}}</h5>
+    {% endif %}
+    <h2>Mes informations personnelles</h2>
+    <ul>
+        <li>Nom : {{app.user.nom}}</li>
+        <li>Prénom : {{app.user.prenom}}</li>
+        <li>Pseudo : {{app.user.pseudo}}</li>
+        <li>Genre : {{app.user.genre}}</li>
+        <li>Email : {{app.user.email}}</li>
+        <li>Téléphone : {{app.user.telephone}}</li>
+        <li>Adresse : {{app.user.adresseNumero}}, {{app.user.adresseRue}}<br>{{app.user.cp}}, {{app.user.ville}}, {{app.user.pays}}</li>
+    </ul>
+
+{% endblock %}
