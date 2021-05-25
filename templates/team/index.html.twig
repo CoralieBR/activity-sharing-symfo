@@ -1,20 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TeamController!{% endblock %}
+{% block title %}Notre équipe!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="formulaire">
+        <h1 class="tittle"> La TEAM </h1>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/activity-sharing-symfo/src/Controller/TeamController.php'|file_link(0) }}">src/Controller/TeamController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/activity-sharing-symfo/templates/team/index.html.twig'|file_link(0) }}">templates/team/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="d-flex text-center justify-content-center flex-wrap team">
+        <div class="team_member formulaire my-3">
+            <div>
+                <img src="img/kouki-walim-kqws04cnnpQ-unsplash.jpg" alt="team_img">
+            </div>
+            <h3> Victor STUTZ </h3>
+            <p class="role"> Développeur </p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas soluta laborum dolor odio magni,
+                laudantium quidem molestiae beatae suscipit quia ratione temporibus eaque minus fugit autem, consectetur
+                unde assumenda dolores!</p>
+            
+        </div>
+        <div class="team_member formulaire my-3">
+            <div>
+                <img src="img/celine-ruiz-rr4bawLxOjc-unsplash.jpg" alt="team_img">
+            </div>
+            <h3> Coralie BURTIN </h3>
+            <p class="role"> Développeuse </p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas soluta laborum dolor odio magni,
+                laudantium quidem molestiae beatae suscipit quia ratione temporibus eaque minus fugit autem, consectetur
+                unde assumenda dolores!</p>
+            
+        </div>
+        <div class="team_member formulaire my-3">
+            <div>
+                <img src="img/lizgrin-f-eR03P_ILRS0-unsplash (1).jpg" alt="team_img">
+            </div>
+            <h3> Grégory DUMONT </h3>
+            <p class="role"> Développeur </p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas soluta laborum dolor odio magni,
+                laudantium quidem molestiae beatae suscipit quia ratione temporibus eaque minus fugit autem, consectetur
+                unde assumenda dolores!</p>
+            
+        </div>
+    </div>
+
 {% endblock %}
