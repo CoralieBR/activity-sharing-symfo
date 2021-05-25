@@ -1,0 +1,13 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Edit Badge{% endblock %}
+
+{% block body %}
+    <h1>Modifier le badge</h1>
+
+    {{ include('badge/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('badge_index') }}">Retour</a>
+
+    {{ include('badge/_delete_form.html.twig') }}
+{% endblock %}

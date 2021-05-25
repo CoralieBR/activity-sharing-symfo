@@ -1,0 +1,39 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}ActiviteCategorie index{% endblock %}
+
+{% block body %}
+    <h1>ActiviteCategorie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomCategorie</th>
+                <th>Description</th>
+                <th>Valide</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activite_categorie in activite_categories %}
+            <tr>
+                <td>{{ activite_categorie.id }}</td>
+                <td>{{ activite_categorie.nomCategorie }}</td>
+                <td>{{ activite_categorie.description }}</td>
+                <td>{{ activite_categorie.valide ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('activite_categorie_show', {'id': activite_categorie.id}) }}">show</a>
+                    <a href="{{ path('activite_categorie_edit', {'id': activite_categorie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('activite_categorie_new') }}">Create new</a>
+{% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MembreRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -103,6 +105,22 @@ class Membre implements UserInterface
      * @ORM\Column(type="integer", nullable=true)
      */
     private $distancekm;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Moment::class, mappedBy="id_membre", orphanRemoval=true)
+     */
+    private $moments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Badge::class, mappedBy="membre")
+     */
+    private $badges;
+
+    public function __construct()
+    {
+        $this->badges = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -354,4 +372,62 @@ class Membre implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|Moment[]
+     */
+    public function getMoments(): Collection
+    {
+        return $this->moments;
+    }
+
+    public function addMoment(Moment $moment): self
+    {
+        if (!$this->moments->contains($moment)) {
+            $this->moments[] = $moment;
+            $moment->setIdMembre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMoment(Moment $moment): self
+    {
+        if ($this->moments->removeElement($moment)) {
+            // set the owning side to null (unless already changed)
+            if ($moment->getIdMembre() === $this) {
+                $moment->setIdMembre(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Badge[]
+     */
+    public function getBadges(): Collection
+    {
+        return $this->badges;
+    }
+
+    public function addBadge(Badge $badge): self
+    {
+        if (!$this->badges->contains($badge)) {
+            $this->badges[] = $badge;
+            $badge->addMembre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBadge(Badge $badge): self
+    {
+        if ($this->badges->removeElement($badge)) {
+            $badge->removeMembre($this);
+        }
+
+        return $this;
+    }
+
 }

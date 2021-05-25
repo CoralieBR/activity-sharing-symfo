@@ -1,0 +1,11 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}New ActiviteCategorie{% endblock %}
+
+{% block body %}
+    <h1>Create new ActiviteCategorie</h1>
+
+    {{ include('activite_categorie/_form.html.twig') }}
+
+    <a href="{{ path('activite_categorie_index') }}">back to list</a>
+{% endblock %}
