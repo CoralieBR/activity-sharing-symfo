@@ -220,14 +220,14 @@ button.navbar-toggler:focus {
     line-height: 26px;
     font-weight: 400;
 }
-.contact-form .input-text:focus + .label,
-.contact-form .input-text.not-empty + .label {
-    transform: translateY(-24px);
-}
+
 .contact-form .input-text:focus {
     outline: none;
+    
 }
+
 .contact-form .label {
+    
     position: absolute;
     left: 20px;
     bottom: 11px;
