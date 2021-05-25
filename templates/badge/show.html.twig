@@ -1,0 +1,38 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Badge{% endblock %}
+
+{% block body %}
+    <h1>Badge</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ badge.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ badge.titre }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>p{{ badge.image }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ badge.description }}</td>
+            </tr>
+            <tr>
+                <th>Valide</th>
+                <td>{{ badge.valide ? 'Oui' : 'Non' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('badge_index') }}">Retour</a>
+
+    <a href="{{ path('badge_edit', {'id': badge.id}) }}">Modifier</a>
+
+    {{ include('badge/_delete_form.html.twig') }}
+{% endblock %}

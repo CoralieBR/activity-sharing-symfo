@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}Admin Articles{% endblock %}
 
@@ -37,7 +37,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">Aucun article</td>
+                <td colspan="9">Aucun article pour l'instant</td>
             </tr>
         {% endfor %}
         </tbody>

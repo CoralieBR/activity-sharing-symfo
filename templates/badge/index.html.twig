@@ -1,0 +1,41 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Badge index{% endblock %}
+
+{% block body %}
+    <h1>Badges</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Valide</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for badge in badges %}
+            <tr>
+                <td>{{ badge.id }}</td>
+                <td>{{ badge.titre }}</td>
+                <td>{{ badge.image }}</td>
+                <td>{{ badge.description }}</td>
+                <td>{{ badge.valide ? 'Oui' : 'Non' }}</td>
+                <td>
+                    <a href="{{ path('badge_show', {'id': badge.id}) }}">Voir</a>
+                    <a href="{{ path('badge_edit', {'id': badge.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun badge pour l'instant</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('badge_new') }}">Nouveau badge</a>
+{% endblock %}

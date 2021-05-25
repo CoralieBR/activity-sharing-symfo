@@ -1,0 +1,11 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}New Badge{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau badge</h1>
+
+    {{ include('badge/_form.html.twig') }}
+
+    <a href="{{ path('badge_index') }}">Retour</a>
+{% endblock %}
