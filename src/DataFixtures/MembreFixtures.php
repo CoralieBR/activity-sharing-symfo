@@ -42,6 +42,18 @@ class MembreFixtures extends Fixture
         $membre->setPays('France');
         $manager->persist($membre);
 
+        $membre = new Membre();
+        $membre->setEmail('super-membre@test.test');
+        $membre->setRoles(["ROLE_SIPER_USER"]);
+        $membre->setPassword($this->passwordEncoder->encodePassword($membre, 'pass'));
+        $membre->setPrenom('super-user');
+        $membre->setPseudo('pseudo-super-user');
+        $membre->setGenre('non-binaire');
+        $membre->setCp('69000');
+        $membre->setVille('Lyon');
+        $membre->setPays('France');
+        $manager->persist($membre);
+
         $manager->flush();
     }
 }
