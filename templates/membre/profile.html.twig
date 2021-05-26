@@ -4,6 +4,7 @@
 
 {% block body %}
     <h1>Bienvenue {{app.user.pseudo}} !</h1>
+    <img src="https://avatars.dicebear.com/api/gridy/{{app.user.pseudo}}.svg?r=50&w=150" alt="">
     <h2>Mes préférences</h2>
     <h3>Activités choisies</h3>
         {% if app.user.activites.id is defined and app.user.activites.id is not null  %}

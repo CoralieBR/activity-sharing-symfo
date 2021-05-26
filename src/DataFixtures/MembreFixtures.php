@@ -44,7 +44,7 @@ class MembreFixtures extends Fixture
 
         $membre = new Membre();
         $membre->setEmail('super-membre@test.test');
-        $membre->setRoles(["ROLE_SIPER_USER"]);
+        $membre->setRoles(["ROLE_SUPER_USER"]);
         $membre->setPassword($this->passwordEncoder->encodePassword($membre, 'pass'));
         $membre->setPrenom('super-user');
         $membre->setPseudo('pseudo-super-user');

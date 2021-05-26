@@ -110,7 +110,7 @@ class MembreController extends AbstractController
 
 
     /**
-     * @Route("/{id}", name="membre_show", methods={"GET"})
+     * @Route("/admin/membre/{id}", name="membre_show", methods={"GET"})
      */
     public function show(Membre $membre): Response
     {
@@ -120,7 +120,7 @@ class MembreController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="membre_edit", methods={"GET","POST"})
+     * @Route("/admin/membre/{id}/edit", name="membre_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Membre $membre): Response
     {
@@ -140,7 +140,7 @@ class MembreController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="membre_delete", methods={"POST"})
+     * @Route("/admin/membre/{id}", name="membre_delete", methods={"POST"})
      */
     public function delete(Request $request, Membre $membre): Response
     {

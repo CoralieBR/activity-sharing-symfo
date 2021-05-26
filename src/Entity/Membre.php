@@ -157,8 +157,8 @@ class Membre implements UserInterface
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-        $roles[] = 'ROLE_SUPER_USER';
-        $roles[] = 'ROLE_ADMIN';
+        // $roles[] = 'ROLE_SUPER_USER';
+        // $roles[] = 'ROLE_ADMIN';
 
         return array_unique($roles);
     }
