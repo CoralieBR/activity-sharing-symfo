@@ -1,9 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
-<section class="formulaire">
+    
+
+{{ form_start(form) }}
+    <h1>Create new Message Contact</h1>
+
+    {{ form_widget(form) }}
+    <br>
+    <button class="big-btn">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
+    
+
+    
+
+
+
+
+{# <section class="formulaire">
         <h1 class="tittle">Formulaire de contact</h1>
         <br>
         <form>
@@ -31,7 +46,7 @@
                    
         </form>
         
-    </section>
+    </section> #}
 
 
 {% endblock %}

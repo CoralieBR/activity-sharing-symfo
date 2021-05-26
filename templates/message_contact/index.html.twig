@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message Contact{% endblock %}
+
+{% block body %}
+    <h1>Message Contact</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Message</th>
+                <th>Réception</th>
+                <th>Réponse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message_contact in message_contacts %}
+            <tr>
+                <td>{{ message_contact.id }}</td>
+                <td>{{ message_contact.nom }}</td>
+                <td>{{ message_contact.prenom }}</td>
+                <td>{{ message_contact.email }}</td>
+                <td>{{ message_contact.telephone }}</td>
+                <td>{{ message_contact.message }}</td>
+                <td>{{ message_contact.reception ? message_contact.reception|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ message_contact.reponse ? message_contact.reponse|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('message_contact_show', {'id': message_contact.id}) }}">show</a>
+                    <a href="{{ path('message_contact_edit', {'id': message_contact.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('message_contact_new') }}">Create new</a>
+{% endblock %}
