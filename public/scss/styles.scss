@@ -1,375 +1,395 @@
 /*____________________________ HTML ___________________________*/
     /*___________________ IMPORT POLICE__________________*/
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 
 
-/* CSS GENERAL */
-:root {
-    --color-vert: #158100;
-    --color-bleu: #4C96D7;
-    --color-jaune: #F7E031;
-    --color-rouge: #CF1717;
-    --color-white: #fff;
-    --color-black: #000;
-}
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
-    
-}
-
-p, a, button {
-    font-size: 20px;
-    font-family: 'KoHo', sans-serif;
-    text-align: justify;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Girassol', cursive;
-}
-
-.img-admin {
-    width: 150px;
-}
-
-.cadre-shadow {
-    padding: 16px;
-    box-shadow: 0 10px 30px 0px rgba(0,0,0,0.1);
-    margin: 4px;
-    background-color: white;
-}
-
-form {
-    max-width: 800px;
-    margin:auto;
-    img {
-        max-width: 150px;
+    /* CSS GENERAL */
+    :root {
+        --color-vert: #158100;
+        --color-bleu: #4C96D7;
+        --color-jaune: #F7E031;
+        --color-rouge: #CF1717;
+        --color-white: #fff;
+        --color-black: #000;
     }
-}
-/*____________________________ ACCUEIL _________________________*/
-// .body-accueil {
-//     background-image: url("../img/murat-onder-Qag2W_cL1jg-unsplash.jpg");
-//     background-repeat: no-repeat;
-//     background-size: 100% 100%;
-//     background-attachment: fixed;
-// }
-
-
-#image-accueil {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-/*______________________________________ DIV ______________________________*/
-/*----------------- Article page d'accueil ----------------*/
-.img-accueil {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-}        
-
-.w-1200 {
-    max-width: 1300px;
-}
-
-.f-300 {
-    flex: 1 1 350px;
-}
-.f-500 {
-    flex: 1 0 500px;
-}
-
-.w-400 {
-    padding: 0 10px;
-}        
-.h3-accueil{
-    text-align: center;
-    margin-top: 10px;
-    padding-bottom: 20px;
-}
-
-.card-accueil {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+        
+    }
+    
+    p, a, button {
+        font-size: 20px;
+        font-family: 'KoHo', sans-serif;
+        text-align: justify;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Girassol', cursive;
+    }
+    
+    /* img {
+        width: 100%;
+    } */
+    /* .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    } */
+    
+    .cadre-shadow {
+        padding: 16px;
+        box-shadow: 0 10px 30px 0px rgba(0,0,0,0.1);
+        margin: 4px;
+        background-color: white;
+    }
+    
+    
+    /*____________________________ ACCUEIL _________________________*/
+    .body-accueil {
+        background-image: url("../img/mike-erskine-S_VbdMTsdiA-unsplash.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-attachment: fixed;
+    }
+    
+    
+    #image-accueil {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+    /*______________________________________ DIV ______________________________*/
+    /*----------------- Article page d'accueil ----------------*/
+    .img-accueil {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+    }        
+    
+    .w-1200 {
+        max-width: 1300px;
+    }
+    
+    .f-300 {
+        flex: 1 1 350px;
+    }
+    .f-500 {
+        flex: 1 0 500px;
+    }
+    
+    .w-400 {
+        padding: 0 10px;
+    }        
+    .h3-accueil{
+        text-align: center;
+        margin-top: 10px;
+        padding-bottom: 20px;
+    }
+    
+    .card-accueil {
+        /* overflow: hidden; */
+        /* max-width: fit-content; */
+    }
     
     .card-img {
         width: initial;
     }
-    img{
+    
+    .card-accueil>img{
         max-height: 300px;
+        /* object-fit: contain; */
     }
-    div {
+    
+    .card-img {
+        width: initial;
+    }
+    
+    .card-accueil>img{
+        max-height: 300px;
+        /* object-fit: contain; */
+    }
+    .card-accueil>div {
+        /* overflow: hidden; */
         color: transparent;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 32px;
-        scrollbar-color: transparent transparent;
-        scrollbar-width: thin;
-        
-        button {
-            border: transparent 2px solid;
-            color: transparent;
-        }
+    
     }
-    div:hover {
+    .card-accueil>div:hover {
         background-color: rgba(255, 255, 255, 0.507);
         color: black;
-        scrollbar-color: black transparent;
-        button {
-            border: black 2px solid;
-            color: black;
-        }
+    }
+    .card-accueil button {
+        border: transparent 2px solid;
+        color: transparent;
+    }
+    .card-accueil button:hover {
+        border: black 2px solid;
+        color: black;
     }
     
-}
-
-
-
-
-
-
-
-/*____________________________ HEADER _________________________*/
-
-header {
-    background-color: rgba(0, 0, 0, 0.4);
-    min-height: 80px; 
-    /* border-bottom: var(--color-rouge) 6px solid; */
-}
-#logo-header-desktop {
-    display: none;
-}
-#logo-header-phone {
-    display: block;
-}
-
-/*____________________________ NAV ___________________________*/
-
-
-.nav-link {
-    border-bottom: transparent 3px solid;
-    border-top: transparent 3px solid;
-    /* border-radius: 6px; */
-    color: var(--color-white);
-}
-.nav-link:hover {
-    border-top: var(--color-white) 3px solid;
-    border-bottom: var(--color-white) 3px solid;
-    color: var(--color-white);
-}
-
-button.navbar-toggler {
-    border-color: transparent;
-    background-image: none;
-    /* padding: 0; */
-}
-button.navbar-toggler:focus {
-    box-shadow: none;
-}
-.navbar-toggler-icon i {
-    color: var(--color-white);
-    font-size: 30px;
-    padding: 0;
-    margin: 0;
-}
-
-/*_____________________________ BODY ____________________________*/
-
-        /*-------------- SECTION FORMULAIRE --------------*/
-
-.formulaire {
-    max-width: 800px;
-    margin: 50px auto;
-    position: relative;
-    box-shadow: 0 10px 30px 0px rgba(0,0,0,0.1);
-    padding: 30px;
-}
-.formulaire .tittle {
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 3px;
-    font-size: 3em;
-    line-height: 48px;
-    margin: 0;
-    color: var(--color-vert);
-    background: linear-gradient(to right, var(--color-jaune) 0%,var(--color-vert) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent ;
-}
-.contact-form .form-field {
-    position: relative;
-    margin: 32px 0;
-}
-.contact-form .input-text {
-    display: block;
-    width: 100%;
-    height: 36px;
-    border-width: 0 0 2px 0;
-    border-color: var(--color-rouge);
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 400;
-}
-.contact-form .input-text:focus + .label,
-.contact-form .input-text.not-empty + .label {
-    transform: translateY(-24px);
-}
-.contact-form .input-text:focus {
-    outline: none;
-}
-.contact-form .label {
-    position: absolute;
-    left: 20px;
-    bottom: 11px;
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 400;
-    color: var(--color-rouge);
-    cursor: text;
-    text-transform: capitalize;
-    transition: transform 0.2s ease-in-out;
-}
-.contact-form .submit-btn {
-    display: inline-block;
-    background-image: linear-gradient(125deg, var(--color-jaune),var(--color-rouge));
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 16px;
-    padding: 8px 16px;
-    border: none;
-    width: 200px;
-    cursor: pointer;
-}
-/*_________________________ SECTION _____________________*/
-
-
-
-
-
-/*___________________________________ DIV _____________________________*/
-    /*--------------------------- Page TEAM ----------------------*/
-
-.team {
-    /* display: flex; */
-    /* text-align: center; */
-    width: auto;
-    /* justify-content: center; */
-    padding: 100px 0 250px;
-    /* flex-wrap: wrap; */
-    /* margin-bottom: 50px; */
-}
-
-.team .team_member {
-    margin: 5px;
-    /* max-width: 400px; */
-    flex: 0 0 400px;
-    padding: 20px;
-    line-height: 30px;
-    /* position: relative; */
-    font-size: 24px;
-    /* margin-top: 50px; */
-}
-
-.team .team_member p.role {
-    color: rgb(104, 104, 104);
-    font-size: 16px;
-    margin: 12px 0;
-    text-align: center;
-
-}
-
-
-/*______________________________________ DIV ______________________________*/
-        /*--------------------- Création d'Activité  ----------------*/
-
-
-
-
-/*_____________________________ BUTTONS GHOST ________________________*/
-
-.big-btn {
-    background: transparent;
-    border: 3px solid var(--color-vert);
-    color: var(--color-vert);
-    cursor: pointer;
-    padding: 20px 70px;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 1.2rem;
-    outline: none;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s;
-}
-.big-btn::before {
-    content: '';
-    position: absolute;
-    background-color: var(--color-vert);
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    width: 0%;
-    z-index: -1;
-    opacity: 0;
-    transition: all 0.3s;
-    transform: translate(-50%, -50%);
-}
-.big-btn:hover{
-    color: white;
-}
-.big-btn:hover::before {
-    width: 110%;
-    height: 110%;
-    opacity: 1;
-}
-
-
-
-
-/*____________________________________ FOOTER ___________________________*/
-
-footer {
-    height: 200px;
-    background-color: var(--color-vert);
-}
-.sscat {
-    color: white;
-    font-size: 20px;
-    font-family: 'KoHo', sans-serif;
-}
-
-.pfooter {
-    color: white;
-    font-size: small;
-    margin: 2px;
-}
-
-.afooter {
-    color: white;
-    font-size: small;
-    text-decoration: none;
-}
-
-
-
-
-/*________________________________Media query____________________________*/
-@media screen and (min-width: 991px) {
-    #logo-header-phone {
-        display: none;
+    .card-img{
+        width: initial;
+    }
+    
+    
+    
+    
+    
+    
+    /*____________________________ HEADER _________________________*/
+    
+    header {
+        background-color: rgba(0, 0, 0, 0.4);
+        min-height: 80px;
+        height: 50px; 
+        background-color: transparent;
+        /* border-bottom: var(--color-rouge) 6px solid; */
     }
     #logo-header-desktop {
-        display: inline-block;
+        display: none;
     }
-}
+    #logo-header-phone {
+        display: block;
+    }
+    
+    header.sticky {
+        background: rgb(20, 25, 68);
+    }
+    
+    /*____________________________ NAV ___________________________*/
+    
+    
+    .nav-link {
+        border-bottom: transparent 3px solid;
+        border-top: transparent 3px solid;
+        /* border-radius: 6px; */
+        color: var(--color-white);
+    }
+    .nav-link:hover {
+        border-top: var(--color-white) 3px solid;
+        border-bottom: var(--color-white) 3px solid;
+        color: var(--color-white);
+    }
+    
+    button.navbar-toggler {
+        border-color: transparent;
+        background-image: none;
+        /* padding: 0; */
+    }
+    button.navbar-toggler:focus {
+        box-shadow: none;
+    }
+    .navbar-toggler-icon i {
+        color: var(--color-white);
+        font-size: 30px;
+        padding: 0;
+        margin: 0;
+    }
+    
+    /*_____________________________ BODY ____________________________*/
+    
+            /*-------------- SECTION FORMULAIRE --------------*/
+    
+    .formulaire {
+        max-width: 800px;
+        margin: 50px auto;
+        position: relative;
+        box-shadow: 0 10px 30px 0px rgba(0,0,0,0.1);
+        padding: 30px;
+    }
+    .formulaire .tittle {
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 3px;
+        font-size: 3em;
+        line-height: 48px;
+        margin: 0;
+        color: var(--color-vert);
+        background: linear-gradient(to right, var(--color-jaune) 0%,var(--color-vert) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent ;
+    }
+    .contact-form .form-field {
+        position: relative;
+        margin: 32px 0;
+    }
+    .contact-form .input-text {
+        display: block;
+        width: 100%;
+        height: 36px;
+        border-width: 0 0 2px 0;
+        border-color: var(--color-rouge);
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 400;
+    }
+    .contact-form .input-text:focus + .label,
+    .contact-form .input-text.not-empty + .label {
+        transform: translateY(-24px);
+    }
+    .contact-form .input-text:focus {
+        outline: none;
+    }
+    .contact-form .label {
+        position: absolute;
+        left: 20px;
+        bottom: 11px;
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 400;
+        color: var(--color-rouge);
+        cursor: text;
+        text-transform: capitalize;
+        transition: transform 0.2s ease-in-out;
+    }
+    .contact-form .submit-btn {
+        display: inline-block;
+        background-image: linear-gradient(125deg, var(--color-jaune),var(--color-rouge));
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 16px;
+        padding: 8px 16px;
+        border: none;
+        width: 200px;
+        cursor: pointer;
+    }
+    /*_________________________ SECTION _____________________*/
+    
+    
+    
+    
+    
+    /*___________________________________ DIV _____________________________*/
+        /*--------------------------- Page TEAM ----------------------*/
+    
+    .team {
+        /* display: flex; */
+        /* text-align: center; */
+        width: auto;
+        /* justify-content: center; */
+        padding: 100px 0 250px;
+        /* flex-wrap: wrap; */
+        /* margin-bottom: 50px; */
+    }
+    
+    .team .team_member {
+        margin: 5px;
+        /* max-width: 400px; */
+        flex: 0 0 400px;
+        padding: 20px;
+        line-height: 30px;
+        /* position: relative; */
+        font-size: 24px;
+        /* margin-top: 50px; */
+    }
+    
+    .team .team_member p.role {
+        color: rgb(104, 104, 104);
+        font-size: 16px;
+        margin: 12px 0;
+        text-align: center;
+    
+    }
+    
+    
+    /*______________________________________ DIV ______________________________*/
+            /*--------------------- Création d'Activité  ----------------*/
+    
+    
+    
+    
+    /*_____________________________ BUTTONS GHOST ________________________*/
+    
+    .big-btn {
+        background: transparent;
+        border: 3px solid var(--color-white);
+        color: var(--color-white);
+        cursor: pointer;
+        padding: 20px 70px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.2rem;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+    .big-btn::before {
+        content: '';
+        position: absolute;
+        background-color: var(--color-white);
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        width: 0%;
+        z-index: -1;
+        opacity: 0;
+        transition: all 0.3s;
+        transform: translate(-50%, -50%);
+    }
+    .big-btn:hover{
+        color: rgb(20, 25, 68);
+    }
+    .big-btn:hover::before {
+        width: 110%;
+        height: 110%;
+        opacity: 1;
+    }
+    
+    
+    
+    
+    /*____________________________________ FOOTER ___________________________*/
+    
+    footer {
+    
+        min-height: 200px;
+        height: 200px;
+    }
+    .sscat {
+        color: white;
+        font-size: 20px;
+        font-family: 'KoHo', sans-serif;
+    }
+    
+    .pfooter {
+        color: white;
+        font-size: small;
+        margin: 2px;
+    }
+    
+    .afooter {
+        color: white;
+        font-size: small;
+        text-decoration: none;
+    }
+    
+    
+    
+    
+    /*________________________________Media query____________________________*/
+    @media screen and (min-width: 991px) {
+        #logo-header-phone {
+            display: none;
+        }
+        #logo-header-desktop {
+            display: inline-block;
+        }
+    }

@@ -5,3 +5,7 @@
 #Team:
 #    path: /Team/
 #    controller: App\Controller\DefaultController::Team
+
+#Contact:
+#    path: /Contact/
+#    controller: App\Controller\DefaultController::Contact
