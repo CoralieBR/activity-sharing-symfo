@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Moment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,8 +25,8 @@ class MomentType extends AbstractType
                     'dimanche' => 'dimanche',
                 ]
             ])
-            ->add('heureDebut')
-            ->add('heureFin')
+            ->add('heureDebut', TimeType::class)
+            ->add('heureFin', TimeTYpe::class)
             ->remove('id_membre')
         ;
     }
