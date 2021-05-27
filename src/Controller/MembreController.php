@@ -23,13 +23,19 @@ class MembreController extends AbstractController
     /**
      * @Route("/inscription", name="inscription", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $membre = new Membre();
         $form = $this->createForm(InscriptionType::class, $membre);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $membre->setRoles(['ROLE_USER']);
+            $originPassword = $membre->getPassword();
+            $encodedPassword = $encoder->encodePassword($membre, $originPassword);
+            $membre->setPassword($encodedPassword);
+            
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($membre);
             $entityManager->flush();
