@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ActiviteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,16 @@ class Activite
      * @ORM\ManyToOne(targetEntity=ActiviteCategorie::class, inversedBy="activites")
      */
     private $categorie;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=membre::class, inversedBy="activites")
+     */
+    private $Membres;
+
+    public function __construct()
+    {
+        $this->Membres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +98,30 @@ class Activite
     public function setCategorie(?ActiviteCategorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|membre[]
+     */
+    public function getMembres(): Collection
+    {
+        return $this->Membres;
+    }
+
+    public function addMembre(membre $membre): self
+    {
+        if (!$this->Membres->contains($membre)) {
+            $this->Membres[] = $membre;
+        }
+
+        return $this;
+    }
+
+    public function removeMembre(membre $membre): self
+    {
+        $this->Membres->removeElement($membre);
 
         return $this;
     }

@@ -116,9 +116,15 @@ class Membre implements UserInterface
      */
     private $badges;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Activite::class, mappedBy="Membres")
+     */
+    private $activites;
+
     public function __construct()
     {
         $this->badges = new ArrayCollection();
+        $this->activites = new ArrayCollection();
     }
 
 
@@ -425,6 +431,33 @@ class Membre implements UserInterface
     {
         if ($this->badges->removeElement($badge)) {
             $badge->removeMembre($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Activite[]
+     */
+    public function getActivites(): Collection
+    {
+        return $this->activites;
+    }
+
+    public function addActivite(Activite $activite): self
+    {
+        if (!$this->activites->contains($activite)) {
+            $this->activites[] = $activite;
+            $activite->addMembre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivite(Activite $activite): self
+    {
+        if ($this->activites->removeElement($activite)) {
+            $activite->removeMembre($this);
         }
 
         return $this;
