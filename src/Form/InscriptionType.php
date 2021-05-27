@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class InscriptionType extends AbstractType
 {
@@ -28,8 +29,8 @@ class InscriptionType extends AbstractType
             ->add('cp')
             ->add('ville')
             ->add('pays')
-            ->remove('latitude')
-            ->remove('longitude')
+            ->add('latitude', HiddenType::class)
+            ->add('longitude', HiddenType::class)
             ->add('distancekm')
             ->remove('badges')
         ;

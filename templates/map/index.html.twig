@@ -17,30 +17,22 @@ crossorigin=""/>
             margin-left: auto;
             margin-right: auto;
             }
+    
 </style>
 
 
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
-<script type="application/javascript" src="//unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-<script type="application/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.js"></script>
+{# <script type="application/javascript" src="//unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script> #}
+{# <script type="application/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.js"></script> #}
 <script type="application/javascript" src="//unpkg.com/@turf/turf@latest/turf.min.js"></script>
 
-<p>
-        
-        <input class="geo" id="adresse" value="">
-        <button class="btn-2" id="geocode">TROUVER</button>
-        <button class="btn-2" id="cercle">CERCLE</button>
-        <button class="btn-2" id="cercle2">CERCLE2</button>
-</p>
-<p id="donneesAdresse"></p>
-<p>
-
+</div>
 <div id="mapid">
     <script>
         
-        var map = L.map('mapid').setView([51.508, -0.11], 5);
+        var map = L.map('mapid').setView([46.9877, 3.1577], 5);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
@@ -49,13 +41,14 @@ crossorigin=""></script>
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoidmljdG9yNjgiLCJhIjoiY2twNWJmOHJoMDBuZzJvcGdnNG5kbmVxMCJ9.ceCKMLuTKKCdkTo95hU97Q'}).addTo(map);
         
-        var circle = L.circle([51.508, -0.11], {
+        var circle = L.circle([{{app.user.latitude}}, {{app.user.longitude}}], {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.5,
-        radius: 50000
-        }).addTo(map); 
+        radius: {{app.user.distancekm}}*1000
+        }).addTo(map);  
 
+        
         var markers = new L.LayerGroup().addTo(map);
 
        
@@ -111,35 +104,6 @@ crossorigin=""></script>
                 }
             }
         });  
-    ////////////////////////// REMPLIR L'ADRESSE ET AFFICHER LE MARKER CORRESPONDANT///////////////////////////////////////////
-    //ecouteur sur le btn =>récupère l'adresse => service de géocodage
-    let geocodebtn = document.getElementById('geocode');
-        geocodebtn.addEventListener('click', function(){
-            let adresse = document.getElementById('adresse').value;
-            console.log(adresse);
-            geoCode(adresse);
-        });
-
-        async function geoCode(adresse, e){
-            let url = `https://nominatim.openstreetmap.org/search/?format=json&q=${adresse}`;
-            let resp =await fetch(url);
-            let datas = await resp.json();
-            console.log(datas);
-            let lat =parseFloat(datas[0].lat).toFixed(4);
-            let lng =parseFloat(datas[0].lon).toFixed(4); // attention ac ce fournisseur la lng est une lon
-            console.log(lat, lng); 
-            let donneesAdresse = document.getElementById("donneesAdresse");
-            donneesAdresse.innerText = "Ici la latitude : "+ lat +" et la longitute: " +lng+" de l'adresse entré dans la barre de recherche";
-            //ajout d'un marker
-            L.circle([lat, lng],{
-                color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 50000}).addTo(map).bindPopup(`[${lat}, ${lng}]`).openPopup(); ///////////////////////////////PROBLEME ANCHOR le point s'affiche que si il est dans la vue de la carte obliger de dézoomer pour le voir
-            map.panTo([lat, lng], 18);/////////////////YOUPI règle le problème précédent
-            
-        } 
-
     
     </script>
 </div>
