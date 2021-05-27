@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Activity Sharing{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        and uncomment the following Encore helpers to start using Symfony UX #}
 
         {# ************ LIENS POUR LES FEUILLES DE STYLE *************** #}
         {# BOOTSTRAP #}
@@ -26,11 +26,11 @@
 
         
     </head>
-    <body>
+    <body class="body-accueil">
         
         {# ************ HEADER **************** #}
-        <header>
-        <nav class="navbar navbar-expand-lg">
+        <header class="fixed-top">
+        <nav class="navbar navbar-expand-lg h-100">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
@@ -84,7 +84,7 @@
                 <!-- Grid row -->
                 <div class="row mt-3">
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <div class="col-md-3 col-lg-4 col-xl-4 mx-auto mb-6">
                         <!-- Content -->
                         <h6 class="sscat">
                             <i></i>Citation
@@ -108,7 +108,7 @@
                             <a href="#!" class="afooter">Qui sommes-nous ?</a>
                         </p>
                         <p class="pfooter">
-                            <a href="#!" class="afooter">Rejoins-nous</a>
+                            <a href="#" class="afooter">Inscription</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -146,9 +146,6 @@
                         <p class="pfooter">
                             <a href="#" class="afooter">Chat</a>
                         </p>
-                        <p class="pfooter">
-                            <a href="#" class="afooter">Inscription</a>
-                        </p>
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -157,7 +154,7 @@
         <!-- Section: Links  -->
 
         <!-- Copyright -->
-        <div class="pfooter text-center" style="background-color: rgba(0, 0, 0, 0.05);">
+        <div class="pfooter text-center">
             © 2021 Copyright:
             <a class="afooter" href="#">Activity Sharing</a>
         </div>
@@ -172,6 +169,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     {# JS MAISON #}
     <script src="js/script.js"></script>
+
+    {# JS HEADER NAV #}
+    <script type="text/javascript">
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
 
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
