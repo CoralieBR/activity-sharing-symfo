@@ -53,7 +53,7 @@
     
     /*____________________________ ACCUEIL _________________________*/
     .body-accueil {
-        background-image: url("../img/mike-erskine-S_VbdMTsdiA-unsplash.jpg");
+        background-image: url("../img/murat-onder-Qag2W_cL1jg-unsplash.jpg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
         background-attachment: fixed;
@@ -169,7 +169,7 @@
     }
     
     header.sticky {
-        background: rgb(20, 25, 68);
+        background: lightgray;
     }
     
     /*____________________________ NAV ___________________________*/
@@ -211,7 +211,7 @@
         margin: 50px auto;
         position: relative;
         box-shadow: 0 10px 30px 0px rgba(0,0,0,0.1);
-        padding: 30px;
+        padding: 100px 30px;
     }
     .formulaire .tittle {
         text-transform: uppercase;
