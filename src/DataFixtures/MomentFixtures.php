@@ -10,9 +10,9 @@ class MomentFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $moment = new Moment();
+        // $moment = new Moment();
         
-        $manager->persist($moment);
+        // $manager->persist($moment);
 
         $manager->flush();
     }

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Moment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,7 +16,7 @@ class MomentType extends AbstractType
     {
         $builder
             ->add('jour', ChoiceType::class, [
-                'choicies' => [
+                'choices' => [
                     'lundi' => 'lundi',
                     'mardi' => 'mardi',
                     'mercredi' => 'mercredi',
@@ -25,8 +26,8 @@ class MomentType extends AbstractType
                     'dimanche' => 'dimanche',
                 ]
             ])
-            ->add('heureDebut', TimeType::class)
-            ->add('heureFin', TimeTYpe::class)
+            ->add('heureDebut', NumberType::class)
+            ->add('heureFin', NumberType::class)
             ->remove('id_membre')
         ;
     }

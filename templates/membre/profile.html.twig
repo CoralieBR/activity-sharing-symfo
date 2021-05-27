@@ -3,9 +3,13 @@
 {% block title %}Profile{% endblock %}
 
 {% block body %}
+{{dump(app.user.moments)}}
     <h1>Bienvenue {{app.user.pseudo}} !</h1>
     <img src="https://avatars.dicebear.com/api/gridy/{{app.user.pseudo}}.svg?r=50&w=150" alt="">
+    
     <h2>Mes préférences</h2>
+
+    {# ***************************** ACTIVITES ************************** #}
     <h3>Activités choisies</h3>
         {% if app.user.activites.id is defined and app.user.activites.id is not null  %}
             <ul>
@@ -17,20 +21,28 @@
             <p>Je n'ai pas encore choisi d'activités ! En ajouter ?</p>
         {% endif %}
     
+
+    {# ***************************** MOMENTS ************************** #}
     <h3>Les moments où je suis disponible</h3>
-    {% if app.user.moments.id is defined and app.user.moments.id is not null  %}
+    {% if app.user.moments is defined and app.user.moments is not null  %}
         <ul>
             {% for moment in app.user.moments %}
-                <li>Le {{moment.jour}} de {{moment.heureDebut}}h à {{moment.heureFin}}h</li>
+                <li>Le {{moment.jour}} de {{moment.heureDebut}}h à {{moment.heureFin}}h - <a href="{{ path('moment_edit', {'id': moment.id}) }}">Modifier</a></li>
             {% endfor %}
         </ul>
+        <a href="{{ path('moment_new') }}">Ajouter un moment</a>
     {% else %}
-        <p>Je n'ai pas encore choisi mes moments disponibles ! En ajouter ?</p>
+        <p>Je n'ai pas encore choisi mes moments disponibles ! <a href="{{ path('moment_new') }}">En ajouter ?</a></p>
     {% endif %}
 
+
+    {# ***************************** DISTANCE KM ************************** #}
     {% if app.user.distancekm is defined and app.user.distancekm is not null  %}
         <h5>Distance maximale autour de chez moi à laquelle je fais des activités : {{app.user.distancekm}}</h5>
     {% endif %}
+
+
+    {# ***************************** INFOS PERSOS ************************** #}
     <h2>Mes informations personnelles</h2>
     <ul>
         <li>Nom : {{app.user.nom}}</li>
@@ -42,6 +54,9 @@
         <li>Adresse : {{app.user.adresseNumero}}, {{app.user.adresseRue}}<br>{{app.user.cp}}, {{app.user.ville}}, {{app.user.pays}}</li>
     </ul>
     <a href="{{ path('profile_modifier') }}">Modifier mes informations personnelles</a>
+    
+    
+    {# ***************************** BADGES ************************** #}
     {% if app.user.badges.id is defined and app.user.badges.id is not null  %}
         <h2>Mes badges</h2>
         <ul>
@@ -58,5 +73,11 @@
             {% endfor %}
         </ul>
     {% endif %} #}
+
+
+    {# ***************************** AMI.ES ************************** #}
+    
+
+
 
 {% endblock %}

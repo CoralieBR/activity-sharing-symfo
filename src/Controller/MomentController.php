@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Membre;
 use App\Entity\Moment;
 use App\Form\MomentType;
 use App\Repository\MomentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/profil/moment")
+ * @Route("/profile/moment")
  */
 class MomentController extends AbstractController
 {
@@ -30,7 +32,9 @@ class MomentController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $moment = new Moment();
+        $idmembre = $this->getUser();
+        $moment = new Moment;
+        $moment->setIdMembre($idmembre);
         $form = $this->createForm(MomentType::class, $moment);
         $form->handleRequest($request);
 
@@ -39,7 +43,7 @@ class MomentController extends AbstractController
             $entityManager->persist($moment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('moment_index');
+            return $this->redirectToRoute('profile');
         }
 
         return $this->render('moment/new.html.twig', [
@@ -63,13 +67,14 @@ class MomentController extends AbstractController
      */
     public function edit(Request $request, Moment $moment): Response
     {
+        
         $form = $this->createForm(MomentType::class, $moment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('moment_index');
+            return $this->redirectToRoute('profile');
         }
 
         return $this->render('moment/edit.html.twig', [
@@ -89,6 +94,6 @@ class MomentController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('moment_index');
+        return $this->redirectToRoute('profile');
     }
 }
