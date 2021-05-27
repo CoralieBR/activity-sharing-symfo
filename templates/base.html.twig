@@ -25,12 +25,13 @@
         {% endblock %}
 
         
+        
     </head>
-    <body>
+    <body class="body-accueil">
         
         {# ************ HEADER **************** #}
-        <header>
-        <nav class="navbar navbar-expand-lg">
+        <header class="fixed-top">
+        <nav class="navbar navbar-expand-lg h-100">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
@@ -50,7 +51,7 @@
                             <a class="nav-link" href="{{ path('contact') }}">Contact</a>
                         </li>
                     </ul>
-                    <a id="logo-header-desktop" class="navbar-brand" href="#"> <img id="logo" src="{{asset('logos/template.svg')}}" alt="logo" width="200" height="150"></a>
+                    <a id="logo-header-desktop" class="navbar-brand pt-4" href="#"> <img id="logo" src="{{asset('logos/template.svg')}}" alt="logo" width="200" height="150"></a>
                     <ul class="navbar-nav ms-auto mb-2">
                         
                         {% if is_granted('ROLE_USER') %}
@@ -78,6 +79,10 @@
                             <li class="nav-item p-2">
                                 <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
                             </li>
+                            <li class="nav-item pt-3">
+                            <a  class="nav-link far fa-bell" href="#"></a>
+                            
+                        </li>
                         {% endif %}
                     </ul>
                 </div>
@@ -110,11 +115,12 @@
                         <p class="pfooter">
                             Les vieux amis s’en vont, de nouveaux amis apparaissent. C’est juste comme les jours. Un vieux jour passe, un nouveau jour arrive. L’important est de le rendre significatif : un véritable ami ou un jour qui ait du sens.
                         </p>
+                        <p class="pfooter text-end mb-4"> Dalai Lama. </p>
                     </div>
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-3">
                         <!-- Links -->
                         <h6 class="sscat">
                             Le projet
@@ -126,7 +132,7 @@
                             <a href="#!" class="afooter">Qui sommes-nous ?</a>
                         </p>
                         <p class="pfooter">
-                            <a href="#!" class="afooter">Rejoins-nous</a>
+                            <a href="#!" class="afooter">Inscription</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -164,9 +170,6 @@
                         <p class="pfooter">
                             <a href="#" class="afooter">Chat</a>
                         </p>
-                        <p class="pfooter">
-                            <a href="#" class="afooter">Inscription</a>
-                        </p>
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -190,6 +193,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     {# JS MAISON #}
     <script src="js/script.js"></script>
+    
     <script type="text/javascript">
         window.addEventListener("scroll", function(){
             var header = document.querySelector("header");
