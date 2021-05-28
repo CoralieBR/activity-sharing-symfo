@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Membre;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -21,7 +22,18 @@ class MembreType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('pseudo')
-            ->remove('photo')
+            ->add('photo', ChoiceType::class, [
+                'expanded' => false,
+                'multiple' => false,
+                'choices' => [
+                    'Avataaars' => 'avataaars',
+                    'Bottts' => 'bottts',
+                    'Femme' => 'female',
+                    'Gridy' => 'gridy',
+                    'Homme' => 'male',
+                    'Humain.e' => 'human',
+                ]
+            ])
             ->add('telephone')
             ->add('genre')
             ->add('adresseNumero')

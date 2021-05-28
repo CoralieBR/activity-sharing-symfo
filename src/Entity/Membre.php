@@ -443,36 +443,7 @@ class Membre implements UserInterface
 
         return $this;
     }
-
-    // /**
-    //  * @return Collection|MembreActivite[]
-    //  */
-    // public function getMembreActivites(): Collection
-    // {
-    //     return $this->membreActivites;
-    // }
-
-    // public function addMembreActivite(MembreActivite $membreActivite): self
-    // {
-    //     if (!$this->membreActivites->contains($membreActivite)) {
-    //         $this->membreActivites[] = $membreActivite;
-    //         $membreActivite->setMembres($this);
-    //     }
-
-    //     return $this;
-    // }
-
-    // public function removeMembreActivite(MembreActivite $membreActivite): self
-    // {
-    //     if ($this->membreActivites->removeElement($membreActivite)) {
-    //         // set the owning side to null (unless already changed)
-    //         if ($membreActivite->getMembres() === $this) {
-    //             $membreActivite->setMembres(null);
-    //         }
-    //     }
-
-    //     return $this;
-    // }
+    
 
     /**
      * @return Collection|Activite[]
