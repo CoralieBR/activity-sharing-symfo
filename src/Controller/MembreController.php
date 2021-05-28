@@ -72,7 +72,7 @@ class MembreController extends AbstractController
         if(empty($session->get('password'))){
             $session->set('password', $user->getPassword());
         }
-        $form = $this->createForm(MembreType::class, $user);
+        $form = $this->createForm(InscriptionType::class, $user);
         
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

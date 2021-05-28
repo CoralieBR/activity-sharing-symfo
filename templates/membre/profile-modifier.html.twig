@@ -3,6 +3,32 @@
 {% block title %}Profile{% endblock %}
 
 {% block body %}
-
-{{form(form)}}
+{{ include('membre/_form.html.twig', {'button_label': 'Update'}) }}
+    
 {% endblock %}
+ {% block javascripts %}
+ <script>
+    var bt = document.querySelector("#inscription-bt");
+    {# var latInput = document.querySelector("#inscription_latitude");
+    var lngInput = document.querySelector("#inscription_longitude"); #}
+    bt.addEventListener("click", function(event){
+    event.preventDefault();
+    var adresse = document.querySelector("#inscription_adresseNumero").value+" "+document.querySelector("#inscription_adresseRue").value+" "+document.querySelector("#inscription_cp").value+" "+document.querySelector("#inscription_ville").value+" "+document.querySelector("#inscription_pays").value
+    {# console.log(adresse); #}
+    geoCode(adresse)
+    });
+    async function geoCode(adresse){
+                let url = `https://nominatim.openstreetmap.org/search/?format=json&q=${adresse}`;
+                let resp =await fetch(url);
+                let datas = await resp.json();
+                console.log(datas);
+                let lat =parseFloat(datas[0].lat).toFixed(4);
+                let lng =parseFloat(datas[0].lon).toFixed(4); // attention ac ce fournisseur la lng est une lon
+                console.log(lat, lng); 
+                document.querySelector("#inscription_latitude").value = lat;
+                document.querySelector("#inscription_longitude").value = lng;
+                console.log(document.querySelector("#form-inscription"));
+                document.querySelector("#form-inscription").submit();
+            } 
+    </script>
+    {% endblock %}
