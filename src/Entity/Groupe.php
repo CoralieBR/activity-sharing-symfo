@@ -23,7 +23,7 @@ class Groupe
     private $nomGroupe;
 
     /**
-     * @ORM\ManyToOne(targetEntity=activite::class, inversedBy="groupes")
+     * @ORM\ManyToOne(targetEntity=Activite::class, inversedBy="groupes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $activite;
