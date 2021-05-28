@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Membre;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -31,6 +32,7 @@ class MembreActivityType extends AbstractType
             ->remove('distancekm')
             ->remove('badges')
             ->add('activites')
+            ->add('Ajouter', SubmitType::class, ['attr'=>["class"=>"mt-3 btn-info"]])
         ;
     }
 

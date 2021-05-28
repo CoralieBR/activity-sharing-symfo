@@ -35,7 +35,6 @@ class MembreController extends AbstractController
             $originPassword = $membre->getPassword();
             $encodedPassword = $encoder->encodePassword($membre, $originPassword);
             $membre->setPassword($encodedPassword);
-            
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($membre);

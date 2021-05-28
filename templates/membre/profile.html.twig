@@ -3,20 +3,20 @@
 {% block title %}Profile{% endblock %}
 
 {% block body %}
-{{dump(app.user.moments)}}
     <h1>Bienvenue {{app.user.pseudo}} !</h1>
-    <img src="https://avatars.dicebear.com/api/gridy/{{app.user.pseudo}}.svg?r=50&w=150" alt="">
+    <img src="https://avatars.dicebear.com/api/{{app.user.photo}}/{{app.user.pseudo}}.svg?r=50&w=150" alt="">
     
     <h2>Mes préférences</h2>
 
     {# ***************************** ACTIVITES ************************** #}
     <h3>Activités choisies</h3>
-        {% if app.user.activites.id is defined and app.user.activites.id is not null  %}
+        {% if app.user.activites is defined and app.user.activites is not null  %}
             <ul>
                 {% for activite in app.user.activites %}
                     <li>{{activite.nomActivite}}</li>
                 {% endfor %}
             </ul>
+            <a href="{{ path('membre_activite_new') }}">En ajouter ? En supprimer ?</a>
         {% else %}
             <p>Je n'ai pas encore choisi d'activités ! <a href="{{ path('membre_activite_new') }}">En ajouter ?</a></p>
         {% endif %}
