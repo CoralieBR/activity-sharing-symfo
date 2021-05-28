@@ -1,10 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MapController!{% endblock %}
+{% block title %}Groupe index{% endblock %}
 
 {% block body %}
+    <h1>Groupe index</h1>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomGroupe</th>
+                <th>Date</th>
+                <th>Jour</th>
+                <th>HeureDebut</th>
+                <th>HeureFin</th>
+                <th>AdresseNumero</th>
+                <th>AdresseRue</th>
+                <th>Cp</th>
+                <th>Ville</th>
+                <th>Pays</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Valide</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupe in groupes %}
+            <tr>
+                <td>{{ groupe.id }}</td>
+                <td>{{ groupe.nomGroupe }}</td>
+                <td>{{ groupe.date ? groupe.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ groupe.jour }}</td>
+                <td>{{ groupe.heureDebut }}</td>
+                <td>{{ groupe.heureFin }}</td>
+                <td>{{ groupe.adresseNumero }}</td>
+                <td>{{ groupe.adresseRue }}</td>
+                <td>{{ groupe.cp }}</td>
+                <td>{{ groupe.ville }}</td>
+                <td>{{ groupe.pays }}</td>
+                <td>{{ groupe.latitude }}</td>
+                <td>{{ groupe.longitude }}</td>
+                <td>{{ groupe.valide ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('groupe_show', {'id': groupe.id}) }}">show</a>
+                    <a href="{{ path('groupe_edit', {'id': groupe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('groupe_new') }}">Create new</a>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
 integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
 crossorigin=""/>
 <link type="text/css" rel="stylesheet" href="//unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
@@ -66,24 +119,15 @@ crossorigin=""></script>
         
         var markers = new L.LayerGroup().addTo(map);
 
-       
+        {% for groupe in groupes %}
             var marker = new L.Marker([
                 
-                51.450, -0.11
-
+            {{ groupe.latitude }}, {{ groupe.longitude }}
+            
             ]).addTo(markers);
-        
-            var marker = new L.Marker([
-                
-                51.1, -0.11
-
-            ]).addTo(markers);
-
-            var marker = new L.Marker([
-             
-                51.450, -1.11
-
-            ]).addTo(markers);
+            
+        {% endfor %}
+            
             
         var  removedMarkers = [];
         var bt = document.querySelector("#cercle");
@@ -125,6 +169,4 @@ crossorigin=""></script>
     
     </script>
 </div>
-
-    
 {% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Groupe{% endblock %}
+
+{% block body %}
+    <h1>Create new Groupe</h1>
+
+    {{ include('groupe/_form.html.twig') }}
+
+{% endblock %}
+{% block javascripts %}
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+<script>
+var bt = document.querySelector("#inscriptionbt");
+
+bt.addEventListener("click", function(event){
+event.preventDefault();
+var adresse = document.querySelector("#groupe_adresseNumero").value+" "+document.querySelector("#groupe_adresseRue").value+" "+document.querySelector("#groupe_cp").value+" "+document.querySelector("#groupe_ville").value+" "+document.querySelector("#groupe_pays").value
+{# console.log(adresse); #}
+geoCode(adresse)
+});
+async function geoCode(adresse){
+           let url = `https://nominatim.openstreetmap.org/search/?format=json&q=${adresse}`;
+           let resp =await fetch(url);
+           let datas = await resp.json();
+           console.log(datas);
+           let lat =parseFloat(datas[0].lat).toFixed(4);
+           let lng =parseFloat(datas[0].lon).toFixed(4); 
+           console.log(lat, lng); 
+           document.querySelector("#groupe_latitude").value = lat;
+           document.querySelector("#groupe_longitude").value = lng;
+           console.log(document.querySelector("#forminscription"));
+           document.querySelector("#forminscription").submit();
+       } 
+</script>
+{% endblock %}
