@@ -39,15 +39,33 @@ class Activite
      */
     private $categorie;
 
+    // /**
+    //  * @ORM\OneToMany(targetEntity=MembreActivite::class, mappedBy="activites", orphanRemoval=true)
+    //  */
+    // private $membreActivites;
+
     /**
-     * @ORM\ManyToMany(targetEntity=membre::class, inversedBy="activites")
+     * @ORM\OneToMany(targetEntity=Groupe::class, mappedBy="activite")
      */
-    private $Membres;
+    private $groupes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Membre::class, mappedBy="activites")
+     */
+    private $membres;
 
     public function __construct()
     {
-        $this->Membres = new ArrayCollection();
+        // $this->membreActivites = new ArrayCollection();
+        $this->groupes = new ArrayCollection();
+        $this->membres = new ArrayCollection();
     }
+
+    public function __toString()
+    {
+        return $this->nomActivite;
+    }
+    
 
     public function getId(): ?int
     {
@@ -102,27 +120,92 @@ class Activite
         return $this;
     }
 
+    // /**
+    //  * @return Collection|MembreActivite[]
+    //  */
+    // public function getMembreActivites(): Collection
+    // {
+    //     return $this->membreActivites;
+    // }
+
+    // public function addMembreActivite(MembreActivite $membreActivite): self
+    // {
+    //     if (!$this->membreActivites->contains($membreActivite)) {
+    //         $this->membreActivites[] = $membreActivite;
+    //         $membreActivite->setActivites($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeMembreActivite(MembreActivite $membreActivite): self
+    // {
+    //     if ($this->membreActivites->removeElement($membreActivite)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($membreActivite->getActivites() === $this) {
+    //             $membreActivite->setActivites(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
+
     /**
-     * @return Collection|membre[]
+     * @return Collection|Groupe[]
      */
-    public function getMembres(): Collection
+    public function getGroupes(): Collection
     {
-        return $this->Membres;
+        return $this->groupes;
     }
 
-    public function addMembre(membre $membre): self
+    public function addGroupe(Groupe $groupe): self
     {
-        if (!$this->Membres->contains($membre)) {
-            $this->Membres[] = $membre;
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes[] = $groupe;
+            $groupe->setActivite($this);
         }
 
         return $this;
     }
 
-    public function removeMembre(membre $membre): self
+    public function removeGroupe(Groupe $groupe): self
     {
-        $this->Membres->removeElement($membre);
+        if ($this->groupes->removeElement($groupe)) {
+            // set the owning side to null (unless already changed)
+            if ($groupe->getActivite() === $this) {
+                $groupe->setActivite(null);
+            }
+        }
 
         return $this;
     }
+
+    /**
+     * @return Collection|Membre[]
+     */
+    public function getMembres(): Collection
+    {
+        return $this->membres;
+    }
+
+    public function addMembre(Membre $membre): self
+    {
+        if (!$this->membres->contains($membre)) {
+            $this->membres[] = $membre;
+            $membre->addActivite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMembre(Membre $membre): self
+    {
+        if ($this->membres->removeElement($membre)) {
+            $membre->removeActivite($this);
+        }
+
+        return $this;
+    }
+
+    
 }

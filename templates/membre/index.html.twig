@@ -14,7 +14,6 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Pseudo</th>
-                <th>Genre</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -27,19 +26,17 @@
                 <td>{{ membre.nom }}</td>
                 <td>{{ membre.prenom }}</td>
                 <td>{{ membre.pseudo }}</td>
-                <td>{{ membre.genre }}</td>
                 <td>
-                    <a href="{{ path('membre_show', {'id': membre.id}) }}">show</a>
-                    <a href="{{ path('membre_edit', {'id': membre.id}) }}">edit</a>
+                    <a href="{{ path('membre_show', {'id': membre.id}) }}">Voir</a>
+                    <a href="{{ path('membre_edit', {'id': membre.id}) }}">Modifier le rôle</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="19">no records found</td>
+                <td colspan="19">Aucun membre trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('membre_new') }}">Create new</a>
 {% endblock %}

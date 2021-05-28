@@ -3,11 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Activite;
-use App\Entity\ActiviteCategorie;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
-class ActivitésFixtures extends Fixture
+class ActiviteFixture extends Fixture
 {
     public function load(ObjectManager $manager)
     {

@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Membre;
 use App\Form\InscriptionType;
 use App\Form\MembreType;
+use App\Form\SuperMembreType;
 use App\Repository\MembreRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -96,6 +97,7 @@ class MembreController extends AbstractController
 
 
 
+
 // **************** Interface pour admin ***************************//
 
     /**
@@ -124,10 +126,18 @@ class MembreController extends AbstractController
      */
     public function edit(Request $request, Membre $membre): Response
     {
-        $form = $this->createForm(MembreType::class, $membre);
+        $form = $this->createForm(SuperMembreType::class, $membre);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $membre = $form->getData();
+            if($membre->getRole()=="ROLE_SUPER_USER"){
+                $membre->setRoles( ['ROLE_USER', 'ROLE_SUPER_USER']);
+            }else{
+                $membre->setRoles( ['ROLE_USER']);
+            }
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($membre);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('membre_index');

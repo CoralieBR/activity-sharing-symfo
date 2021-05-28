@@ -30,6 +30,8 @@ class Membre implements UserInterface
      */
     private $roles = [];
 
+    private $role;
+
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
@@ -117,15 +119,21 @@ class Membre implements UserInterface
     private $badges;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Activite::class, mappedBy="Membres")
+     * @ORM\ManyToMany(targetEntity=Activite::class, inversedBy="membres")
      */
     private $activites;
 
+    // /**
+    //  * @ORM\OneToMany(targetEntity=MembreActivite::class, mappedBy="membres", orphanRemoval=true)
+    //  */
+    // private $membreActivites;
+
     public function __construct()
     {
-        $this->badges = new ArrayCollection();
+        // $this->membreActivites = new ArrayCollection();
         $this->activites = new ArrayCollection();
     }
+
 
 
     public function getId(): ?int
@@ -179,12 +187,12 @@ class Membre implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
 
@@ -436,6 +444,36 @@ class Membre implements UserInterface
         return $this;
     }
 
+    // /**
+    //  * @return Collection|MembreActivite[]
+    //  */
+    // public function getMembreActivites(): Collection
+    // {
+    //     return $this->membreActivites;
+    // }
+
+    // public function addMembreActivite(MembreActivite $membreActivite): self
+    // {
+    //     if (!$this->membreActivites->contains($membreActivite)) {
+    //         $this->membreActivites[] = $membreActivite;
+    //         $membreActivite->setMembres($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeMembreActivite(MembreActivite $membreActivite): self
+    // {
+    //     if ($this->membreActivites->removeElement($membreActivite)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($membreActivite->getMembres() === $this) {
+    //             $membreActivite->setMembres(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
+
     /**
      * @return Collection|Activite[]
      */
@@ -448,7 +486,6 @@ class Membre implements UserInterface
     {
         if (!$this->activites->contains($activite)) {
             $this->activites[] = $activite;
-            $activite->addMembre($this);
         }
 
         return $this;
@@ -456,11 +493,29 @@ class Membre implements UserInterface
 
     public function removeActivite(Activite $activite): self
     {
-        if ($this->activites->removeElement($activite)) {
-            $activite->removeMembre($this);
-        }
+        $this->activites->removeElement($activite);
 
         return $this;
     }
 
+
+    /**
+     * Get the value of role
+     */ 
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set the value of role
+     *
+     * @return  self
+     */ 
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
 }
