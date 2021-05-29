@@ -99,55 +99,39 @@
     }
     
     .card-accueil {
-        /* overflow: hidden; */
-        /* max-width: fit-content; */
-    }
     
-    .card-img {
-        width: initial;
+        .card-img {
+            width: initial;
+        }
+        img{
+            max-height: 300px;
+        }
+        div {
+            color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 32px;
+            scrollbar-color: transparent transparent;
+            scrollbar-width: thin;
+            
+            button {
+                border: transparent 2px solid;
+                color: transparent;
+            }
+        }
+        div:hover {
+            background-color: rgba(255, 255, 255, 0.507);
+            color: black;
+            scrollbar-color: black transparent;
+            button {
+                border: black 2px solid;
+                color: black;
+            }
+        }
+        
     }
-    
-    .card-accueil>img{
-        max-height: 300px;
-        /* object-fit: contain; */
-    }
-    
-    .card-img {
-        width: initial;
-    }
-    
-    .card-accueil>img{
-        max-height: 300px;
-        /* object-fit: contain; */
-    }
-    .card-accueil>div {
-        /* overflow: hidden; */
-        color: transparent;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 32px;
-    
-    }
-    .card-accueil>div:hover {
-        background-color: rgba(255, 255, 255, 0.507);
-        color: black;
-    }
-    .card-accueil button {
-        border: transparent 2px solid;
-        color: transparent;
-    }
-    .card-accueil button:hover {
-        border: black 2px solid;
-        color: black;
-    }
-    
-    .card-img{
-        width: initial;
-    }
-    
-    
     
     
     
@@ -380,9 +364,6 @@
         font-size: small;
         text-decoration: none;
     }
-    
-    
-    
     
     /*________________________________Media query____________________________*/
     @media screen and (min-width: 991px) {

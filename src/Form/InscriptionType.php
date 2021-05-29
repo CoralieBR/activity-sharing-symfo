@@ -35,7 +35,16 @@ class InscriptionType extends AbstractType
                 ]
             ])
             ->add('telephone')
-            ->add('genre')
+            ->add('genre', ChoiceType::class, [
+                'expanded' => false,
+                'multiple' => false,
+                'choices' => [
+                    'Femme' => 'female',
+                    'Homme' => 'male',
+                    'Non-Binaire' => 'non-binaire',
+                    'Autre' => 'autre',
+                ]
+            ])
             ->add('adresseNumero')
             ->add('adresseRue')
             ->add('cp')
