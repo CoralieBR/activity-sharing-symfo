@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Activity Sharing{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
@@ -95,7 +97,7 @@
                     </ul>
                 </div>
             </div>
-            <a id="logo-header-phone" class="navbar-brand" href="#"> <img id="logo-phone" src="assets/logo.svg" alt="logo"  width="200" height="200"></a>
+            {# <a id="logo-header-phone" class="navbar-brand" href="{{ path('accueil') }}"> <img id="logo-phone" src="{{asset('logos/template.svg')}}" alt="logo"  width="200" height="200"></a> #}
         </nav>
     </header>
         
@@ -134,13 +136,13 @@
                             Le projet
                         </h6>
                         <p class="pfooter">
-                            <a href="#!" class="afooter">En savoir plus</a>
+                            <a href="{{ path('team') }}" class="afooter">En savoir plus</a>
                         </p>
                         <p class="pfooter">
-                            <a href="#!" class="afooter">Qui sommes-nous ?</a>
+                            <a href="{{ path('team') }}" class="afooter">Qui sommes-nous ?</a>
                         </p>
                         <p class="pfooter">
-                            <a href="#!" class="afooter">Inscription</a>
+                            <a href="{{ path('inscription') }}" class="afooter">Inscription</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -173,10 +175,10 @@
                             Contact
                         </h6>
                         <p class="pfooter">
-                            <a href="#" class="afooter">Besoin d'aide</a>
+                            <a href="{{ path('contact') }}" class="afooter">Besoin d'aide</a>
                         </p>
                         <p class="pfooter">
-                            <a href="#" class="afooter">Chat</a>
+                            <a href="{{ path('contact') }}" class="afooter">Chat</a>
                         </p>
                     </div>
                     <!-- Grid column -->

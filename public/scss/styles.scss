@@ -142,7 +142,7 @@
         background-color: rgba(0, 0, 0, 0.4);
         min-height: 80px;
         height: 50px; 
-        background-color: transparent;
+        // background-color: transparent;
         /* border-bottom: var(--color-rouge) 6px solid; */
     }
     #logo-header-desktop {
@@ -276,7 +276,7 @@
     .team .team_member {
         margin: 5px;
         /* max-width: 400px; */
-        flex: 0 0 400px;
+        flex: 0 1 400px;
         padding: 20px;
         line-height: 30px;
         /* position: relative; */
@@ -289,7 +289,10 @@
         font-size: 16px;
         margin: 12px 0;
         text-align: center;
-    
+    }
+
+    .team img {
+        width: 100%;
     }
     
     
@@ -343,9 +346,9 @@
     /*____________________________________ FOOTER ___________________________*/
     
     footer {
-    
         min-height: 200px;
         height: 200px;
+        background-color: rgba(0, 0, 0, 0.4);
     }
     .sscat {
         color: white;

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Activity Sharing{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
         and uncomment the following Encore helpers to start using Symfony UX #}
@@ -32,10 +34,10 @@
 
         
     </head>
-    <body class="body-accueil">
+    <body>
         
         {# ************ HEADER **************** #}
-        <header class="fixed-top">
+        <header>
         <nav class="navbar navbar-expand-lg h-100">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +72,6 @@
                     </ul>
                 </div>
             </div>
-            <a id="logo-header-phone" class="navbar-brand" href="#"> <img id="logo-phone" src="{{asset('logos/template.svg')}}" alt="logo"  width="200" height="200"></a>
         </nav>
     </header>
         
