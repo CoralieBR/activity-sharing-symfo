@@ -52,7 +52,9 @@ class InscriptionType extends AbstractType
             ->add('pays')
             ->add('latitude', HiddenType::class)
             ->add('longitude', HiddenType::class)
-            ->add('distancekm')
+            ->add('distancekm', null, [
+                'required'   => false,
+                'empty_data' => '10',])
             ->remove('badges')
         ;
     }

@@ -43,7 +43,9 @@ class MembreType extends AbstractType
             ->add('pays')
             ->remove('latitude')
             ->remove('longitude')
-            ->add('distancekm')
+            ->add('distancekm',  null, [
+                'required'   => false,
+                'empty_data' => '10',])
             ->remove('badges')
             ->add('modifier', SubmitType::class, ['attr'=>["class"=>"mt-3 btn-info"]])
         ;
