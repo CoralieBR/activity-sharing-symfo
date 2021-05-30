@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GroupeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -87,6 +89,43 @@ class Groupe
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $valide;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Membre::class, inversedBy="groupesCrees")
+     */
+    private $creePar;
+
+    // /**
+    //  * @ORM\ManyToMany(targetEntity=Membre::class, inversedBy="groupesInvitations")
+    //  */
+    // private $invitations;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Membre::class, inversedBy="groupes")
+     */
+    private $membres;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Membre::class, mappedBy="invitations")
+     */
+    private $invitations;
+
+    // /**
+    //  * @ORM\ManyToMany(targetEntity=Membre::class, inversedBy="invitations")
+    //  */
+    // private $Invitations;
+
+    public function __construct()
+    {
+        // $this->invitations = new ArrayCollection();
+        $this->membres = new ArrayCollection();
+        // $this->Invitations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -257,6 +296,129 @@ class Groupe
     public function setValide(?bool $valide): self
     {
         $this->valide = $valide;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCreePar(): ?Membre
+    {
+        return $this->creePar;
+    }
+
+    public function setCreePar(?Membre $creePar): self
+    {
+        $this->creePar = $creePar;
+
+        return $this;
+    }
+
+    // /**
+    //  * @return Collection|Membre[]
+    //  */
+    // public function getInvitations(): Collection
+    // {
+    //     return $this->invitations;
+    // }
+
+    // public function addInvitation(Membre $invitation): self
+    // {
+    //     if (!$this->invitations->contains($invitation)) {
+    //         $this->invitations[] = $invitation;
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeInvitation(Membre $invitation): self
+    // {
+    //     $this->invitations->removeElement($invitation);
+
+    //     return $this;
+    // }
+
+    /**
+     * @return Collection|Membre[]
+     */
+    public function getMembres(): Collection
+    {
+        return $this->membres;
+    }
+
+    public function addMembre(Membre $membre): self
+    {
+        if (!$this->membres->contains($membre)) {
+            $this->membres[] = $membre;
+        }
+
+        return $this;
+    }
+
+    public function removeMembre(Membre $membre): self
+    {
+        $this->membres->removeElement($membre);
+
+        return $this;
+    }
+
+    // /**
+    //  * @return Collection|Membre[]
+    //  */
+    // public function getInvitations(): Collection
+    // {
+    //     return $this->Invitations;
+    // }
+
+    // public function addInvitation(Membre $invitation): self
+    // {
+    //     if (!$this->Invitations->contains($invitation)) {
+    //         $this->Invitations[] = $invitation;
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeInvitation(Membre $invitation): self
+    // {
+    //     $this->Invitations->removeElement($invitation);
+
+    //     return $this;
+    // }
+
+    /**
+     * @return Collection|Membre[]
+     */
+    public function getInvitations(): Collection
+    {
+        return $this->invitations;
+    }
+
+    public function addInvitation(Membre $invitation): self
+    {
+        if (!$this->invitations->contains($invitation)) {
+            $this->invitations[] = $invitation;
+            $invitation->addInvitation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvitation(Membre $invitation): self
+    {
+        if ($this->invitations->removeElement($invitation)) {
+            $invitation->removeInvitation($this);
+        }
 
         return $this;
     }

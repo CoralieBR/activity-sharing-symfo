@@ -123,6 +123,31 @@ class Membre implements UserInterface
      */
     private $activites;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Groupe::class, mappedBy="creePar")
+     */
+    private $groupesCrees;
+
+    // /**
+    //  * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="invitations")
+    //  */
+    // private $groupesInvitations;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="membres")
+     */
+    private $groupes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="invitations")
+     */
+    private $invitations;
+
+    // /**
+    //  * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="Invitations")
+    //  */
+    // private $invitations;
+
     // /**
     //  * @ORM\OneToMany(targetEntity=MembreActivite::class, mappedBy="membres", orphanRemoval=true)
     //  */
@@ -132,6 +157,10 @@ class Membre implements UserInterface
     {
         // $this->membreActivites = new ArrayCollection();
         $this->activites = new ArrayCollection();
+        $this->groupesCrees = new ArrayCollection();
+        // $this->groupesInvitations = new ArrayCollection();
+        $this->groupes = new ArrayCollection();
+        // $this->invitations = new ArrayCollection();
     }
 
 
@@ -486,6 +515,141 @@ class Membre implements UserInterface
     public function setRole($role)
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getGroupesCrees(): Collection
+    {
+        return $this->groupesCrees;
+    }
+
+    public function addGroupesCree(Groupe $groupesCree): self
+    {
+        if (!$this->groupesCrees->contains($groupesCree)) {
+            $this->groupesCrees[] = $groupesCree;
+            $groupesCree->setCreePar($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupesCree(Groupe $groupesCree): self
+    {
+        if ($this->groupesCrees->removeElement($groupesCree)) {
+            // set the owning side to null (unless already changed)
+            if ($groupesCree->getCreePar() === $this) {
+                $groupesCree->setCreePar(null);
+            }
+        }
+
+        return $this;
+    }
+
+    // /**
+    //  * @return Collection|Groupe[]
+    //  */
+    // public function getGroupesInvitations(): Collection
+    // {
+    //     return $this->groupesInvitations;
+    // }
+
+    // public function addGroupesInvitation(Groupe $groupesInvitation): self
+    // {
+    //     if (!$this->groupesInvitations->contains($groupesInvitation)) {
+    //         $this->groupesInvitations[] = $groupesInvitation;
+    //         $groupesInvitation->addInvitation($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeGroupesInvitation(Groupe $groupesInvitation): self
+    // {
+    //     if ($this->groupesInvitations->removeElement($groupesInvitation)) {
+    //         $groupesInvitation->removeInvitation($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getGroupes(): Collection
+    {
+        return $this->groupes;
+    }
+
+    public function addGroupe(Groupe $groupe): self
+    {
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes[] = $groupe;
+            $groupe->addMembre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupe(Groupe $groupe): self
+    {
+        if ($this->groupes->removeElement($groupe)) {
+            $groupe->removeMembre($this);
+        }
+
+        return $this;
+    }
+
+    // /**
+    //  * @return Collection|Groupe[]
+    //  */
+    // public function getInvitations(): Collection
+    // {
+    //     return $this->invitations;
+    // }
+
+    // public function addInvitation(Groupe $invitation): self
+    // {
+    //     if (!$this->invitations->contains($invitation)) {
+    //         $this->invitations[] = $invitation;
+    //         $invitation->addInvitation($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeInvitation(Groupe $invitation): self
+    // {
+    //     if ($this->invitations->removeElement($invitation)) {
+    //         $invitation->removeInvitation($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getInvitations(): Collection
+    {
+        return $this->invitations;
+    }
+
+    public function addInvitation(Groupe $invitation): self
+    {
+        if (!$this->invitations->contains($invitation)) {
+            $this->invitations[] = $invitation;
+        }
+
+        return $this;
+    }
+
+    public function removeInvitation(Groupe $invitation): self
+    {
+        $this->invitations->removeElement($invitation);
 
         return $this;
     }
