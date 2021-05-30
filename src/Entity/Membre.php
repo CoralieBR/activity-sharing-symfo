@@ -143,6 +143,12 @@ class Membre implements UserInterface
      */
     private $invitations;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $info;
+
+
     // /**
     //  * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="Invitations")
     //  */
@@ -653,4 +659,18 @@ class Membre implements UserInterface
 
         return $this;
     }
+
+    public function getInfo(): ?bool
+    {
+        return $this->info;
+    }
+
+    public function setInfo(?bool $info): self
+    {
+        $this->info = $info;
+
+        return $this;
+    }
+
+   
 }

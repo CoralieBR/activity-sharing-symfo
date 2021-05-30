@@ -71,7 +71,29 @@ class MembreRepository extends ServiceEntityRepository implements PasswordUpgrad
         return $query->getResult();
     }
     
+    public function findGroupeMembres(string $longitude, string $latitude, int $distancekm): array
+    {
+        $entityManager = $this->getEntityManager();
 
+        $query = $entityManager->createQuery('
+        SELECT m
+        FROM App\Entity\Membre m
+        INNER JOIN m.groupe mg,
+        (((acos(sin((".$latitude."*pi()/180)) * sin((`latitude`*pi()/180)) + cos((".$latitude."*pi()/180)) * cos((`latitude`*pi()/180)) * cos(((".$longitude."- `longitude`) * pi()/180)))) * 180/pi()) * 60 * 1.1515 * 1.609344) as distance FROM `m` WHERE distance <= ".$distance.
+        ');
+
+        // $query = "SELECT *, (((acos(sin((".$latitude."*pi()/180)) * sin((`latitude`*pi()/180)) + cos((".$latitude."*pi()/180)) * cos((`latitude`*pi()/180)) * cos(((".$longitude."- `longitude`) * pi()/180)))) * 180/pi()) * 60 * 1.1515 * 1.609344) as distance FROM `table` WHERE distance <= ".$distance."
+
+        $query->setParameters(array(
+            $longitude
+            $latitude
+            $distance
+    
+        ));
+        return $query->getResult();
+    }
+    
+    
     /*
     public function findOneBySomeField($value): ?Membre
     {
@@ -83,4 +105,5 @@ class MembreRepository extends ServiceEntityRepository implements PasswordUpgrad
         ;
     }
     */
+
 }
