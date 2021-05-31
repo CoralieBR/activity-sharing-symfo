@@ -28,9 +28,9 @@ class GroupeFixtures extends Fixture
         $groupe->setPays('France');
         $groupe->setLatitude('45.44');
         $groupe->setLongitude('4.5');
-        $groupe->setValide('1');
+        $groupe->setValide(true);
         $groupe->setActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
-        $groupe->setCreepar($this->getReference(MembreFixtures::MEMBRE_SUPER_USER));
+        // $groupe->setCreepar($this->getReference(MembreFixtures::MEMBRE_SUPER_USER));
         $groupe->setDescription('Les bienfaits de l’eau combinés avec ceux du yoga ne sont que bénéfiques pour le corps et l’esprit. Le yoga aquatique permet également de surmonter la peur de l’eau. Cette pratique aide à faire un travail sur soi grâce à une série d’exercices et de figures.');
         $manager->persist($groupe);
         $this->addReference(self::GROUPE_YOGA, $groupe);
@@ -46,9 +46,9 @@ class GroupeFixtures extends Fixture
         $groupe->setPays('France');
         $groupe->setLatitude('45.20');
         $groupe->setLongitude('4.5');
-        $groupe->setValide('1');
+        $groupe->setValide(true);
         $groupe->setActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
-        // $groupe->setMembres($this->getReference(MembreFixtures::MEMBRE_SUPER_USER));
+        // $groupe->setCreepar($this->getReference(MembreFixtures::MEMBRE_SUPER_USER));
         $groupe->setDescription("Du théâtre en plein air à Paris
         Théâtre, cirques, marionnettes... au détour d'une promenade, profitez des représentations en plein air !
         
@@ -67,9 +67,9 @@ class GroupeFixtures extends Fixture
         $groupe->setPays('France');
         $groupe->setLatitude('4');
         $groupe->setLongitude('8');
-        $groupe->setValide('1');
+        $groupe->setValide(true);
         $groupe->setActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
-        // $groupe->setMembres($this->getReference(MembreFixtures::MEMBRE_SUPER_USER));
+        // $groupe->setCreepar($this->getReference(MembreFixtures::MEMBRE_SUPER_USER));
         $groupe->setDescription("Le film d'aventures ou film d'aventure (au singulier) est un genre cinématographique caractérisé par la présence d'un héros fictif ou non, tirant son statut du mythe qu'il inspire, l'action particulière qui s'y déroule, l'emploi de décors particuliers également, parfois le décalage temporel par rapport au contemporain ainsi que, parfois, les invraisemblances voulues caractérisant ainsi son excentricité, le tout véhiculant une idée générale de dépaysement1. Le film d'aventures a des frontières très larges puisqu'il englobe d'autres genres cinématographiques comme le western et la science-fiction1. ");
         $manager->persist($groupe);
         $this->addReference(self::GROUPE_CINEMA, $groupe);
@@ -85,9 +85,9 @@ class GroupeFixtures extends Fixture
         $groupe->setPays('France');
         $groupe->setLatitude('4');
         $groupe->setLongitude('8');
-        $groupe->setValide('1');
+        $groupe->setValide(true);
         $groupe->setActivite($this->getReference(ActiviteFixture::ACTIVITE_TENNIS));
-        // $groupe->setMembres($this->getReference(MembreFixtures::MEMBRE_ADMIN));
+        // $groupe->setCreepar($this->getReference(MembreFixtures::MEMBRE_ADMIN));
         $groupe->setDescription("Le film d'aventures ou film d'aventure (au singulier) est un genre cinématographique caractérisé par la présence d'un héros fictif ou non, tirant son statut du mythe qu'il inspire, l'action particulière qui s'y déroule, l'emploi de décors particuliers également, parfois le décalage temporel par rapport au contemporain ainsi que, parfois, les invraisemblances voulues caractérisant ainsi son excentricité, le tout véhiculant une idée générale de dépaysement1. Le film d'aventures a des frontières très larges puisqu'il englobe d'autres genres cinématographiques comme le western et la science-fiction1. ");
         $manager->persist($groupe);
         $manager->flush();
@@ -104,9 +104,9 @@ class GroupeFixtures extends Fixture
         $groupe->setPays('France');
         $groupe->setLatitude('45.3');
         $groupe->setLongitude('4.9');
-        $groupe->setValide('1');
+        $groupe->setValide(true);
         $groupe->setActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
-        // $groupe->setMembres($this->getReference(MembreFixtures::MEMBRE_ADMIN));
+        // $groupe->setCreepar($this->getReference(MembreFixtures::MEMBRE_ADMIN));
         $groupe->setDescription("Le football de rue ou foot de rue ou street soccer est un sport urbain, une variante informelle du football qui se joue dans la rue ou à autre endroit à cinq contre cinq. Les buts sont représentés par des objets naturels. Il peut être pratiqué n'importe où, cependant, des « citystades » offrent des installations de bonne qualité pour jouer.");
         $manager->persist($groupe);
         $manager->flush();
