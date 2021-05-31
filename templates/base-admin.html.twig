@@ -86,9 +86,9 @@
         
             <div class="container text-center text-md-start mt-5 pt-2">
                 <!-- Grid row -->
-                <div class="row mt-3">
+                <div class="row">
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-4 mx-auto mb-6">
+                    <div class="col-md-3 col-lg-4 col-xl-4 mx-auto">
                         <!-- Content -->
                         <h6 class="sscat">
                             <i></i>Citation
@@ -96,11 +96,13 @@
                         <p class="pfooter">
                             Les vieux amis s’en vont, de nouveaux amis apparaissent. C’est juste comme les jours. Un vieux jour passe, un nouveau jour arrive. L’important est de le rendre significatif : un véritable ami ou un jour qui ait du sens.
                         </p>
+                        <p class="pfooter text-end"> Dalai Lama. </p>
+
                     </div>
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-1 mx-auto mb-4">
+                    <div class="col-md-2 col-lg-2 col-xl-1 mx-auto">
                         <!-- Links -->
                         <h6 class="sscat">
                             Le projet
@@ -118,7 +120,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
                         <!-- Links -->
                         <h6 class="sscat">
                             Liens Utiles
@@ -139,7 +141,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-2 mx-auto mb-md-0 mb-4">
+                    <div class="col-md-4 col-lg-3 col-xl-2 mx-auto mb-md-0">
                         <!-- Links -->
                         <h6 class="sscat">
                             Contact
@@ -150,6 +152,12 @@
                         <p class="pfooter">
                             <a href="#" class="afooter">Chat</a>
                         </p>
+                        <!-- Copyright -->
+        <div class="pfooter text-center">
+            © 2021 Copyright:
+            <a class="afooter" href="#">Activity Sharing</a>
+        </div>
+        <!-- Copyright -->
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -157,12 +165,7 @@
             </div>
         <!-- Section: Links  -->
 
-        <!-- Copyright -->
-        <div class="pfooter text-center">
-            © 2021 Copyright:
-            <a class="afooter" href="#">Activity Sharing</a>
-        </div>
-        <!-- Copyright -->
+        
 
     </footer>
 
@@ -179,12 +182,13 @@
     </script>
 
     {# JS HEADER NAV #}
-    <script type="text/javascript">
+    {#<script type="text/javascript">
         window.addEventListener("scroll", function(){
             var header = document.querySelector("header");
             header.classList.toggle("sticky", window.scrollY > 0);
         })
     </script>
+    #}
 
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
