@@ -21,6 +21,8 @@
 {% block body %}
     <div class="cadre-shadow"><h1>Bienvenue {{app.user.pseudo}} !</h1></div>
     <img src="https://avatars.dicebear.com/api/{{app.user.photo}}/{{app.user.pseudo}}.svg?r=50&w=150" alt="">
+    {{dump(app.user)}}
+    <a href="{{ path('groupe_new') }}">Créer un groupe de potes !</a>
 {# <div id="div-calendrier">    
 <div id="calendar"></div>
 </div> #}

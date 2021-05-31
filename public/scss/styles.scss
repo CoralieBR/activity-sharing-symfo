@@ -26,6 +26,11 @@
         line-height: 1.5;
         margin: 0;
         padding: 0;
+        main {
+            max-width: 1200px;
+            margin: auto;
+        }
+    
     }
     
     p, a, button {
@@ -384,7 +389,22 @@
         letter-spacing: 1px;
         cursor: pointer;
     }
+form {
 
+    max-width: 800px;
+    margin: auto;
+    input {
+        border: transparent 1px solid;
+        border-radius: 0;
+    }
+    input:hover {
+        border-bottom: black 1px solid;
+    }
+    button {
+        border: 1px solid black;
+    }
+
+}
 
     /*_________________________ SECTION _____________________*/
     
