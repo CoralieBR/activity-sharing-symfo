@@ -118,13 +118,13 @@ class Groupe
     // /**
     //  * @ORM\ManyToMany(targetEntity=Membre::class, inversedBy="invitations")
     //  */
-    // private $Invitations;
+    // private $invitations;
 
     public function __construct()
     {
         // $this->invitations = new ArrayCollection();
         $this->membres = new ArrayCollection();
-        // $this->Invitations = new ArrayCollection();
+        $this->invitations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -407,6 +407,8 @@ class Groupe
     public function addInvitation(Membre $invitation): self
     {
         if (!$this->invitations->contains($invitation)) {
+        // if ($this->Invitations != null) {
+            // dd('coucou');
             $this->invitations[] = $invitation;
             $invitation->addInvitation($this);
         }

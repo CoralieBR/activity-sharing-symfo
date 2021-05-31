@@ -34,16 +34,42 @@ class GroupeController extends AbstractController
             $membresPotentiels = $groupeRepository->findGroupeMembres($groupe->getJour(),$groupe->getHeureDebut(),$groupe->getHeureFin(),$groupe->getActivite());
             //dd($membresPotentiels);
             $bcc="";
+            $machin = [];
             foreach($membresPotentiels as $membre){
-                dd($membre->getLatitude());
-                // Si latLng + distance membre ok
-                // Ajout du membre dans les invités
-                $groupe->addInvitation($membre);
-                //
-                ($bcc==="") ? $bcc.=$membre->getEmail() : $bcc.=','.$membre->getEmail();
+                // dd($membre->getLatitude());
+                $latitude1 = $membre->getLatitude();
+                $longitude1 = $membre->getLongitude();
+                $latitude2 = $groupe->getLatitude();
+                $longitude2 = $groupe->getLongitude();
+                $unit = 'kilometers';
 
+                // function getDistanceBetweenPointsNew($latitude1, $longitude1, $latitude2, $longitude2, $unit = 'kilometers') {
+                    $theta = $longitude1 - $longitude2; 
+                    $distance = (sin(deg2rad($latitude1)) * sin(deg2rad($latitude2))) + (cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * cos(deg2rad($theta))); 
+                    $distance = acos($distance); 
+                    $distance = rad2deg($distance); 
+                    $distance = $distance * 60 * 1.1515; 
+                    switch($unit) { 
+                      case 'miles': 
+                        break; 
+                      case 'kilometers' : 
+                        $distance = $distance * 1.609344; 
+                    } 
+                //     return (round($distance,2)); 
+                //   }
+                
+                if(round($distance,2) <= $membre->getDistancekm()){
+                    // Si latLng + distance membre ok
+                    // Ajout du membre dans les invités
+                    // dd($distance);
+                    $groupe->addInvitation($membre);
+                    //
+                    ($bcc==="") ? $bcc.=$membre->getEmail() : $bcc.=','.$membre->getEmail();
+                    // $machin[] = $membre->getPrenom();
+                }
+                
             }
-            
+            // dd($machin);
             //
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($groupe);
