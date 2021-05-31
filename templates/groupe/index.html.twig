@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}Groupe index{% endblock %}
 
@@ -43,19 +43,16 @@
                 <td>{{ groupe.longitude }}</td>
                 <td>{{ groupe.valide ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('groupe_show', {'id': groupe.id}) }}">show</a>
-                    <a href="{{ path('groupe_edit', {'id': groupe.id}) }}">edit</a>
+                    <a href="{{ path('groupe_show', {'id': groupe.id}) }}">Voir le groupe</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="15">no records found</td>
+                <td colspan="15">Auncun groupe enregistré</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('groupe_new') }}">Create new</a>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
 integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="

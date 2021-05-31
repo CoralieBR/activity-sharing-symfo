@@ -10,37 +10,46 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/groupe")
- */
+// /**
+//  * @Route("/groupe")
+//  */
 class GroupeController extends AbstractController
 {
-    /**
-     * @Route("/", name="groupe_index", methods={"GET"})
-     */
-    public function index(GroupeRepository $groupeRepository): Response
-    {
-        // return new Response("coucou");
-        return $this->render('groupe/index.html.twig', [
-            'groupes' => $groupeRepository->findAll(),
-        ]);
-    }
+    // ====================================================== //
+    // =============== INTERFACE SUPER_MEMBRE =============== //
+    // ====================================================== //
 
     /**
-     * @Route("/new", name="groupe_new", methods={"GET","POST"})
+     * @Route("profile/groupe/new", name="groupe_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, GroupeRepository $groupeRepository): Response
     {
         $groupe = new Groupe();
         $form = $this->createForm(GroupeType::class, $groupe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            // 
+            $membresPotentiels = $groupeRepository->findGroupeMembres($groupe->getJour(),$groupe->getHeureDebut(),$groupe->getHeureFin(),$groupe->getActivite());
+            //dd($membresPotentiels);
+            $bcc="";
+            foreach($membresPotentiels as $membre){
+                dd($membre->getLatitude());
+                // Si latLng + distance membre ok
+                // Ajout du membre dans les invités
+                $groupe->addInvitation($membre);
+                //
+                ($bcc==="") ? $bcc.=$membre->getEmail() : $bcc.=','.$membre->getEmail();
+
+            }
+            
+            //
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($groupe);
             $entityManager->flush();
 
-            return $this->redirectToRoute('groupe_index');
+            return $this->redirectToRoute('profile');
         }
 
         return $this->render('groupe/new.html.twig', [
@@ -49,18 +58,9 @@ class GroupeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="groupe_show", methods={"GET"})
-     */
-    public function show(Groupe $groupe): Response
-    {
-        return $this->render('groupe/show.html.twig', [
-            'groupe' => $groupe,
-        ]);
-    }
 
     /**
-     * @Route("/{id}/edit", name="groupe_edit", methods={"GET","POST"})
+     * @Route("profile/groupe/{id}/edit", name="groupe_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Groupe $groupe): Response
     {
@@ -70,7 +70,7 @@ class GroupeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('groupe_index');
+            return $this->redirectToRoute('profile');
         }
 
         return $this->render('groupe/edit.html.twig', [
@@ -80,7 +80,7 @@ class GroupeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="groupe_delete", methods={"POST"})
+     * @Route("profile/groupe/{id}", name="groupe_delete", methods={"POST"})
      */
     public function delete(Request $request, Groupe $groupe): Response
     {
@@ -90,6 +90,37 @@ class GroupeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('groupe_index');
+        return $this->redirectToRoute('profile');
     }
+
+
+
+    // ====================================================== //
+    // =================== INTERFACE ADMIN ================== //
+    // ====================================================== //
+
+    /**
+     * @Route("/admin/groupe", name="groupe_index", methods={"GET"})
+     */
+    public function index(GroupeRepository $groupeRepository): Response
+    {
+        // return new Response("coucou");
+        return $this->render('groupe/index.html.twig', [
+            'groupes' => $groupeRepository->findAll(),
+        ]);
+    }
+
+    
+    /**
+     * @Route("/admin/groupe/{id}", name="groupe_show", methods={"GET"})
+     */
+    public function show(Groupe $groupe): Response
+    {
+        return $this->render('groupe/show.html.twig', [
+            'groupe' => $groupe,
+        ]);
+    }
+
+    
+    
 }
