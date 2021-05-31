@@ -16,8 +16,8 @@ class GroupeFixtures extends Fixture
         $groupe->setJour('lundi');
         $groupe->setHeureDebut('14');
         $groupe->setHeureFin('15');
-        $groupe->setCp('13000');
-        $groupe->setVille('Grenoble');
+        $groupe->setCp('69000');
+        $groupe->setVille('Lyon');
         $groupe->setPays('France');
         $groupe->setLatitude('4');
         $groupe->setLongitude('8');

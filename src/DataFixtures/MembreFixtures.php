@@ -11,7 +11,7 @@ class MembreFixtures extends Fixture
 {
     
     public const MEMBRE_MEMBRE = "membre";
-    public const MEMBRE_SUPER_USER = "super-membre";
+    public const MEMBRE_SUPER_USER = "super-user";
     public const MEMBRE_ADMIN = "admin";
     public const MEMBRE_UN = "un";
     public const MEMBRE_DEUX = "deux";
