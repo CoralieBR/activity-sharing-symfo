@@ -2,17 +2,34 @@
 
 {% block title %}Profile{% endblock %}
 
+{% block stylesheets %}
+    {#{{ encore_entry_link_tags('app') }}#}
+    <style>
+        body {
+            background-image: url({{ asset('img/cork-board.png')}});
+        }
+        main {
+            max-width: 900px;
+            margin: auto;
+        }
+        h1, h2, h3, h4, h5, h6, img {
+                text-align: center;
+            }
+    </style>
+{% endblock %}
+
 {% block body %}
-    <h1>Bienvenue {{app.user.pseudo}} !</h1>
+    <div class="cadre-shadow"><h1>Bienvenue {{app.user.pseudo}} !</h1></div>
     <img src="https://avatars.dicebear.com/api/{{app.user.photo}}/{{app.user.pseudo}}.svg?r=50&w=150" alt="">
 {# <div id="div-calendrier">    
 <div id="calendar"></div>
 </div> #}
-
+<div class="cadre-shadow d-flex flex-wrap flex-column">
     <h2>Mes préférences</h2>
 
     {# ***************************** ACTIVITES ************************** #}
-    <h3>Activités choisies</h3>
+    <div class="cadre-shadow f-350">
+        <h3>Activités choisies</h3>
         {% if app.user.activites is defined and app.user.activites is not null  %}
             <ul>
                 {% for activite in app.user.activites %}
@@ -23,9 +40,10 @@
         {% else %}
             <p>Je n'ai pas encore choisi d'activités ! <a href="{{ path('membre_activite_new') }}">En ajouter ?</a></p>
         {% endif %}
-    
+    </div>
 
     {# ***************************** MOMENTS ************************** #}
+    <div class="cadre-shadow f-350">
     <h3>Les moments où je suis disponible</h3>
     {% if app.user.moments is defined and app.user.moments is not null  %}
         <ul>
@@ -37,16 +55,19 @@
     {% else %}
         <p>Je n'ai pas encore choisi mes moments disponibles ! <a href="{{ path('moment_new') }}">En ajouter ?</a></p>
     {% endif %}
-
+</div>
 
     {# ***************************** DISTANCE KM ************************** #}
+    <div class="cadre-shadow f-350">
     {% if app.user.distancekm is defined and app.user.distancekm is not null  %}
         <h5>Distance maximale autour de chez moi à laquelle je fais des activités : {{app.user.distancekm}}</h5>
     {% endif %}
-
-
+</div>
+</div>
     {# ***************************** INFOS PERSOS ************************** #}
+    <div class="cadre-shadow d-flex flex-wrap flex-column">
     <h2>Mes informations personnelles</h2>
+    <div class="cadre-shadow f-350">
     <ul>
         <li>Nom : {{app.user.nom}}</li>
         <li>Prénom : {{app.user.prenom}}</li>
@@ -57,16 +78,20 @@
         <li>Adresse : {{app.user.adresseNumero}}, {{app.user.adresseRue}}<br>{{app.user.cp}}, {{app.user.ville}}, {{app.user.pays}}</li>
     </ul>
     <a href="{{ path('profile_modifier') }}">Modifier mes informations personnelles</a>
-    
-    
+    </div>
+    </div>
     {# ***************************** BADGES ************************** #}
+    <div class="cadre-shadow d-flex flex-wrap flex-column">
+    
     {% if app.user.badges.id is defined and app.user.badges.id is not null  %}
+    <div class="cadre-shadow f-350">
         <h2>Mes badges</h2>
         <ul>
             {% for badge in app.user.badges %}
                 <li>{{badge.titre}}</li>
             {% endfor %}
         </ul>
+        </div>
     {% endif %}
     {# {% if app.user.badges.id is defined and app.user.badges.id is not null  %}
         <h2>Mes Ami.es</h2>
@@ -80,7 +105,7 @@
 
     {# ***************************** AMI.ES ************************** #}
     
-
+</div>
 
 
 {% endblock %}
