@@ -1,6 +1,13 @@
 <div class="formulaire1">
 {{ form_start(form, {"attr": {"id": "form-inscription" }}) }}
-    {{ form_widget(form) }}
-    <button class="btn" id="inscription-bt">{{ button_label|default('Enregistrer') }}</button>
+{{ form_widget(form) }}
+    {# {{ form_label(form.ville, 'Cochez si vous voulez partager vos informations personnelles avec d\'autres membres') }} #}
+
+
+    {# {% block _inscription_info_widget %}
+    <label class="form-check-label" for="inscription_info">Cochez la case si vous voulez partager vos informations personnelles avec d'autres membres</label>
+    {% endblock %} #}
+
+    <button class="mt-3 btn-info" id="inscription-bt">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
 </div>

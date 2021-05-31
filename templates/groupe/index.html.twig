@@ -146,7 +146,7 @@ crossorigin=""></script>
         var bt2 = document.querySelector("#cercle2");
         bt2.addEventListener("click", function(){
             var prevRadius = circle.getRadius();
-            var radius = 80000;
+            var radius = {{app.user.distancekm}}*2000;
             circle.setRadius(radius);
             if(radius > prevRadius){
                 console.log("radius > prevRadius", removedMarkers.length)
