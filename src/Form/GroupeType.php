@@ -27,6 +27,7 @@ class GroupeType extends AbstractType
             ->add('longitude', HiddenType::class)
             ->add('valide')
             ->add('activite')
+            ->add('description')
         ;
     }
 

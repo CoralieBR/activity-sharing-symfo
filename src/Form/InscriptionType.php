@@ -56,6 +56,7 @@ class InscriptionType extends AbstractType
                 'required'   => false,
                 'empty_data' => '10',])
             ->remove('badges')
+            ->add('info' )
         ;
     }
 

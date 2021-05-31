@@ -48,7 +48,7 @@ class MembreRepository extends ServiceEntityRepository implements PasswordUpgrad
     // AND moment.heure_fin >= 12 
     // AND activite.nom_activite = 'yoga' 
     
-    public function findGroupeMembres(string $jour, int $heureDebut, int $heureFin, string $activite): array
+    public function findGroupeMembres(string $jour, int $heureDebut, int $heureFin, string $activite, string $longitude, string $latitude, int $distance): array
     {
         $entityManager = $this->getEntityManager();
 
@@ -57,21 +57,47 @@ class MembreRepository extends ServiceEntityRepository implements PasswordUpgrad
             FROM App\Entity\Membre m
             INNER JOIN m.moment mo
             INNER JOIN m.activite a
+            INNER JOIN m.groupe g,
+            (((acos(sin((".:latitude."*pi()/180)) * sin((`latitude`*pi()/180)) + cos((".:latitude."*pi()/180)) * cos((`latitude`*pi()/180)) * cos(((".:longitude."- `longitude`) * pi()/180)))) * 180/pi()) * 60 * 1.1515 * 1.609344) as distance 
             WHERE mo.jour = :jour
             AND mo.heure_debut <= :heureDebut
             AND mo.heure_fin >= :heureFin
             AND a.nom_activite = :activite
+            AND distance <= .:distancekm.
+            
         ');
         $query->setParameters(array(
             'jour' => $jour,
             'heureDebut' => $heureDebut,
             'heureFin' => $heureFin,
-            'activite' => $activite
+            'activite' => $activite,
+            'longitude' => $longitude,
+            'latitude' => $latitude,
+            'distancekm' => $distance
         ));
         return $query->getResult();
     }
     
+    public function findGroupeMembres2(string $longitude, string $latitude, int $distance): array
+    {
+        $entityManager = $this->getEntityManager();
 
+        $query = $entityManager->createQuery('
+        SELECT *,
+        (((acos(sin((".:latitude."*pi()/180)) * sin((`latitude`*pi()/180)) + cos((".:latitude."*pi()/180)) * cos((`latitude`*pi()/180)) * cos(((".:longitude."- `longitude`) * pi()/180)))) * 180/pi()) * 60 * 1.1515 * 1.609344) as distance FROM `groupe` WHERE distance <= ".:distancekm.
+        ');
+
+        // $query = "SELECT *, (((acos(sin((".$latitude."*pi()/180)) * sin((`latitude`*pi()/180)) + cos((".$latitude."*pi()/180)) * cos((`latitude`*pi()/180)) * cos(((".$longitude."- `longitude`) * pi()/180)))) * 180/pi()) * 60 * 1.1515 * 1.609344) as distance FROM `table` WHERE distance <= ".$distance."
+
+        $query->setParameters(array(
+            'longitude' => $longitude,
+            'latitude' => $latitude,
+            'distancekm' => $distance
+        ));
+        return $query->getResult();
+    }
+    
+    
     /*
     public function findOneBySomeField($value): ?Membre
     {
@@ -83,4 +109,5 @@ class MembreRepository extends ServiceEntityRepository implements PasswordUpgrad
         ;
     }
     */
+
 }
