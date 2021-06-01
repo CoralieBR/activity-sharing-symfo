@@ -3,65 +3,15 @@
 
 {% block body %}
     
-{#
+
 {{ form_start(form) }}
     <h1>Message Contact</h1>
 
     {{ form_widget(form) }}
     <br>
-<<<<<<< Updated upstream
-    <button class="big-btn">{{ button_label|default('Enregistrer') }}</button>
-{{ form_end(form) }}#}
-=======
+
     <button href="{{ path('accueil') }}" class="big-btn">{{ button_label|default('Enregistrer') }}></button>
 {{ form_end(form) }}
     
-
->>>>>>> Stashed changes
-    
-<section class="formule">
-    <div class="formulaire">
-        <div class="text">Formulaire de Contact</div>
-        <form action="#">
-            <div class="form-row">
-                <div class="input-data">
-                    <input type="text" required>
-                    <div class="underline"></div>
-                    <label>Nom</label>
-                </div>
-                <div class="input-data">
-                    <input type="text" required>
-                    <div class="underline"></div>
-                    <label>Prénom</label>
-                </div>
-            </div> 
-            <div class="form-row">
-                <div class="input-data">
-                    <input type="text" required>
-                    <div class="underline"></div>
-                    <label>Email</label>
-                </div>
-                <div class="input-data">
-                    <input type="text" required>
-                    <div class="underline"></div>
-                    <label>Téléphone</label>
-                </div>
-            </div>
-                <div class="form-row">
-                    <div class="input-data textarea">
-                        <textarea cols="30" rows="10" required></textarea>
-                        <div class="underline"></div>
-                        <label>Message</label>
-                    </div>
-                </div>
-                <div class="form-row submit-btn">
-                    <div class="input-data">
-                        <div class="inner"></div>
-                        <input type="submit" value="Envoyer">
-                    </div>
-                </div>
-        </form>
-    </div>
-</section>
 
 {% endblock %}

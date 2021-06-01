@@ -1,7 +1,8 @@
 {{ form_start(form, {"attr": {"id": "form-inscription" }}) }}
-{{ form_widget(form) }}
-    {# {{ form_label(form.ville, 'Cochez si vous voulez partager vos informations personnelles avec d\'autres membres') }} #}
 
+    {# {{ form_label(form.ville, 'Cochez si vous voulez partager vos informations personnelles avec d\'autres membres') }} #}
+    {{ form_label(form.info, { attr: { 'label': 'Cochez si vous voulez partager vos informations personnelles avec d\'autres membres' } }) }}
+    {{ form_widget(form) }}
 
     {# {% block _inscription_info_widget %}
     <label class="form-check-label" for="inscription_info">Cochez la case si vous voulez partager vos informations personnelles avec d'autres membres</label>

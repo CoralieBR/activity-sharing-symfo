@@ -81,6 +81,8 @@ crossorigin=""></script>
 {# <script type="application/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.js"></script> #}
 <script type="application/javascript" src="//unpkg.com/@turf/turf@latest/turf.min.js"></script>
 
+
+
 <br>
 <br>
 <br>
@@ -100,7 +102,11 @@ crossorigin=""></script>
 <div id="mapid">
     <script>
         
-        var map = L.map('mapid').setView([{{app.user.latitude}}, {{app.user.longitude}}], 7);
+        window.onload = function(){
+        document.getElementById('cercle').click();
+        };
+
+        var map = L.map('mapid').setView([{{app.user.latitude}}, {{app.user.longitude}}], 8);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
