@@ -170,6 +170,9 @@
     #logo-header-phone {
         display: block;
     }
+    .container-fluid {
+        background-color: var(--color-white);
+    }
     
     /*header.sticky {
         background: lightgray;
@@ -181,12 +184,12 @@
     .nav-link {
         border-bottom: transparent 3px solid;
         border-top: transparent 3px solid;
-        /* border-radius: 6px; */
+        /*border-radius: 6px;*/
         color: var(--color-black);
     }
     .nav-link:hover {
-        border-top: var(--color-white) 3px solid;
-        border-bottom: var(--color-white) 3px solid;
+        border-top: var(--color-black) 3px solid;
+        border-bottom: var(--color-black) 3px solid;
         color: var(--color-black);
     }
     
@@ -515,6 +518,10 @@
         color: var(--color-black);
         font-size: small;
         text-decoration: none;
+    }
+    .afooter:hover{
+        border-bottom: lightgray 3px solid;
+        color: var(--color-black);
     }
     
     
