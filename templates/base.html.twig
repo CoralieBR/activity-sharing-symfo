@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Activity Sharing{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        and uncomment the following Encore helpers to start using Symfony UX #}
 
         {# ************ LIENS POUR LES FEUILLES DE STYLE *************** #}
         {# BOOTSTRAP #}
@@ -41,8 +41,7 @@
         
         {# ************ HEADER **************** #}
         <header>
-        <nav class="navbar navbar-expand-lg h-100">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg h-100 bg-white">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
                         <i class="fas fa-bars"></i>
@@ -97,7 +96,6 @@
                         {% endif %}
                     </ul>
                 </div>
-            </div>
             {# <a id="logo-header-phone" class="navbar-brand" href="{{ path('accueil') }}"> <img id="logo-phone" src="{{asset('logos/template.svg')}}" alt="logo"  width="200" height="200"></a> #}
         </nav>
     </header>
@@ -170,13 +168,13 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-2 mx-auto mb-md-0">
+                    <div class="col-md-4 col-lg-3 col-xl-2 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="sscat">
                             Contact
                         </h6>
                         <p class="pfooter">
-                            <a href="{{ path('contact') }}" class="afooter">Besoin d'aide</a>
+                            <a href="{{ path('contact') }}" class="afooter">Besoin d'aide?</a>
                         </p>
                         <p class="pfooter">
                             <a href="{{ path('contact') }}" class="afooter">Chat</a>

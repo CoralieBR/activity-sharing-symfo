@@ -3,7 +3,8 @@
 {% block title %}Hello MembreActiviteController!{% endblock %}
 
 {% block body %}
-<h1>Vos activités :</h1> 
+<div class="formulaire1">
+<h1 class="tittle">Vos activités :</h1> 
 <ul>
 {% for activite in app.user.activites %}
 <li>{{activite}}</li>
@@ -15,4 +16,5 @@
     {{ form_row(form.activites, {'attr': {'class': 'select2-multiple'}}) }}
 {{ form_end(form)}}
 {# {{form(form)}} #}
+</div>
 {% endblock %}
