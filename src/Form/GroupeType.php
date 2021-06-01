@@ -4,9 +4,12 @@ namespace App\Form;
 
 use App\Entity\Groupe;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class GroupeType extends AbstractType
 {
@@ -14,10 +17,20 @@ class GroupeType extends AbstractType
     {
         $builder
             ->add('nomGroupe')
-            ->add('date')
-            ->add('jour')
-            ->add('heureDebut')
-            ->add('heureFin')
+            ->add('date', DateTimeType::class)
+            ->add('jour', ChoiceType::class, [
+                'choices' => [
+                    'lundi' => 'lundi',
+                    'mardi' => 'mardi',
+                    'mercredi' => 'mercredi',
+                    'jeudi' => 'jeudi',
+                    'vendredi' => 'vendredi',
+                    'samedi' => 'samedi',
+                    'dimanche' => 'dimanche',
+                ]
+            ])
+            ->add('heureDebut', NumberType::class)
+            ->add('heureFin', NumberType::class)
             ->add('adresseNumero')
             ->add('adresseRue')
             ->add('cp')
@@ -25,8 +38,12 @@ class GroupeType extends AbstractType
             ->add('pays')
             ->add('latitude', HiddenType::class)
             ->add('longitude', HiddenType::class)
-            ->add('valide')
+            ->remove('valide')
             ->add('activite')
+            ->add('description')
+            // ->add('creePar')
+            // ->add('membres')
+            // ->add('invitations')
         ;
     }
 

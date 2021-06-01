@@ -26,6 +26,11 @@
         line-height: 1.5;
         margin: 0;
         padding: 0;
+        main {
+            max-width: 1200px;
+            margin: auto;
+        }
+    
     }
     
     p, a, button {
@@ -103,55 +108,39 @@
     }
     
     .card-accueil {
-        /* overflow: hidden; */
-        /* max-width: fit-content; */
-    }
     
-    .card-img {
-        width: initial;
+        .card-img {
+            width: initial;
+        }
+        img{
+            max-height: 300px;
+        }
+        div {
+            color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 32px;
+            scrollbar-color: transparent transparent;
+            scrollbar-width: thin;
+            
+            button {
+                border: transparent 2px solid;
+                color: transparent;
+            }
+        }
+        div:hover {
+            background-color: rgba(255, 255, 255, 0.507);
+            color: black;
+            scrollbar-color: black transparent;
+            button {
+                border: black 2px solid;
+                color: black;
+            }
+        }
+        
     }
-    
-    .card-accueil>img{
-        max-height: 300px;
-        /* object-fit: contain; */
-    }
-    
-    .card-img {
-        width: initial;
-    }
-    
-    .card-accueil>img{
-        max-height: 300px;
-        /* object-fit: contain; */
-    }
-    .card-accueil>div {
-        /* overflow: hidden; */
-        color: transparent;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 32px;
-    
-    }
-    .card-accueil>div:hover {
-        background-color: rgba(255, 255, 255, 0.507);
-        color: black;
-    }
-    .card-accueil button {
-        border: transparent 2px solid;
-        color: transparent;
-    }
-    .card-accueil button:hover {
-        border: black 2px solid;
-        color: black;
-    }
-    
-    .card-img{
-        width: initial;
-    }
-    
-    
     
     
     
@@ -403,7 +392,22 @@
         letter-spacing: 1px;
         cursor: pointer;
     }
+form {
 
+    max-width: 800px;
+    margin: auto;
+    input {
+        border: transparent 1px solid;
+        border-radius: 0;
+    }
+    input:hover {
+        border-bottom: black 1px solid;
+    }
+    button {
+        border: 1px solid black;
+    }
+
+}
 
     /*_________________________ SECTION _____________________*/
     
@@ -432,7 +436,7 @@
     .team .team_member {
         margin: 5px;
         /* max-width: 400px; */
-        flex: 0 0 400px;
+        flex: 0 1 400px;
         padding: 20px;
         line-height: 30px;
         /* position: relative; */
@@ -445,7 +449,10 @@
         font-size: 16px;
         margin: 12px 0;
         text-align: center;
-    
+    }
+
+    .team img {
+        width: 100%;
     }
     
     
@@ -523,9 +530,6 @@
         border-bottom: lightgray 3px solid;
         color: var(--color-black);
     }
-    
-    
-    
     
     /*________________________________Media query____________________________*/
     @media screen and (min-width: 991px) {

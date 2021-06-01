@@ -11,7 +11,7 @@ class MembreFixtures extends Fixture
 {
     
     public const MEMBRE_MEMBRE = "membre";
-    public const MEMBRE_SUPER_USER = "super-membre";
+    public const MEMBRE_SUPER_USER = "super-user";
     public const MEMBRE_ADMIN = "admin";
     public const MEMBRE_UN = "un";
     public const MEMBRE_DEUX = "deux";
@@ -43,9 +43,13 @@ class MembreFixtures extends Fixture
         $membre->setCp('38000');
         $membre->setVille('Grenoble');
         $membre->setPays('France');
+        $membre->setLatitude('45.1877');
+        $membre->setLongitude('5.7198');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_TENNIS));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
+        $membre->setInfo('1');
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_MEMBRE, $membre);
 
@@ -59,8 +63,12 @@ class MembreFixtures extends Fixture
         $membre->setCp('69000');
         $membre->setVille('Lyon');
         $membre->setPays('France');
+        $membre->setLatitude('45.7452');
+        $membre->setLongitude('4.7910');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_ADMIN, $membre);
 
@@ -74,8 +82,12 @@ class MembreFixtures extends Fixture
         $membre->setCp('69000');
         $membre->setVille('Lyon');
         $membre->setPays('France');
+        $membre->setLatitude('45.7452');
+        $membre->setLongitude('4.7910');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_SUPER_USER, $membre);
 
@@ -89,8 +101,12 @@ class MembreFixtures extends Fixture
         $membre->setCp('69001');
         $membre->setVille('Lyon');
         $membre->setPays('France');
+        $membre->setLatitude('45.7706');
+        $membre->setLongitude('4.8326');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_UN, $membre);
 
@@ -104,7 +120,11 @@ class MembreFixtures extends Fixture
         $membre->setCp('69002');
         $membre->setVille('Lyon');
         $membre->setPays('France');
+        $membre->setLatitude('45.7486');
+        $membre->setLongitude('4.8309');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_DEUX, $membre);
 
@@ -118,8 +138,12 @@ class MembreFixtures extends Fixture
         $membre->setCp('69003');
         $membre->setVille('Lyon');
         $membre->setPays('France');
+        $membre->setLatitude('45.7559');
+        $membre->setLongitude('4.8595');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_TROIS, $membre);
 
@@ -133,9 +157,13 @@ class MembreFixtures extends Fixture
         $membre->setCp('69004');
         $membre->setVille('Lyon');
         $membre->setPays('France');
+        $membre->setLatitude('45.7771');
+        $membre->setLongitude('4.8258');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_QUATRE, $membre);
 
@@ -149,7 +177,11 @@ class MembreFixtures extends Fixture
         $membre->setCp('69005');
         $membre->setVille('Lyon');
         $membre->setPays('France');
+        $membre->setLatitude('45.7540');
+        $membre->setLongitude('4.7990');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_CINQ, $membre);
 
@@ -163,8 +195,12 @@ class MembreFixtures extends Fixture
         $membre->setCp('69006');
         $membre->setVille('Lyon');
         $membre->setPays('France');
+        $membre->setLatitude('45.7653');
+        $membre->setLongitude('4.8677');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_SIX, $membre);
 
@@ -178,8 +214,12 @@ class MembreFixtures extends Fixture
         $membre->setCp('69007');
         $membre->setVille('Lyon');
         $membre->setPays('France');
+        $membre->setLatitude('45.7473');
+        $membre->setLongitude('4.8418');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_SEPT, $membre);
 
@@ -193,8 +233,12 @@ class MembreFixtures extends Fixture
         $membre->setCp('69008');
         $membre->setVille('Lyon');
         $membre->setPays('France');
+        $membre->setLatitude('45.7473');
+        $membre->setLongitude('4.8658');
+        $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_HUIT, $membre);
 

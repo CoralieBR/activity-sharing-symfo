@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class InscriptionType extends AbstractType
 {
@@ -35,7 +36,16 @@ class InscriptionType extends AbstractType
                 ]
             ])
             ->add('telephone')
-            ->add('genre')
+            ->add('genre', ChoiceType::class, [
+                'expanded' => false,
+                'multiple' => false,
+                'choices' => [
+                    'Femme' => 'female',
+                    'Homme' => 'male',
+                    'Non-Binaire' => 'non-binaire',
+                    'Autre' => 'autre',
+                ]
+            ])
             ->add('adresseNumero')
             ->add('adresseRue')
             ->add('cp')
@@ -47,6 +57,7 @@ class InscriptionType extends AbstractType
                 'required'   => false,
                 'empty_data' => '10',])
             ->remove('badges')
+            ->add('info')
         ;
     }
 
