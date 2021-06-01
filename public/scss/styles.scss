@@ -41,6 +41,9 @@
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Girassol', cursive;
     }
+    h1 {
+        text-align: center;
+    }
     
     /* img {
         width: 100%;
@@ -391,8 +394,8 @@
     }
 form {
 
-    max-width: 800px;
-    margin: auto;
+    // max-width: 800px;
+    // margin: auto;
     input {
         border: transparent 1px solid;
         border-radius: 0;
@@ -400,9 +403,9 @@ form {
     input:hover {
         border-bottom: black 1px solid;
     }
-    button {
-        border: 1px solid black;
-    }
+    // button {
+    //     border: 1px solid black;
+    // }
 
 }
 
@@ -497,8 +500,38 @@ form {
         opacity: 1;
     }
     
+    .small-btn {
+        border: black 2px solid;
+        color: black;
+        text-decoration: none;
+        padding: 6px;
+        margin: 16px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .small-btn:hover {
+        background-color: black;
+        color: white;
+    }
+
+    .small-btn_inline {
+        border-bottom: transparent 2px solid;
+        color: black;
+        text-decoration: none;
+        padding: 2px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .small-btn_inline:hover {
+        border-bottom: black 2px solid;
+        color: black;
+    }
     
-    
+    .img-admin {
+        max-width: 100px;
+    }
     
     /*____________________________________ FOOTER ___________________________*/
     

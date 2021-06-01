@@ -18,7 +18,7 @@ class ArticleAccueilType extends AbstractType
             ->add('texte')
             ->remove('image')
             ->add('imageFile', VichImageType::class, ["required"=>false])
-            ->add('position')
+            ->remove('position')
             ->add('active')
             ->add('boutonTexte')
             ->add('boutonLien')

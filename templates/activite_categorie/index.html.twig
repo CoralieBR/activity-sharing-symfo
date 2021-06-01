@@ -3,14 +3,13 @@
 {% block title %}ActiviteCategorie index{% endblock %}
 
 {% block body %}
-    <h1>ActiviteCategorie index</h1>
-
+    <h1>Index des catégories</h1>
+<div class="formulaire1">
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>NomCategorie</th>
-                <th>Description</th>
                 <th>Valide</th>
                 <th>actions</th>
             </tr>
@@ -20,11 +19,10 @@
             <tr>
                 <td>{{ activite_categorie.id }}</td>
                 <td>{{ activite_categorie.nomCategorie }}</td>
-                <td>{{ activite_categorie.description }}</td>
-                <td>{{ activite_categorie.valide ? 'Yes' : 'No' }}</td>
+                <td>{{ activite_categorie.valide ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ path('activite_categorie_show', {'id': activite_categorie.id}) }}">Voir</a>
-                    <a href="{{ path('activite_categorie_edit', {'id': activite_categorie.id}) }}">Modifier</a>
+                    <a href="{{ path('activite_categorie_show', {'id': activite_categorie.id}) }}" class="small-btn_inline">Voir</a>
+                    <a href="{{ path('activite_categorie_edit', {'id': activite_categorie.id}) }}" class="small-btn_inline">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +33,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('activite_categorie_new') }}">Nouvelle catégorie</a>
+    <a href="{{ path('activite_categorie_new') }}" class="small-btn">Nouvelle catégorie</a>
+    </div>
 {% endblock %}

@@ -3,6 +3,8 @@
 {% block title %}Activite{% endblock %}
 
 {% block body %}
+<a href="{{ path('activite_index') }}" class="small-btn">Retour</a>
+<div class="formulaire1">
     <h1>Activite</h1>
 
     <table class="table">
@@ -21,14 +23,20 @@
             </tr>
             <tr>
                 <th>Valide</th>
-                <td>{{ activite.valide ? 'Yes' : 'No' }}</td>
+                <td>{{ activite.valide ? 'Oui' : 'Non' }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('activite_index') }}">back to list</a>
-
-    <a href="{{ path('activite_edit', {'id': activite.id}) }}">edit</a>
+<div class="d-flex flex-wrap justify-content-start align-items-center">
+    
+    
+    
+<div>
+    <a href="{{ path('activite_edit', {'id': activite.id}) }}" class="small-btn">Modifier</a>
+</div>
 
     {{ include('activite/_delete_form.html.twig') }}
+    </div>
+
+    </div>
 {% endblock %}

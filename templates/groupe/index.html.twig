@@ -30,7 +30,7 @@
             <tr>
                 <td>{{ groupe.id }}</td>
                 <td>{{ groupe.nomGroupe }}</td>
-                <td>{{ groupe.date ? groupe.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ groupe.date ? groupe.date|date('d/m/Y') : '' }}</td>
                 <td>{{ groupe.jour }}</td>
                 <td>{{ groupe.heureDebut }}</td>
                 <td>{{ groupe.heureFin }}</td>
@@ -41,9 +41,9 @@
                 <td>{{ groupe.pays }}</td>
                 <td>{{ groupe.latitude }}</td>
                 <td>{{ groupe.longitude }}</td>
-                <td>{{ groupe.valide ? 'Yes' : 'No' }}</td>
+                <td>{{ groupe.valide ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ path('groupe_show', {'id': groupe.id}) }}">Voir le groupe</a>
+                    <a href="{{ path('groupe_show', {'id': groupe.id}) }}" class="small-btn_inline">Voir le groupe</a>
                 </td>
             </tr>
         {% else %}

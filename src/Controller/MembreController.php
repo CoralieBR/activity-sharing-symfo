@@ -7,6 +7,7 @@ use App\Entity\Membre;
 use App\Form\InscriptionType;
 use App\Form\MembreType;
 use App\Form\SuperMembreType;
+use App\Repository\GroupeRepository;
 use App\Repository\MembreRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -99,7 +100,54 @@ class MembreController extends AbstractController
         return $this->render('membre/profile-modifier.html.twig', ['form' => $form->createView()]);
     }
 
-// ~~~~~ Interface pour super-membre ~~~~~ //
+
+    /**
+     * @Route("profile/accept-invitation/{id}", name="accept_invitation", methods={"GET"})
+     */
+    public function accept($id, GroupeRepository $groupeRepository): Response
+    {
+        $finalId = base64_decode($id);
+        $groupe = $groupeRepository->find($finalId);
+        $membre = $this->getUser();
+        $groupe->addMembre($membre);
+        $groupe->removeInvitation($membre);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($groupe);
+        $em->flush();
+        // On est sur la page profile, en bas d'une carte invitation. On clique sur "accepter" pour accepter l'invitation
+        // Sans que ça ne se voit, en cliquant sur le lien ça nous envoie sur une page qui va récupérer notre id (session) et celui de groupe de l'invitation (get) pour les ajouter ensemble dans la table relationnelle. Puis nous renvoit sur la page profil, donc on ne s'est rendu compte de rien.
+        return $this->redirectToRoute('profile');
+    }
+
+    /**
+     * @Route("profile/refuse-invitation/{id}", name="refuse_invitation")
+     */
+    public function refuse($id, GroupeRepository $groupeRepository): Response
+    {
+        $finalId = base64_decode($id);
+        $groupe = $groupeRepository->find($finalId);
+        $membre = $this->getUser();
+        $groupe->removeInvitation($membre);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($groupe);
+        $em->flush();
+        return $this->redirectToRoute('profile');
+    }
+
+    /**
+     * @Route("/profile/membre/{id}", name="membre_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Membre $membre): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$membre->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($membre);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('membre_index');
+    }
+
 
 
 
@@ -155,17 +203,5 @@ class MembreController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/membre/{id}", name="membre_delete", methods={"POST"})
-     */
-    public function delete(Request $request, Membre $membre): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$membre->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($membre);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('membre_index');
-    }
+    
 }

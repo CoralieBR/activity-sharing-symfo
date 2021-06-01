@@ -1,10 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}Message Contact{% endblock %}
 
 {% block body %}
-    <h1>Message Contact</h1>
-
+    <h1>Messages Contact</h1>
+<div class="formulaire1">
     <table class="table">
         <thead>
             <tr>
@@ -28,20 +28,21 @@
                 <td>{{ message_contact.email }}</td>
                 <td>{{ message_contact.telephone }}</td>
                 <td>{{ message_contact.message }}</td>
-                <td>{{ message_contact.reception ? message_contact.reception|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ message_contact.reponse ? message_contact.reponse|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ message_contact.reception ? message_contact.reception|date('d/m/Y H:i') : '' }}</td>
+                <td>{{ message_contact.reponse ? message_contact.reponse|date('d/m/Y H:i') : '' }}</td>
                 <td>
-                    <a href="{{ path('message_contact_show', {'id': message_contact.id}) }}">show</a>
-                    <a href="{{ path('message_contact_edit', {'id': message_contact.id}) }}">edit</a>
+                    <a href="{{ path('message_contact_show', {'id': message_contact.id}) }}" class="small-btn_inline">Voir</a>
+                    <a href="{{ path('message_contact_edit', {'id': message_contact.id}) }}" class="small-btn_inline">Répondre</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">no records found</td>
+                <td colspan="9">Aucun message</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('message_contact_new') }}">Create new</a>
+    {# <a href="{{ path('message_contact_new') }}">Créer un message</a> #}
+</div>
 {% endblock %}

@@ -3,9 +3,11 @@
 {% block title %}New Badge{% endblock %}
 
 {% block body %}
+    <a href="{{ path('badge_index') }}" class="small-btn">Retour</a>
+    <div class="formulaire1">
     <h1>Créer un nouveau badge</h1>
 
     {{ include('badge/_form.html.twig') }}
 
-    <a href="{{ path('badge_index') }}">Retour</a>
+    </div>
 {% endblock %}

@@ -32,6 +32,7 @@ class ArticleAccueilController extends AbstractController
     public function new(Request $request): Response
     {
         $articleAccueil = new ArticleAccueil();
+        $articleAccueil->setUpdatedAt(new \DateTime('now'));
         $form = $this->createForm(ArticleAccueilType::class, $articleAccueil);
         $form->handleRequest($request);
 

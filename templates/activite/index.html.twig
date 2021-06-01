@@ -4,13 +4,13 @@
 
 {% block body %}
     <h1>Activite index</h1>
+    <div class="formulaire1">
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>NomActivite</th>
-                <th>Description</th>
                 <th>Valide</th>
                 <th>actions</th>
             </tr>
@@ -20,11 +20,10 @@
             <tr>
                 <td>{{ activite.id }}</td>
                 <td>{{ activite.nomActivite }}</td>
-                <td>{{ activite.description }}</td>
-                <td>{{ activite.valide ? 'Yes' : 'No' }}</td>
+                <td>{{ activite.valide ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ path('activite_show', {'id': activite.id}) }}">Voir</a>
-                    <a href="{{ path('activite_edit', {'id': activite.id}) }}">Modifier</a>
+                    <a href="{{ path('activite_show', {'id': activite.id}) }}" class="small-btn_inline">Voir</a>
+                    <a href="{{ path('activite_edit', {'id': activite.id}) }}" class="small-btn_inline">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +34,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('activite_new') }}">Nouvelle activité</a>
+    <a href="{{ path('activite_new') }}" class="small-btn">Nouvelle activité</a>
+    </div>
 {% endblock %}

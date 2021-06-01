@@ -1,11 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}New Message Contact{% endblock %}
 
 {% block body %}
-    <h1>Create new Message Contact</h1>
+    <a href="{{ path('message_contact_index') }}" class="small-btn">Retour</a>
+    <div class="formulaire1">
+    <h1>Créer un message</h1>
 
     {{ include('message_contact/_form.html.twig') }}
-
-    <a href="{{ path('message_contact_index') }}">back to list</a>
+    </div>
 {% endblock %}

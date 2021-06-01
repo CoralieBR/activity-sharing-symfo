@@ -3,6 +3,8 @@
 {% block title %}Badge{% endblock %}
 
 {% block body %}
+    <a href="{{ path('badge_index') }}" class="small-btn">Retour</a>
+    <div class="formulaire1">
     <h1>Badge</h1>
 
     <table class="table">
@@ -30,9 +32,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('badge_index') }}">Retour</a>
 
-    <a href="{{ path('badge_edit', {'id': badge.id}) }}">Modifier</a>
+    <a href="{{ path('badge_edit', {'id': badge.id}) }}" class="small-btn">Modifier</a>
 
     {{ include('badge/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

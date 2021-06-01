@@ -10,9 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// /**
-//  * @Route("/groupe")
-//  */
 class GroupeController extends AbstractController
 {
     // ====================================================== //
@@ -90,7 +87,7 @@ class GroupeController extends AbstractController
      */
     public function edit(Request $request, Groupe $groupe): Response
     {
-        $form = $this->createForm(Groupe1Type::class, $groupe);
+        $form = $this->createForm(GroupeType::class, $groupe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

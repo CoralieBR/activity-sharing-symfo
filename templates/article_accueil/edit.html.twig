@@ -3,11 +3,14 @@
 {% block title %}Modifier l'article{% endblock %}
 
 {% block body %}
+<a href="{{ path('article_accueil_index') }}" class="small-btn">Retour</a>    
+    <div class="formulaire1">
     <h1>Modifier l'article</h1>
 
-    {{ include('article_accueil/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {{ include('article_accueil/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
-    <a href="{{ path('article_accueil_index') }}">Retour</a>
+    
 
     {{ include('article_accueil/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

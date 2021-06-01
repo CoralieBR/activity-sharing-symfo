@@ -115,6 +115,11 @@ class Groupe
      */
     private $invitations;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nbMax;
+
     // /**
     //  * @ORM\ManyToMany(targetEntity=Membre::class, inversedBy="invitations")
     //  */
@@ -421,6 +426,18 @@ class Groupe
         if ($this->invitations->removeElement($invitation)) {
             $invitation->removeInvitation($this);
         }
+
+        return $this;
+    }
+
+    public function getNbMax(): ?int
+    {
+        return $this->nbMax;
+    }
+
+    public function setNbMax(?int $nbMax): self
+    {
+        $this->nbMax = $nbMax;
 
         return $this;
     }

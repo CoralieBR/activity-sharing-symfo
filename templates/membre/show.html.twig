@@ -1,8 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}Membre{% endblock %}
 
 {% block body %}
+<a href="{{ path('membre_index') }}" class="small-btn">Retour</a>
+<div class="formulaire1">
     <h1>Membre</h1>
 
     <table class="table">
@@ -20,10 +22,6 @@
                 <td>{{ membre.roles ? membre.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ membre.password }}</td>
-            </tr>
-            <tr>
                 <th>Nom</th>
                 <td>{{ membre.nom }}</td>
             </tr>
@@ -36,8 +34,8 @@
                 <td>{{ membre.pseudo }}</td>
             </tr>
             <tr>
-                <th>Photo</th>
-                <td>{{ membre.photo }}</td>
+                <th>Avatar</th>
+                <td><img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt=""></td>
             </tr>
             <tr>
                 <th>Telephone</th>
@@ -48,18 +46,6 @@
                 <td>{{ membre.genre }}</td>
             </tr>
             <tr>
-                <th>AdresseNumero</th>
-                <td>{{ membre.adresseNumero }}</td>
-            </tr>
-            <tr>
-                <th>AdresseRue</th>
-                <td>{{ membre.adresseRue }}</td>
-            </tr>
-            <tr>
-                <th>Cp</th>
-                <td>{{ membre.cp }}</td>
-            </tr>
-            <tr>
                 <th>Ville</th>
                 <td>{{ membre.ville }}</td>
             </tr>
@@ -68,23 +54,14 @@
                 <td>{{ membre.pays }}</td>
             </tr>
             <tr>
-                <th>Latitude</th>
-                <td>{{ membre.latitude }}</td>
-            </tr>
-            <tr>
-                <th>Longitude</th>
-                <td>{{ membre.longitude }}</td>
-            </tr>
-            <tr>
                 <th>Distancekm</th>
                 <td>{{ membre.distancekm }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('membre_index') }}">back to list</a>
+    
 
-    <a href="{{ path('membre_edit', {'id': membre.id}) }}">edit</a>
-
-    {{ include('membre/_delete_form.html.twig') }}
+    
+</div>
 {% endblock %}
