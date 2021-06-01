@@ -4,11 +4,13 @@ namespace App\Controller;
 
 
 use App\Entity\Membre;
+use App\Entity\Pote;
 use App\Form\InscriptionType;
 use App\Form\MembreType;
 use App\Form\SuperMembreType;
 use App\Repository\GroupeRepository;
 use App\Repository\MembreRepository;
+use App\Repository\PoteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,8 +60,59 @@ class MembreController extends AbstractController
     /**
      * @Route("/profile", name="profile")
      */
-    public function profile(): Response
+    public function profile(PoteRepository $poteRepository): Response
     {
+        $today = new \DateTime('now');
+        $membre = $this->getUser();
+
+        // $invitations = $this->getUser()->getInvitations();
+        // // dd($today);
+        // foreach ($invitations as $invitation) {
+        //     $date = $invitation->getDate();
+        //     if ($date <= $today) {
+        //         $invitation->removeInvitation($membre);
+                
+        //         $entityManager = $this->getDoctrine()->getManager();
+        //         $entityManager->persist($invitation);
+        //         $entityManager->flush();
+        //     } 
+        // }
+
+        $groupes = $this->getUser()->getGroupes();
+        // dd($groupes);
+        foreach ($groupes as $groupe) {
+            $date = $groupe->getDate();
+            if ($date <= $today) {
+                $relations = $groupe->getMembres();
+                foreach ($relations as $relation) {
+                    $relationExiste = $poteRepository->findBy([
+                        'membre' => $membre,
+                        'pote' => $relation,
+                    ]);
+                    if(count($relationExiste) == 0){
+                        $pote = new Pote;
+                        
+                        $pote->setMembre($membre);
+                        $pote->setPote($relation);
+                        $pote->setAccepte(0);
+
+                        $entityManager = $this->getDoctrine()->getManager();
+                        $entityManager->persist($pote);
+                        $entityManager->flush();
+                    } 
+                    
+                    
+                    
+                }
+
+                $groupe->removeMembre($membre);
+                
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($groupe);
+                $entityManager->flush();
+            } 
+        }
+
         return $this->render('membre/profile.html.twig');
     }
 

@@ -268,14 +268,22 @@
         </ul>
         </div>
     {% endif %}
-    {# {% if app.user.badges.id is defined and app.user.badges.id is not null  %}
+    {{dump(app.user.poteDemandes)}}
+    {# {% if app.user.poteDemandes.id is defined and app.user.poteDemandes.id is not null  %} #}
         <h2>Mes Ami.es</h2>
-        <ul>
-            {% for badge in app.user.badges %}
-                <li>{{badge.titre}}</li>
-            {% endfor %}
-        </ul>
-    {% endif %} #}
+
+        {# {{dump(pote)}} #}
+        {# {% for pote in app.user.poteDemandes %}
+        <div class="cadre-shadow">
+            <h3>{{pote.pseudo}}</h3>
+            <img src="https://avatars.dicebear.com/api/{{pote.photo}}/{{pote.pseudo}}.svg?r=50&w=150" alt="">
+            <p>{{pote.prenom}} {{pote.nom|upper}}</p>
+            <p>Mail : {{pote.email}}</p>
+            <p>Téléphone : {{pote.telephone}}</p>
+        </div>
+        {% endfor %} #}
+
+    {# {% endif %} #}
 
 
     {# ***************************** AMI.ES ************************** #}

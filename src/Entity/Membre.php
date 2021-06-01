@@ -148,6 +148,32 @@ class Membre implements UserInterface
      */
     private $info;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Pote::class, mappedBy="Membre", orphanRemoval=true)
+     */
+    // lien à la table pote :
+    //  - accepte == 0 : lorsqu'un groupe est passé, "poteDemandes" c'est la liste des membres avec qui j'étais en groupe, et la question : "Souhaitez-vous rester en contact avec cette personne en lui envoyant vos coordonnées ?" -> si je réponds oui "accepte" passe à 1, sinon mon "poteDemandes" disparait
+    //  - accepte == 1 : j'ai donné mes coordonnées à qqn, rien d'autre ne se passe de mon coté
+    private $poteDemandes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Pote::class, mappedBy="Pote", orphanRemoval=true)
+     */
+     // lien à la table pote :
+    //  - accepte == 0 : rien ne se passe de mon coté
+    //  - accepte == 1 : un membre me considère comme son.sa pote et ses coordonnées s'affichent dans ma liste d'ami.es. + une nouvelle ligne est créée dans "pote" avec la même demande mais inversée. Est-ce que je veux envoyer mes coordonnées à cette personne ? 
+    private $potes;
+
+    // /**
+    //  * @ORM\ManyToMany(targetEntity=Membre::class, inversedBy="potesDemandes")
+    //  */
+    // private $potes;
+
+    // /**
+    //  * @ORM\ManyToMany(targetEntity=Membre::class, mappedBy="potes")
+    //  */
+    // private $potesDemandes;
+
 
     // /**
     //  * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="Invitations")
@@ -167,6 +193,9 @@ class Membre implements UserInterface
         // $this->groupesInvitations = new ArrayCollection();
         $this->groupes = new ArrayCollection();
         // $this->invitations = new ArrayCollection();
+        // $this->potes = new ArrayCollection();
+        // $this->potesDemandes = new ArrayCollection();
+        $this->poteDemandes = new ArrayCollection();
     }
 
 
@@ -668,6 +697,117 @@ class Membre implements UserInterface
     public function setInfo(?bool $info): self
     {
         $this->info = $info;
+
+        return $this;
+    }
+
+    // /**
+    //  * @return Collection|self[]
+    //  */
+    // public function getPotes(): Collection
+    // {
+    //     return $this->potes;
+    // }
+
+    // public function addPote(self $pote): self
+    // {
+    //     if (!$this->potes->contains($pote)) {
+    //         $this->potes[] = $pote;
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removePote(self $pote): self
+    // {
+    //     $this->potes->removeElement($pote);
+
+    //     return $this;
+    // }
+
+    // /**
+    //  * @return Collection|self[]
+    //  */
+    // public function getPotesDemandes(): Collection
+    // {
+    //     return $this->potesDemandes;
+    // }
+
+    // public function addPotesDemande(self $potesDemande): self
+    // {
+    //     if (!$this->potesDemandes->contains($potesDemande)) {
+    //         $this->potesDemandes[] = $potesDemande;
+    //         $potesDemande->addPote($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removePotesDemande(self $potesDemande): self
+    // {
+    //     if ($this->potesDemandes->removeElement($potesDemande)) {
+    //         $potesDemande->removePote($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    /**
+     * @return Collection|Pote[]
+     */
+    public function getPoteDemandes(): Collection
+    {
+        return $this->poteDemandes;
+    }
+
+    public function addPoteDemande(Pote $poteDemande): self
+    {
+        if (!$this->poteDemandes->contains($poteDemande)) {
+            $this->poteDemandes[] = $poteDemande;
+            $poteDemande->setMembre($this);
+        }
+
+        return $this;
+    }
+
+    public function removePoteDemande(Pote $poteDemande): self
+    {
+        if ($this->poteDemandes->removeElement($poteDemande)) {
+            // set the owning side to null (unless already changed)
+            if ($poteDemande->getMembre() === $this) {
+                $poteDemande->setMembre(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Pote[]
+     */
+    public function getPotes(): Collection
+    {
+        return $this->potes;
+    }
+
+    public function addPote(Pote $pote): self
+    {
+        if (!$this->potes->contains($pote)) {
+            $this->potes[] = $pote;
+            $pote->setPote($this);
+        }
+
+        return $this;
+    }
+
+    public function removePote(Pote $pote): self
+    {
+        if ($this->potes->removeElement($pote)) {
+            // set the owning side to null (unless already changed)
+            if ($pote->getPote() === $this) {
+                $pote->setPote(null);
+            }
+        }
 
         return $this;
     }
