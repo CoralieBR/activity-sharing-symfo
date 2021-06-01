@@ -13,20 +13,158 @@
             margin: auto;
         }
         h1, h2, h3, h4, h5, h6, img {
-                text-align: center;
-            }
+            text-align: center;
+        }
+        .profile-flex {
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+        .f-350 {
+            flex: 1 1 350px;
+        }
     </style>
 {% endblock %}
 
 {% block body %}
-    <div class="cadre-shadow"><h1>Bienvenue {{app.user.pseudo}} !</h1></div>
+    <div class="cadre-shadow">
+        <h1>Bienvenue {{app.user.pseudo}} !</h1>
+    </div>
+    
     <img src="https://avatars.dicebear.com/api/{{app.user.photo}}/{{app.user.pseudo}}.svg?r=50&w=150" alt="">
+    {# {{dump(app.user.groupesCrees)}} #}
+    
+    {% if is_granted('ROLE_SUPER_USER') %}
+        <div class="cadre-shadow">
+            <h2>Mes groupes créés</h2>
+            <a href="{{ path('groupe_new') }}">Créer un groupe de potes !</a>
+            {% if app.user.groupesCrees is defined and app.user.groupesCrees is not null  %}
+            <div class="profile-flex">
+
+                {% for groupe in app.user.groupesCrees %}
+                    <div class="cadre-shadow f-350">
+        
+                        <h3>{{groupe.nomGroupe}}</h3>
+                        <p><i>{{groupe.activite.categorie}} - {{groupe.activite.nomActivite}}</i></p>
+                        <p>{{groupe.description}}</p>
+                        <hr>
+
+                        <p>Adresse : {{groupe.adresseNumero}}, {{groupe.adresseRue}}<br>
+                        {{groupe.cp}} {{groupe.ville}}</p>
+                        <hr>
+                        
+                        <p>Date : {{groupe.date|date("m/d/Y")}}<br>
+                        De {{groupe.heureDebut}}h à {{groupe.heureFin}}h</p>
+                        <hr>
+                        
+                        <h4>Les membres qui participent :</h4>
+                        {% if groupe.membres is defined and groupe.membres is not null  %}
+                            <div class="d-flex flex-wrap">
+                            {% for membre in groupe.membres %}
+                                <div class="avatar-membre">
+                                    <img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt="">
+                                </div>
+                            {% endfor %}
+                            </div>
+                        {% else %}
+                            <p>Pour l'instant aucun membre n'a accepté l'invitation... </p>
+                        {% endif %}
+                        <hr>
+                        
+                        <h4>Les membres invités :</h4>
+                        {% if groupe.invitations is defined and groupe.invitations is not null %}
+                            <div class="d-flex flex-wrap">
+                            {% for membre in groupe.invitations %}
+                                <div class="avatar-membre">
+                                    <img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt="">
+                                </div>
+                            {% endfor %}
+                            </div>
+                        {% else %}
+                            <p>Toutes les invitations envoyées ont été acceptées ou refusées.</p> 
+                        {% endif %}
+                        {# {{dump(groupe)}} #}
+                    <a href="{{ path('groupe_edit', {'id': groupe.id}) }}">Modifier le groupe</a>
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+
+
+
+        <div class="cadre-shadow">
+            <h2>Mes groupes</h2>
+            {% if app.user.invitations is defined and app.user.invitations is not null  %}
+            <div class="profile-flex">
+
+                {% for groupe in app.user.invitations %}
+                    <div class="cadre-shadow f-350">
+        
+                        <h3>{{groupe.nomGroupe}}</h3>
+                        <p><i>{{groupe.activite.categorie}} - {{groupe.activite.nomActivite}}</i></p>
+                        <p>{{groupe.description}}</p>
+                        <hr>
+
+                        <p>Adresse : {{groupe.adresseNumero}}, {{groupe.adresseRue}}<br>
+                        {{groupe.cp}} {{groupe.ville}}</p>
+                        <hr>
+                        
+                        <p>Date : {{groupe.date|date("d/m/Y")}}<br>
+                        De {{groupe.heureDebut}}h à {{groupe.heureFin}}h</p>
+                        <hr>
+                        
+                        <h4>Les membres qui participent :</h4>
+                        {% if groupe.membres is defined and groupe.membres is not null  %}
+                            <div class="d-flex flex-wrap">
+                            {% for membre in groupe.membres %}
+                                <div class="avatar-membre">
+                                    <img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt="">
+                                </div>
+                            {% endfor %}
+                            </div>
+                        {% else %}
+                            <p>Pour l'instant aucun membre n'a accepté l'invitation... </p>
+                        {% endif %}
+                        <hr>
+                        
+                        <h4>Les membres invités :</h4>
+                        {% if groupe.invitations is defined and groupe.invitations is not null %}
+                            <div class="d-flex flex-wrap">
+                            {% for membre in groupe.invitations %}
+                                <div class="avatar-membre">
+                                    <img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt="">
+                                </div>
+                            {% endfor %}
+                            </div>
+                        {% else %}
+                            <p>Toutes les invitations envoyées ont été acceptées ou refusées.</p> 
+                        {% endif %}
+                        {# {{dump(groupe)}} #}
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+
+
+
+
+
+
+
+
+
+
 {# <div id="div-calendrier">    
 <div id="calendar"></div>
 </div> #}
-<div class="cadre-shadow d-flex flex-wrap flex-column">
+<div class="cadre-shadow">
     <h2>Mes préférences</h2>
-
+    <div class="profile-flex">
     {# ***************************** ACTIVITES ************************** #}
     <div class="cadre-shadow f-350">
         <h3>Activités choisies</h3>
@@ -55,6 +193,7 @@
     {% else %}
         <p>Je n'ai pas encore choisi mes moments disponibles ! <a href="{{ path('moment_new') }}">En ajouter ?</a></p>
     {% endif %}
+    </div>
 </div>
 
     {# ***************************** DISTANCE KM ************************** #}
@@ -65,23 +204,25 @@
 </div>
 </div>
     {# ***************************** INFOS PERSOS ************************** #}
-    <div class="cadre-shadow d-flex flex-wrap flex-column">
-    <h2>Mes informations personnelles</h2>
-    <div class="cadre-shadow f-350">
-    <ul>
-        <li>Nom : {{app.user.nom}}</li>
-        <li>Prénom : {{app.user.prenom}}</li>
-        <li>Pseudo : {{app.user.pseudo}}</li>
-        <li>Genre : {{app.user.genre}}</li>
-        <li>Email : {{app.user.email}}</li>
-        <li>Téléphone : {{app.user.telephone}}</li>
-        <li>Adresse : {{app.user.adresseNumero}}, {{app.user.adresseRue}}<br>{{app.user.cp}}, {{app.user.ville}}, {{app.user.pays}}</li>
-    </ul>
-    <a href="{{ path('profile_modifier') }}">Modifier mes informations personnelles</a>
-    </div>
+    <div class="cadre-shadow">
+        <h2>Mes informations personnelles</h2>
+        <div class="profile-flex">
+            <div class="cadre-shadow f-350">
+                <ul>
+                    <li>Nom : {{app.user.nom}}</li>
+                    <li>Prénom : {{app.user.prenom}}</li>
+                    <li>Pseudo : {{app.user.pseudo}}</li>
+                    <li>Genre : {{app.user.genre}}</li>
+                    <li>Email : {{app.user.email}}</li>
+                    <li>Téléphone : {{app.user.telephone}}</li>
+                    <li>Adresse : {{app.user.adresseNumero}}, {{app.user.adresseRue}}<br>{{app.user.cp}}, {{app.user.ville}}, {{app.user.pays}}</li>
+                </ul>
+                <a href="{{ path('profile_modifier') }}">Modifier mes informations personnelles</a>
+            </div>
+        </div>
     </div>
     {# ***************************** BADGES ************************** #}
-    <div class="cadre-shadow d-flex flex-wrap flex-column">
+    <div class="cadre-shadow">
     
     {% if app.user.badges.id is defined and app.user.badges.id is not null  %}
     <div class="cadre-shadow f-350">

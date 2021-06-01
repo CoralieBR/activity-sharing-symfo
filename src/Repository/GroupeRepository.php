@@ -19,6 +19,32 @@ class GroupeRepository extends ServiceEntityRepository
         parent::__construct($registry, Groupe::class);
     }
 
+    public function findGroupeMembres(string $jour, int $heureDebut, int $heureFin, string $activite/*, string $longitude, string $latitude, int $distance*/): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery('
+            SELECT m
+            FROM App\Entity\Membre m
+            INNER JOIN m.moments mo
+            INNER JOIN m.activites a
+            WHERE mo.jour = :jour
+            AND mo.heureDebut <= :heureDebut
+            AND mo.heureFin >= :heureFin
+            AND a.nomActivite = :activite
+        ');
+        $query->setParameters(array(
+            'jour' => $jour,
+            'heureDebut' => $heureDebut,
+            'heureFin' => $heureFin,
+            'activite' => $activite,
+            // 'longitude' => $longitude,
+            // 'latitude' => $latitude,
+            // 'distancekm' => $distance
+        ));
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Groupe[] Returns an array of Groupe objects
     //  */
