@@ -3,9 +3,10 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
 
-
     /* CSS GENERAL */
-    :root {
+
+:root 
+    {
         --color-vert: #158100;
         --color-bleu: #4C96D7;
         --color-jaune: #F7E031;
@@ -13,32 +14,53 @@
         --color-white: #fff;
         --color-black: #000;
     }
-    html {
+
+html 
+    {
         scroll-behavior: smooth;
     }
-    * {
+
+*
+    {
         margin: 0;
         padding: 0;
         outline: none;
         box-sizing: border-box;
     }
-    body {
+
+body 
+    {
         line-height: 1.5;
         margin: 0;
         padding: 0;
-        main {
-            max-width: 1200px;
-            margin: auto;
-        }
-    
     }
-    
-    p, a, button {
+
+main 
+    {
+        max-width: 1250px;
+        margin: auto;
+    }
+
+p, a, button 
+    {
         font-size: 20px;
         font-family: 'KoHo', sans-serif;
         text-align: justify;
+        text-decoration: none;
     }
-    h1, h2, h3, h4, h5, h6 {
+                                    /*___________ LIEN A VOIR _______*/
+                                    /*a {
+                                        color: var(--color-black);
+                                        font-size: 20px;
+                                        text-decoration: none;
+                                    }
+                                    a:hover{
+                                        border-bottom: lightgray 3px solid;
+                                        color: var(--color-black);
+                                    }*/
+
+h1, h2, h3, h4, h5, h6 
+    {
         font-family: 'Girassol', cursive;
     }
     h1 {
@@ -54,25 +76,26 @@
         align-items: center;
         padding: 30px;
     } */
-    
-    .cadre-shadow {
+
+.cadre-shadow 
+    {
         padding: 16px;
         box-shadow: 0 10px 30px 0px rgba(0,0,0,0.1);
         margin: 4px;
         background-color: white;
     }
-    
-    
+
     /*____________________________ ACCUEIL _________________________*/
-    .body-accueil {
+.body-accueil 
+    {
         background-image: url("../img/murat-onder-Qag2W_cL1jg-unsplash.jpg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
         background-attachment: fixed;
     }
-    
-    
-    #image-accueil {
+
+#image-accueil 
+    {
         height: 100vh;
         width: 100%;
         display: flex;
@@ -81,35 +104,43 @@
         align-items: center;
         color: white;
     }
-    /*______________________________________ DIV ______________________________*/
-    /*----------------- Article page d'accueil ----------------*/
-    .img-accueil {
+    /*____________________________________ DIV ______________________________*/
+                /*----------------- Article page d'accueil ----------------*/
+.img-accueil 
+    {
         width: 100%;
         height: 100%;
         border-radius: 10px;
         object-fit: cover;
     }        
-    
-    .w-1200 {
+
+.w-1200 
+    {
         max-width: 1300px;
     }
-    
-    .f-300 {
+
+.f-300 
+    {
         flex: 1 1 350px;
     }
-    .f-500 {
+
+.f-500 
+    {
         flex: 1 0 500px;
     }
-    
-    .w-400 {
+
+.w-400 
+    {
         padding: 0 10px;
-    }        
-    .h3-accueil{
+    }
+
+.h3-accueil
+    {
         text-align: center;
         margin-top: 10px;
         padding-bottom: 20px;
     }
-    
+
     .card-accueil {
     
         .card-img {
@@ -144,71 +175,93 @@
         }
         
     }
-    
-    
-    
-    
+
+
     /*____________________________ HEADER _________________________*/
-    
-    header {
+
+header 
+    {
         background-color: var(--color-white);
         min-height: 80px;
         height: 50px; 
         /* border-bottom: var(--color-rouge) 6px solid; */
     }
-    #logo-header-desktop {
+
+#logo-header-desktop 
+    {
         display: none;
     }
-    #logo-header-phone {
+
+#logo-header-phone 
+    {
         display: block;
     }
-    
-    /*header.sticky {
-        background: lightgray;
-    }*/
-    
+
+                                /*header.sticky {
+                                    background: lightgray;
+                                }*/
+
     /*____________________________ NAV ___________________________*/
-    
-    
-    .nav-link {
+
+.nav-link 
+    {
         border-bottom: transparent 3px solid;
         border-top: transparent 3px solid;
-        /* border-radius: 6px; */
+        /*border-radius: 6px;*/
         color: var(--color-black);
     }
-    .nav-link:hover {
-        border-top: var(--color-white) 3px solid;
-        border-bottom: var(--color-white) 3px solid;
+
+.nav-link:hover 
+    {
+        border-top: var(--color-black) 3px solid;
+        border-bottom: var(--color-black) 3px solid;
         color: var(--color-black);
     }
-    
-    button.navbar-toggler {
+
+button.navbar-toggler 
+    {
         border-color: transparent;
         background-image: none;
         /* padding: 0; */
     }
-    button.navbar-toggler:focus {
+
+button.navbar-toggler:focus 
+    {
         box-shadow: none;
     }
-    .navbar-toggler-icon i {
+
+.navbar-toggler-icon i 
+    {
         color: var(--color-black);
         font-size: 30px;
         padding: 0;
         margin: 0;
     }
-    
+
     /*_____________________________ BODY ____________________________*/
-    
+
             /*-------------- SECTION FORMULAIRE --------------*/
-    
-    .formulaire1 {
+
+                                /*.formulaire {
+
+                                    background: #fff;
+                                    width: 800px;
+                                    max-width: 800px;
+                                    padding: 25px 40px 10px 40px;
+                                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+                                }*/
+
+.formulaire1 
+    {
+        background: #fff;
         max-width: 800px;
         margin: 50px auto;
-        position: relative;
         box-shadow: 0 10px 30px 0px rgba(0,0,0,0.5);
-        padding: 10px 10px;
+        padding: 25px 40px 10px 40px;
     }
-    .formulaire1 .tittle {
+
+.formulaire1 .tittle 
+    {
         text-transform: uppercase;
         text-align: center;
         letter-spacing: 3px;
@@ -221,204 +274,204 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent ;
     }
-    /*
-    .contact-form .form-field {
-        position: relative;
-        margin: 32px 0;
-    }
-    .contact-form .input-text {
-        display: block;
-        width: 100%;
-        height: 36px;
-        border-width: 0 0 2px 0;
-        border-color: var(--color-rouge);
-        font-size: 18px;
-        line-height: 26px;
-        font-weight: 400;
-    }
-    .contact-form .input-text:focus + .label,
-    .contact-form .input-text.not-empty + .label {
-        transform: translateY(-24px);
-    }
-    .contact-form .input-text:focus {
-        outline: none;
-    }
-    .contact-form .label {
-        position: absolute;
-        left: 20px;
-        bottom: 11px;
-        font-size: 18px;
-        line-height: 26px;
-        font-weight: 400;
-        color: var(--color-rouge);
-        cursor: text;
-        text-transform: capitalize;
-        transition: transform 0.2s ease-in-out;
-    }
-    .contact-form .submit-btn {
-        display: inline-block;
-        background-image: linear-gradient(125deg, var(--color-jaune),var(--color-rouge));
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 16px;
-        padding: 8px 16px;
-        border: none;
-        width: 200px;
-        cursor: pointer;
-    }
-    */
-    .formule {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        padding: 40px;
+
+                                    /*
+                                    .contact-form .form-field {
+                                        position: relative;
+                                        margin: 32px 0;
+                                    }
+                                    .contact-form .input-text {
+                                        display: block;
+                                        width: 100%;
+                                        height: 36px;
+                                        border-width: 0 0 2px 0;
+                                        border-color: var(--color-rouge);
+                                        font-size: 18px;
+                                        line-height: 26px;
+                                        font-weight: 400;
+                                    }
+                                    .contact-form .input-text:focus + .label,
+                                    .contact-form .input-text.not-empty + .label {
+                                        transform: translateY(-24px);
+                                    }
+                                    .contact-form .input-text:focus {
+                                        outline: none;
+                                    }
+                                    .contact-form .label {
+                                        position: absolute;
+                                        left: 20px;
+                                        bottom: 11px;
+                                        font-size: 18px;
+                                        line-height: 26px;
+                                        font-weight: 400;
+                                        color: var(--color-rouge);
+                                        cursor: text;
+                                        text-transform: capitalize;
+                                        transition: transform 0.2s ease-in-out;
+                                    }
+                                    .contact-form .submit-btn {
+                                        display: inline-block;
+                                        background-image: linear-gradient(125deg, var(--color-jaune),var(--color-rouge));
+                                        color: white;
+                                        text-transform: uppercase;
+                                        letter-spacing: 2px;
+                                        font-size: 16px;
+                                        padding: 8px 16px;
+                                        border: none;
+                                        width: 200px;
+                                        cursor: pointer;
+                                    }
+                                    
+                                    .formule {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        min-height: 100vh;
+                                        padding: 40px;
+                                    }
+
+                                    
+                                    .formulaire .text {
+                                        font-size: 35px;
+                                        font-weight: 600;
+                                        text-align: center;
+                                        background: -webkit-linear-gradient(right, var(--color-jaune) 0%,var(--color-vert) 100%);
+                                        -webkit-background-clip: text;
+                                        -webkit-text-fill-color:transparent;
+                                    }
+                                    .formulaire form {
+                                        padding: 30px 0 0 0;
+                                    }
+                                    .formulaire form .form-row {
+                                        display: flex;
+                                        margin: 32px 0;
+                                    }
+                                    form .form-row .input-data {
+                                        width: 100%;
+                                        height: 40px;
+                                        margin: 0 20px;
+                                        position: relative;
+                                    }
+                                    form .form-row .textarea {
+                                        height: 70px;
+                                    }
+                                    .input-data input,
+                                    .textarea textarea{
+                                        display: block;
+                                        height: 100%;
+                                        width: 100%;
+                                        border: none;
+                                        font-size: 17px;
+                                        border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+                                    }
+                                    .textarea textarea{
+                                        resize: none;
+                                        padding-top: 10px;
+                                    }
+                                    .input-data input:focus ~ label,
+                                    .textarea textarea:focus ~ label,
+                                    .input-data input:valid ~ label,
+                                    .textarea textarea:valid ~ label{
+                                        border: none;
+                                        transform: translateY(-20px);
+                                        color: var(--color-vert);
+                                        font-size: 14px;
+                                    }
+                                    .input-data label{
+                                        position: absolute;
+                                        bottom: 10px;
+                                        font-size: 16px;
+                                        pointer-events: none;
+                                        transition: all 0.3s ease;
+                                    }
+                                    .textarea label {
+                                        width: 100%;
+                                        bottom: 40px;
+                                        background: #fff;
+                                    }
+                                    .input-data .underline {
+                                        position: absolute;
+                                        bottom: 0;
+                                        height: 2px;
+                                        width: 100%;
+                                    }
+                                    .input-data .underline::before,
+                                    .input-data .underline::after{
+                                        position: absolute;
+                                        content: '';
+                                        height: 100%;
+                                        width: 100%;
+                                        background: var(--color-vert);
+                                        transform: scaleX(0);
+                                        transform-origin: center;
+                                        transition: transform 0.3s ease;
+                                    }
+                                    .input-data input:focus ~ .underline::before, .underline::after,
+                                    .textarea textarea:focus ~ .underline::before, .underline::after,
+                                    .input-data input:valid ~  .underline::before, .underline::after,
+                                    .textarea textarea:valid ~  .underline::before, .underline::after{
+                                        transform: scaleX(1);
+                                    }
+                                    .submit-btn{
+                                        height: 45px!important;
+                                        width: 25%!important;
+                                        overflow: hidden;
+                                    }
+                                    .submit-btn .input-data .inner{
+                                        height: 100%;
+                                        width: 300%;
+                                        position: absolute;
+                                        left: -100%;
+                                        background: -webkit-linear-gradient(right, var(--color-jaune) 0%,var(--color-vert) 100%);
+                                        transition: all 0.3s;
+                                    }
+                                    .submit-btn .input-data:hover .inner{
+                                        left: 0;
+                                    }
+                                    .submit-btn .input-data input {
+                                        position: relative;
+                                        z-index: 2;
+                                        background: none;
+                                        border: none;
+                                        color: #fff;
+                                        font-size: 17px;
+                                        font-weight: 500;
+                                        text-transform: uppercase;
+                                        letter-spacing: 1px;
+                                        cursor: pointer;
+                                    }*/
+
+form 
+    {
+    max-width: 800px;
+    margin: auto;
     }
 
-    .formulaire {
-        background: #fff;
-        width: 800px;
-        max-width: 800px;
-        padding: 25px 40px 10px 40px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    }
-    .formulaire .text {
-        font-size: 35px;
-        font-weight: 600;
-        text-align: center;
-        background: -webkit-linear-gradient(right, var(--color-jaune) 0%,var(--color-vert) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color:transparent;
-    }
-    .formulaire form {
-        padding: 30px 0 0 0;
-    }
-    .formulaire form .form-row {
-        display: flex;
-        margin: 32px 0;
-    }
-    form .form-row .input-data {
-        width: 100%;
-        height: 40px;
-        margin: 0 20px;
-        position: relative;
-    }
-    form .form-row .textarea {
-        height: 70px;
-    }
-    .input-data input,
-    .textarea textarea{
-        display: block;
-        height: 100%;
-        width: 100%;
-        border: none;
-        font-size: 17px;
-        border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-    }
-    .textarea textarea{
-        resize: none;
-        padding-top: 10px;
-    }
-    .input-data input:focus ~ label,
-    .textarea textarea:focus ~ label,
-    .input-data input:valid ~ label,
-    .textarea textarea:valid ~ label{
-        border: none;
-        transform: translateY(-20px);
-        color: var(--color-vert);
-        font-size: 14px;
-    }
-    .input-data label{
-        position: absolute;
-        bottom: 10px;
-        font-size: 16px;
-        pointer-events: none;
-        transition: all 0.3s ease;
-    }
-    .textarea label {
-        width: 100%;
-        bottom: 40px;
-        background: #fff;
-    }
-    .input-data .underline {
-        position: absolute;
-        bottom: 0;
-        height: 2px;
-        width: 100%;
-    }
-    .input-data .underline::before,
-    .input-data .underline::after{
-        position: absolute;
-        content: '';
-        height: 100%;
-        width: 100%;
-        background: var(--color-vert);
-        transform: scaleX(0);
-        transform-origin: center;
-        transition: transform 0.3s ease;
-    }
-    .input-data input:focus ~ .underline::before, .underline::after,
-    .textarea textarea:focus ~ .underline::before, .underline::after,
-    .input-data input:valid ~  .underline::before, .underline::after,
-    .textarea textarea:valid ~  .underline::before, .underline::after{
-        transform: scaleX(1);
-    }
-    .submit-btn{
-        height: 45px!important;
-        width: 25%!important;
-        overflow: hidden;
-    }
-    .submit-btn .input-data .inner{
-        height: 100%;
-        width: 300%;
-        position: absolute;
-        left: -100%;
-        background: -webkit-linear-gradient(right, var(--color-jaune) 0%,var(--color-vert) 100%);
-        transition: all 0.3s;
-    }
-    .submit-btn .input-data:hover .inner{
-        left: 0;
-    }
-    .submit-btn .input-data input {
-        position: relative;
-        z-index: 2;
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 17px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        cursor: pointer;
-    }
-form {
-
-    // max-width: 800px;
-    // margin: auto;
-    input {
+input 
+    {
         border: transparent 1px solid;
         border-radius: 0;
     }
-    input:hover {
+
+input:hover 
+    {
         border-bottom: black 1px solid;
     }
-    // button {
-    //     border: 1px solid black;
-    // }
 
-}
+button 
+    {
+        border: 1px solid black;
+    }
 
     /*_________________________ SECTION _____________________*/
-    
-    
-    
-    
-    
+
+
+
     /*___________________________________ DIV _____________________________*/
         /*--------------------------- Page TEAM ----------------------*/
-    
-    .team {
+
+.team 
+    {
         /* display: flex; */
         /* text-align: center; */
         width: auto;
@@ -427,13 +480,16 @@ form {
         /* flex-wrap: wrap; */
         /* margin-bottom: 50px; */
     }
-    .tittle1 {
+
+.tittle1 
+    {
         color: var(--color-white);
         text-align: center;
-        background: linear-gradient(to right, var(--color-jaune) 0%,var(--color-vert) 100%);
+        background: linear-gradient(to right, var(--color-jaune) 0%,var(--color-vert));
     }
-    
-    .team .team_member {
+
+.team .team_member
+    {
         margin: 5px;
         /* max-width: 400px; */
         flex: 0 1 400px;
@@ -443,28 +499,24 @@ form {
         font-size: 24px;
         /* margin-top: 50px; */
     }
-    
-    .team .team_member p.role {
+
+.team .team_member p.role 
+    {
         color: rgb(104, 104, 104);
         font-size: 16px;
         margin: 12px 0;
         text-align: center;
     }
 
-    .team img {
+.team img 
+    {
         width: 100%;
     }
-    
-    
-    /*______________________________________ DIV ______________________________*/
-            /*--------------------- Création d'Activité  ----------------*/
-    
-    
-    
-    
-    /*_____________________________ BUTTONS GHOST ________________________*/
-    
-    .big-btn {
+
+    /*_____________________________ BOUTON PAGE D'ACCUEIL ________________________*/
+
+.big-btn 
+    {
         background: transparent;
         border: 3px solid var(--color-white);
         color: var(--color-white);
@@ -478,7 +530,9 @@ form {
         overflow: hidden;
         transition: all 0.3s;
     }
-    .big-btn::before {
+
+.big-btn::before 
+    {
         content: '';
         position: absolute;
         background-color: var(--color-white);
@@ -491,14 +545,105 @@ form {
         transition: all 0.3s;
         transform: translate(-50%, -50%);
     }
-    .big-btn:hover{
-        color: rgb(20, 25, 68);
+
+.big-btn:hover
+    {
+        color: var(--color-black);
     }
-    .big-btn:hover::before {
+
+.big-btn:hover::before 
+    {
         width: 110%;
         height: 110%;
         opacity: 1;
     }
+    /*_____________________________ BOUTON PAGE FOND BLANC ________________________*/
+
+.big-btn1 
+    {
+        background: transparent;
+        border: 1px solid var(--color-vert);
+        color: var(--color-vert);
+        cursor: pointer;
+        padding: 10px 40px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1rem;
+        outline: none;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+
+.big-btn1::before 
+    {
+        content: '';
+        background-color: var(--color-vert);
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        width: 0%;
+        z-index: -1;
+        opacity: 0;
+        transition: all 0.3s;
+        transform: translate(-50%, -50%);
+    }
+
+.big-btn1:hover
+    {
+        color: var(--color-white);
+        background-color: var(--color-vert);
+    }
+
+.big-btn1:hover::before 
+    {
+        width: 110%;
+        height: 110%;
+        opacity: 1;
+    }
+
+.btn-supp 
+    {
+        background: transparent;
+        border: 1px solid var(--color-rouge);
+        color: var(--color-rouge);
+        cursor: pointer;
+        padding: 10px 40px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1rem;
+        outline: none;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+
+.btn-supp::before 
+    {
+        content: '';
+        background-color: var(--color-rouge);
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        width: 0%;
+        z-index: -1;
+        opacity: 0;
+        transition: all 0.3s;
+        transform: translate(-50%, -50%);
+    }
+
+.btn-supp:hover
+    {
+        color: var(--color-white);
+        background-color: var(--color-rouge);
+    }
+
+.btn-supp:hover::before 
+    {
+        width: 110%;
+        height: 110%;
+        opacity: 1;
+    }
+
+
     
     .small-btn {
         border: black 2px solid;
@@ -534,52 +679,79 @@ form {
     }
     
     /*____________________________________ FOOTER ___________________________*/
-    
-    footer {
+
+footer 
+    {
         min-height: 150px;
         background-color: var(--color-white);
     }
-    .sscat {
+
+.sscat 
+    {
         color: var(--color-black);
         font-size: 20px;
         font-family: 'KoHo', sans-serif;
     }
-    
-    .pfooter {
+
+.pfooter 
+    {
         color: var(--color-black);
         font-size: small;
-        margin: 0;
+        margin: 2px;
     }
-    
-    .afooter {
+
+.afooter 
+    {
         color: var(--color-black);
         font-size: small;
         text-decoration: none;
     }
-    
-    /*________________________________Media query____________________________*/
-    @media screen and (min-width: 991px) {
-        #logo-header-phone {
-            display: none;
-        }
-        #logo-header-desktop {
-            display: inline-block;
-        }
+
+.afooter:hover
+    {
+        border-bottom: lightgray 3px solid;
+        color: var(--color-black);
     }
-    @media screen and (max-width: 700px) {
-        .formulaire .text{
+
+    /*________________________________Media query____________________________*/
+
+@media screen and (min-width: 991px) 
+    {
+        #logo-header-phone 
+            {
+                display: none;
+            }
+
+        #logo-header-desktop 
+            {
+                display: inline-block;
+            }
+    }
+
+@media screen and (max-width: 700px) 
+    {
+        .formulaire .text
+        {
             font-size: 30px;
         }
-        .formulaire form {
-            padding: 10px 0 0 0 0;
+
+        .formulaire form 
+        {
+            padding: 10px 0 0 0 ;
         }
-        .formulaire form .form-row{
+
+        .formulaire form .form-row
+        {
             display: block;
         }
-        form .form-row .input-data {
+
+        form .form-row .input-data 
+        {
             margin: 35px 0!important;
         }
-        .submit-btn .input-data {
+
+        .submit-btn .input-data 
+        {
             width: 40%!important;
         }
     }
