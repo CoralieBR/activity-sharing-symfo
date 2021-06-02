@@ -20,7 +20,7 @@ class MembreType extends AbstractType
             ->remove('roles')
             ->add('password', PasswordType::class, ['required'=>false])
             ->add('nom')
-            ->add('prenom')
+            ->add('prenom',null ,['label' => 'prénom'])
             ->add('pseudo')
             ->add('photo', ChoiceType::class, [
                 'expanded' => false,
@@ -34,11 +34,11 @@ class MembreType extends AbstractType
                     'Humain.e' => 'human',
                 ]
             ])
-            ->add('telephone')
+            ->add('telephone',null ,['label' => 'téléphone'])
             ->add('genre')
-            ->add('adresseNumero')
-            ->add('adresseRue')
-            ->add('cp')
+            ->add('adresseNumero',null ,['label' => 'numéro de rue'])
+            ->add('adresseRue',null ,['label' => 'nom de rue'])
+            ->add('cp',null ,['label' => 'code postal'])
             ->add('ville')
             ->add('pays')
             ->remove('latitude')

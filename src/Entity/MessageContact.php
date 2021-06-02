@@ -52,6 +52,11 @@ class MessageContact
      */
     private $reponse;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $answer;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +142,18 @@ class MessageContact
     public function setReponse(?\DateTimeInterface $reponse): self
     {
         $this->reponse = $reponse;
+
+        return $this;
+    }
+
+    public function getAnswer(): ?string
+    {
+        return $this->answer;
+    }
+
+    public function setAnswer(?string $answer): self
+    {
+        $this->answer = $answer;
 
         return $this;
     }

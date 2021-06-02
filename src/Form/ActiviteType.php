@@ -15,7 +15,7 @@ class ActiviteType extends AbstractType
             ->add('nomActivite')
             ->add('description')
             ->add('valide')
-            ->add('categorie')
+            ->add('categorie',null ,['label' => 'catégorie'])
         ;
     }
 

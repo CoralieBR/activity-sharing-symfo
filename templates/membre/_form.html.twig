@@ -12,9 +12,9 @@
 
     </div>
 
-    {# {% block _inscription_info_widget %}
-    <label class="form-check-label" for="inscription_info">Cochez la case si vous voulez partager vos informations personnelles avec d'autres membres</label>
-    {% endblock %} #}
+    {{ form_widget(form) }}
+    
+    
 
 {{ form_end(form) }}
     <button class="mt-3 btn-info" id="inscription-bt">{{ button_label|default('Enregistrer') }}</button>

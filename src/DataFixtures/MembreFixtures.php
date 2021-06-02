@@ -49,6 +49,7 @@ class MembreFixtures extends Fixture
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_TENNIS));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
+        $membre->setInfo('1');
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_MEMBRE, $membre);
 
@@ -67,6 +68,7 @@ class MembreFixtures extends Fixture
         $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_ADMIN, $membre);
 
@@ -85,6 +87,7 @@ class MembreFixtures extends Fixture
         $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_SUPER_USER, $membre);
 
@@ -103,6 +106,7 @@ class MembreFixtures extends Fixture
         $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_UN, $membre);
 
@@ -120,6 +124,7 @@ class MembreFixtures extends Fixture
         $membre->setLongitude('4.8309');
         $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_DEUX, $membre);
 
@@ -138,6 +143,7 @@ class MembreFixtures extends Fixture
         $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_CINEMA));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_TROIS, $membre);
 
@@ -157,6 +163,7 @@ class MembreFixtures extends Fixture
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_QUATRE, $membre);
 
@@ -174,6 +181,7 @@ class MembreFixtures extends Fixture
         $membre->setLongitude('4.7990');
         $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_CINQ, $membre);
 
@@ -192,6 +200,7 @@ class MembreFixtures extends Fixture
         $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_SIX, $membre);
 
@@ -210,6 +219,7 @@ class MembreFixtures extends Fixture
         $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_THEATRE));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_SEPT, $membre);
 
@@ -228,6 +238,7 @@ class MembreFixtures extends Fixture
         $membre->setDistancekm(10);
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_YOGA));
         $membre->addActivite($this->getReference(ActiviteFixture::ACTIVITE_FOOTBALL));
+        $membre->setInfo(true);
         $manager->persist($membre);
         $this->addReference(self::MEMBRE_HUIT, $membre);
 
