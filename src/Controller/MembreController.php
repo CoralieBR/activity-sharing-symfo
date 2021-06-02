@@ -65,18 +65,18 @@ class MembreController extends AbstractController
         $today = new \DateTime('now');
         $membre = $this->getUser();
 
-        // $invitations = $this->getUser()->getInvitations();
-        // // dd($today);
-        // foreach ($invitations as $invitation) {
-        //     $date = $invitation->getDate();
-        //     if ($date <= $today) {
-        //         $invitation->removeInvitation($membre);
+        $invitations = $this->getUser()->getInvitations();
+        // dd($today);
+        foreach ($invitations as $invitation) {
+            $date = $invitation->getDate();
+            if ($date <= $today) {
+                $invitation->removeInvitation($membre);
                 
-        //         $entityManager = $this->getDoctrine()->getManager();
-        //         $entityManager->persist($invitation);
-        //         $entityManager->flush();
-        //     } 
-        // }
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($invitation);
+                $entityManager->flush();
+            } 
+        }
 
         $groupes = $this->getUser()->getGroupes();
         // dd($groupes);
