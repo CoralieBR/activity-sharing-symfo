@@ -12,7 +12,8 @@
     </div>
 
     {{ form_widget(form) }}
-    
+    <button class="big-btn1" id="inscription-bt">{{ button_label|default('Enregistrer') }}</button>
+    <br>
     
 
 {{ form_end(form) }}
@@ -31,6 +32,5 @@ function updateAvatar(){
     avatar.setAttribute("src", "https://avatars.dicebear.com/api/"+photo+"/"+pseudo+".svg?r=50&w=150");
 }
 </script>
-    <button class="big-btn1" id="inscription-bt">{{ button_label|default('Enregistrer') }}</button>
-    <br>
+    
 

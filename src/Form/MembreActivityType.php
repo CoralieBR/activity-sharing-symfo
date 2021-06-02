@@ -32,7 +32,7 @@ class MembreActivityType extends AbstractType
             ->remove('distancekm')
             ->remove('badges')
             ->add('activites')
-            ->add('Ajouter', SubmitType::class, ['attr'=>["class"=>"mt-3 btn-info"]])
+            ->add('Ajouter', SubmitType::class, ['attr'=>["class"=>"big-btn1"]])
         ;
     }
 

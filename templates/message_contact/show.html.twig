@@ -3,6 +3,8 @@
 {% block title %}Message de Contact{% endblock %}
 
 {% block body %}
+    <a href="{{ path('message_contact_index') }}" class="small-btn">Retour</a>
+    <div class="formulaire1">
     <h1>Message de Contact</h1>
 
     <table class="table">
@@ -33,18 +35,18 @@
             </tr>
             <tr>
                 <th>Reception</th>
-                <td>{{ message_contact.reception ? message_contact.reception|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ message_contact.reception ? message_contact.reception|date('d/m/Y H:i') : '' }}</td>
             </tr>
             <tr>
                 <th>Reponse</th>
-                <td>{{ message_contact.reponse ? message_contact.reponse|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ message_contact.reponse ? message_contact.reponse|date('d/m/Y H:i') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('message_contact_index') }}">retour à la liste</a>
 
-    <a href="{{ path('message_contact_edit', {'id': message_contact.id}) }}">Modifier</a>
+    <a href="{{ path('message_contact_edit', {'id': message_contact.id}) }}" class="small-btn">Modifier</a>
 
     {{ include('message_contact/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

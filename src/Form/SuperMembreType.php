@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class SuperMembreType extends AbstractType
 {
@@ -37,6 +38,7 @@ class SuperMembreType extends AbstractType
             ->remove('longitude')
             ->remove('distancekm')
             ->remove('badges')
+            ->add('Ajouter', SubmitType::class, ['attr'=>["class"=>"small-btn"]])
         ;
     }
 

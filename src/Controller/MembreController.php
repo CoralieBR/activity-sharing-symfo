@@ -147,18 +147,41 @@ class MembreController extends AbstractController
         ]);
         $pote->setAccepte(1);
         
+        
         $poteComplet = $membreRepository->find($poteId);
+        
+        $relationExiste = $poteRepository->findBy([
+            'membre' => $membre,
+            'pote' => $poteComplet,
+        ]);
+        if(count($relationExiste) == 0 && $membre != $poteComplet){
+            $poter = new Pote;
+            
+            $poter->setMembre($membre);
+            $poter->setPote($poteComplet);
+            $poter->setAccepte(0);
 
-        $nvPote = new Pote;
-        $nvPote->setMembre($poteComplet);
-        $nvPote->setPote($membre);
-        $nvPote->setAccepte(0);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($poter);
+            $entityManager->flush();
+        } 
 
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($pote);
-        $em->persist($nvPote);
-        $em->flush();
+
+
+
+
+
+        // $nvPote = new Pote;
+        // $nvPote->setMembre($poteComplet);
+        // $nvPote->setPote($membre);
+        // $nvPote->setAccepte(0);
+
+
+        // $em = $this->getDoctrine()->getManager();
+        // $em->persist($pote);
+        // $em->persist($nvPote);
+        // $em->flush();
 
         return $this->redirectToRoute('profile');
     }

@@ -16,12 +16,12 @@ class MembreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class, ['required'=>true])
             ->remove('roles')
             ->add('password', PasswordType::class, ['required'=>false])
             ->add('nom')
-            ->add('prenom',null ,['label' => 'prénom'])
-            ->add('pseudo')
+            ->add('prenom',null ,['label' => 'prénom', 'required'=>true])
+            ->add('pseudo', null, ['required'=>true])
             ->add('photo', ChoiceType::class, [
                 'expanded' => false,
                 'multiple' => false,
@@ -35,7 +35,7 @@ class MembreType extends AbstractType
                 ]
             ])
             ->add('telephone',null ,['label' => 'téléphone'])
-            ->add('genre')
+            ->add('genre', null, ['required'=>true])
             ->add('adresseNumero',null ,['label' => 'numéro de rue'])
             ->add('adresseRue',null ,['label' => 'nom de rue'])
             ->add('cp',null ,['label' => 'code postal'])

@@ -24,7 +24,10 @@ class GroupeController extends AbstractController
      */
     public function new(Request $request, GroupeRepository $groupeRepository, MailerInterface $mailer): Response
     {
+        $idmembre = $this->getUser();
+        
         $groupe = new Groupe();
+        $groupe->setCreePar($idmembre);
         $form = $this->createForm(GroupeType::class, $groupe);
         $form->handleRequest($request);
 
@@ -76,22 +79,22 @@ class GroupeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($groupe);
             $entityManager->flush();
-            $email = (new TemplatedEmail())
-                    ->from('stutz.vic@gmail.com')
-                    ->to('stutz.vic@gmail.com')
-                    // ->bcc("victor.stutz@outlook.com","vs1710@hotmail.fr")
-                    // ->cc($bcc)
-                    //->bcc($bcc)
-                    ->subject('Vous avez une nouvelle invitation!')
-                    ->text('Sending emails is fun again!')
-                    ->htmlTemplate('emails/groupe_invitation.html.twig');
-            //
-            foreach($adresses as $adresse){
+            // $email = (new TemplatedEmail())
+            //         ->from('stutz.vic@gmail.com')
+            //         ->to('stutz.vic@gmail.com')
+            //         // ->bcc("victor.stutz@outlook.com","vs1710@hotmail.fr")
+            //         // ->cc($bcc)
+            //         //->bcc($bcc)
+            //         ->subject('Vous avez une nouvelle invitation!')
+            //         ->text('Sending emails is fun again!')
+            //         ->htmlTemplate('emails/groupe_invitation.html.twig');
+            // //
+            // foreach($adresses as $adresse){
                 
-                $email->addCc($adresse);
-            }
+            //     $email->addCc($adresse);
+            // }
         
-            $mailer->send($email);
+            // $mailer->send($email);
 
             return $this->redirectToRoute('profile');
         }

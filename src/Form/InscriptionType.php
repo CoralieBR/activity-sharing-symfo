@@ -17,12 +17,12 @@ class InscriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class, ['required'=>true])
             ->remove('roles')
-            ->add('password', PasswordType::class,['label' => 'mot de passe'])
+            ->add('password', PasswordType::class,['label' => 'mot de passe', 'required'=>false])
             ->add('nom')
-            ->add('prenom',null ,['label' => 'prénom'])
-            ->add('pseudo')
+            ->add('prenom',null ,['label' => 'prénom', 'required'=>true])
+            ->add('pseudo', null, ['required'=>true])
             ->add('photo', ChoiceType::class, [
                 'expanded' => false,
                 'multiple' => false,
@@ -48,9 +48,9 @@ class InscriptionType extends AbstractType
             ])
             ->add('adresseNumero')
             ->add('adresseRue')
-            ->add('cp',null ,['label' => 'code postal'])
-            ->add('ville')
-            ->add('pays')
+            ->add('cp',null ,['label' => 'code postal', 'required'=>true])
+            ->add('ville', null, ['required'=>true])
+            ->add('pays', null, ['required'=>true])
             ->add('latitude', HiddenType::class)
             ->add('longitude', HiddenType::class)
             ->add('distancekm', null, [

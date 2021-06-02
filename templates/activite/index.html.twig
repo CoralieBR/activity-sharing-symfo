@@ -11,6 +11,7 @@
             <tr>
                 <th>Id</th>
                 <th>NomActivite</th>
+                <th>Categorie</th>
                 <th>Valide</th>
                 <th>actions</th>
             </tr>
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{ activite.id }}</td>
                 <td>{{ activite.nomActivite }}</td>
+                <td>{{ activite.categorie }}</td>
                 <td>{{ activite.valide ? 'Oui' : 'Non' }}</td>
                 <td>
                     <a href="{{ path('activite_show', {'id': activite.id}) }}" class="small-btn_inline">Voir</a>

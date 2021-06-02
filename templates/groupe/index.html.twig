@@ -14,13 +14,8 @@
                 <th>Jour</th>
                 <th>HeureDebut</th>
                 <th>HeureFin</th>
-                <th>AdresseNumero</th>
-                <th>AdresseRue</th>
-                <th>Cp</th>
+                <th>Code postal</th>
                 <th>Ville</th>
-                <th>Pays</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
                 <th>Valide</th>
                 <th>actions</th>
             </tr>
@@ -34,13 +29,8 @@
                 <td>{{ groupe.jour }}</td>
                 <td>{{ groupe.heureDebut }}</td>
                 <td>{{ groupe.heureFin }}</td>
-                <td>{{ groupe.adresseNumero }}</td>
-                <td>{{ groupe.adresseRue }}</td>
                 <td>{{ groupe.cp }}</td>
                 <td>{{ groupe.ville }}</td>
-                <td>{{ groupe.pays }}</td>
-                <td>{{ groupe.latitude }}</td>
-                <td>{{ groupe.longitude }}</td>
                 <td>{{ groupe.valide ? 'Oui' : 'Non' }}</td>
                 <td>
                     <a href="{{ path('groupe_show', {'id': groupe.id}) }}" class="small-btn_inline">Voir le groupe</a>

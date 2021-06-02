@@ -3,10 +3,11 @@
 namespace App\DataFixtures;
 
 use App\Entity\ActiviteCategorie;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use App\Entity\ActiviteCategorie as EntityActiviteCategorie;
 
-class CategorieActiviteFixtures extends Fixture
+class ActiviteCategorieFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
@@ -33,6 +34,7 @@ class CategorieActiviteFixtures extends Fixture
         $activiteCategorie->setDescription("Les personnalités à profil urbain profiteront de leurs loisirs culturels  pour baguenauder dans les musées, se joindre à une troupe de théâtre, se déguiser avec les enfants, ou danser et s’éclater la nuit venue…");
         $activiteCategorie->setValide(true);
         $manager->persist($activiteCategorie);
+
 
         $manager->flush();
     }

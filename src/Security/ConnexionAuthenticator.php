@@ -4,21 +4,23 @@ namespace App\Security;
 
 use App\Entity\Membre;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Csrf\CsrfToken;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Csrf\CsrfToken;
-use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
-use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
-use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 class ConnexionAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
@@ -104,4 +106,29 @@ class ConnexionAuthenticator extends AbstractFormLoginAuthenticator implements P
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
+
+    // public function start(Request $request, AuthenticationException $authException = null): RedirectResponse
+    // {
+    //     // add a custom flash message and redirect to the login page
+    //     // $request->getSession()->getFlashBag()->add('note', 'You have to login in order to access this page.');
+
+    //     return new RedirectResponse($this->urlGenerator->generate('accueil'));
+    // }
+
+//     public function newAction()
+// {
+//     $securityContext = $this->container->get('security.context');
+//     // if (!$securityContext->isGranted('ROLE_ADMIN')) {
+//     //     throw new AccessDeniedException('Only an admin can do this!!!!');
+//     // }
+//     if (!$securityContext->isGranted('ROLE_ADMIN')) {
+//         // in Symfony 2.5
+//         throw $this->createAccessDeniedException('message!');
+//     }
+    
+
+//     // ...
+//     }
+
+
 }

@@ -17,11 +17,13 @@ class GroupeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomGroupe')
+            ->add('nomGroupe', null, ['required'=>true])
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
+                'required'=>true
             ])
             ->add('jour', ChoiceType::class, [
+                'required'=>true,
                 'choices' => [
                     'lundi' => 'lundi',
                     'mardi' => 'mardi',
@@ -32,17 +34,17 @@ class GroupeType extends AbstractType
                     'dimanche' => 'dimanche',
                 ]
             ])
-            ->add('heureDebut', NumberType::class)
-            ->add('heureFin', NumberType::class)
+            ->add('heureDebut', NumberType::class, ['required'=>true])
+            ->add('heureFin', NumberType::class, ['required'=>true])
             ->add('adresseNumero',null ,['label' => 'numéro de rue'])
             ->add('adresseRue',null ,['label' => 'nom de rue'])
-            ->add('cp',null ,['label' => 'code postal'])
-            ->add('ville')
-            ->add('pays')
-            ->add('latitude', HiddenType::class)
-            ->add('longitude', HiddenType::class)
+            ->add('cp',null ,['label' => 'code postal', 'required'=>true])
+            ->add('ville', null, ['required'=>true])
+            ->add('pays', null, ['required'=>true])
+            ->add('latitude', HiddenType::class, ['required'=>true])
+            ->add('longitude', HiddenType::class, ['required'=>true])
             ->remove('valide')
-            ->add('activite')
+            ->add('activite', null, ['required'=>true])
             ->add('description')
             // ->add('creePar')
             // ->add('membres')

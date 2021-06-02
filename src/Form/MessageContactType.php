@@ -22,9 +22,10 @@ class MessageContactType extends AbstractType
                 'widget' => 'single_text',
                 'disabled' => true,
             ])
-            ->add('reponse', DateType::class, [
+            ->remove('reponse', DateType::class, [
                 'widget' => 'single_text',
             ])
+            ->add('answer')
         ;
     }
 
