@@ -3,11 +3,14 @@
 {% block title %}Edit Membre{% endblock %}
 
 {% block body %}
-    <h1>Modifier le membre</h1>
-
+<div class="formulaire1">
+    <h1 class="tittle">Modifier le membre</h1>
+    <br>
     {{ include('membre/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+    <br>
+</div>
 
-    <a href="{{ path('membre_index') }}">Retour</a>
+<a href="{{ path('membre_index') }}">Retour</a>
 
-    {{ include('membre/_delete_form.html.twig') }}
+{{ include('membre/_delete_form.html.twig') }}
 {% endblock %}

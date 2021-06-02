@@ -3,11 +3,16 @@
 {% block title %}Edit Moment{% endblock %}
 
 {% block body %}
-    <h1>Modifier le moment</h1>
 
-    {{ include('moment/_form.html.twig', {'button_label': 'Update'}) }}
+<div class="formulaire1">
+    <br>
+    <h1 class="tittle">Modifier le moment</h1>
+    <br>
+    {{ include('moment/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <br>
+</div>
 
-    <a href="{{ path('profile') }}">Retour</a>
+<a href="{{ path('profile') }}">Retour</a>
+{{ include('moment/_delete_form.html.twig') }}
 
-    {{ include('moment/_delete_form.html.twig') }}
 {% endblock %}

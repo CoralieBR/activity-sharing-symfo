@@ -3,11 +3,12 @@
 {% block title %}Profile{% endblock %}
 
 {% block body %}
-{{ include('membre/_form.html.twig', {'button_label': 'Update'}) }}
-    
+<div class="formulaire1">
+{{ include('membre/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    </div>
 {% endblock %}
- {% block javascripts %}
- <script>
+{% block javascripts %}
+<script>
     var bt = document.querySelector("#inscription-bt");
     {# var latInput = document.querySelector("#inscription_latitude");
     var lngInput = document.querySelector("#inscription_longitude"); #}
