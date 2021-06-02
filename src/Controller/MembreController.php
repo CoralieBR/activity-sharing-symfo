@@ -89,7 +89,7 @@ class MembreController extends AbstractController
                         'membre' => $membre,
                         'pote' => $relation,
                     ]);
-                    if(count($relationExiste) == 0){
+                    if(count($relationExiste) == 0 && $membre != $relation){
                         $pote = new Pote;
                         
                         $pote->setMembre($membre);
@@ -101,8 +101,6 @@ class MembreController extends AbstractController
                         $entityManager->flush();
                     } 
                     
-                    
-                    
                 }
 
                 $groupe->removeMembre($membre);
@@ -112,8 +110,87 @@ class MembreController extends AbstractController
                 $entityManager->flush();
             } 
         }
+        
+        $poto = $poteRepository->findBy([
+            'membre' => $membre,
+            'accepte' => 0,
+        ]);
+        $potoTruc = $poteRepository->findBy([
+            'pote' => $membre,
+            'accepte' => 1,
+        ]);
+        
+        // $potes = $this->getUser()->getPoteDemandes();
+        // $poto = [];
+        // foreach($potes as $pote){
+        //     $poto[] = $pote->getPote();
+        // }
 
-        return $this->render('membre/profile.html.twig');
+        return $this->render('membre/profile.html.twig', [
+            'poto' => $poto,
+            'potoTruc' => $potoTruc,
+        ]);
+    }
+
+    /**
+     *  @Route("/profile/accepte-pote/{id}", name="accepte_pote")
+     */
+    public function accepte($id, PoteRepository $poteRepository, MembreRepository $membreRepository)
+    {
+        $membre = $this->getUser();
+        $poteId = base64_decode($id);
+
+        // On récupère la ligne dans "pote" où le membre connecté est 'membre' et on y change accepte
+        $pote = $poteRepository->findOneBy([
+            'membre' => $membre,
+            'pote' => $poteId,
+        ]);
+        $pote->setAccepte(1);
+        
+        $poteComplet = $membreRepository->find($poteId);
+
+        $nvPote = new Pote;
+        $nvPote->setMembre($poteComplet);
+        $nvPote->setPote($membre);
+        $nvPote->setAccepte(0);
+
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($pote);
+        $em->persist($nvPote);
+        $em->flush();
+
+        return $this->redirectToRoute('profile');
+    }
+
+    /**
+     *  @Route("/profile/refuse-pote/{id}", name="refuse_pote")
+     */
+    public function refusePote($id, PoteRepository $poteRepository, MembreRepository $membreRepository)
+    {
+        $membre = $this->getUser();
+        $poteId = base64_decode($id);
+
+        $pote = $poteRepository->findOneBy([
+            'membre' => $membre,
+            'pote' => $poteId,
+            'accepte' => 0,
+        ]);
+        // dd($pote);
+        // dump($membre->getPoteDemandes());
+        // $membre->removePoteDemande($pote);
+        // print_r($membre->getPoteDemandes());
+        // foreach($membre->getPoteDemandes() as $m){
+        //     dump($m);
+        // }
+        // // $pote = $membreRepository->find($poteId);
+        // $membre->removePoteDemande($pote);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($pote);
+        $em->flush();
+
+        return $this->redirectToRoute('profile');
     }
 
     /**

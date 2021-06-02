@@ -268,22 +268,47 @@
         </ul>
         </div>
     {% endif %}
-    {{dump(app.user.poteDemandes)}}
-    {# {% if app.user.poteDemandes.id is defined and app.user.poteDemandes.id is not null  %} #}
-        <h2>Mes Ami.es</h2>
+    {# {{dump(poto)}} #}
 
-        {# {{dump(pote)}} #}
-        {# {% for pote in app.user.poteDemandes %}
-        <div class="cadre-shadow">
-            <h3>{{pote.pseudo}}</h3>
-            <img src="https://avatars.dicebear.com/api/{{pote.photo}}/{{pote.pseudo}}.svg?r=50&w=150" alt="">
-            <p>{{pote.prenom}} {{pote.nom|upper}}</p>
-            <p>Mail : {{pote.email}}</p>
-            <p>Téléphone : {{pote.telephone}}</p>
+{% if potoTruc is defined and potoTruc is not null  %}
+        <h2>Mes Potes ! </h2>
+        <p>Où du moins les personnes qui m'ont envoyé leurs coordonnées pour qu'on reste en contact 🤩</p>
+<div class="profile-flex">
+        {% for pote in potoTruc %}
+        {# {{dump(pote.pote)}} #}
+        <div class="cadre-shadow f-350 profile-flex flex-column avatar-membre">
+            <h3>{{pote.membre.pseudo}}</h3>
+            <img src="https://avatars.dicebear.com/api/{{pote.membre.photo}}/{{pote.membre.pseudo}}.svg?r=50&w=150" alt="">
+            <p>{{pote.membre.prenom}} {{pote.membre.nom|upper}}</p>
+            <p>Mail : {{pote.membre.email}}</p>
+            <p>Téléphone : {{pote.membre.telephone}}</p>
         </div>
-        {% endfor %} #}
+        {% endfor %}
+</div>
+    {% endif %}
 
-    {# {% endif %} #}
+
+    {% if poto is defined and poto is not null  %}
+        <h2>Les personnes rencontrées</h2>
+<div class="profile-flex">
+        {% for pote in poto %}
+        {# {{dump(pote.pote)}} #}
+        <div class="cadre-shadow f-350 profile-flex flex-column avatar-membre">
+            <h3>{{pote.pote.pseudo}}</h3>
+            <img src="https://avatars.dicebear.com/api/{{pote.pote.photo}}/{{pote.pote.pseudo}}.svg?r=50&w=150" alt="">
+            {# <p>{{pote.pote.prenom}} {{pote.pote.nom|upper}}</p> #}
+            {# <p>Mail : {{pote.pote.email}}</p> #}
+            {# <p>Téléphone : {{pote.pote.telephone}}</p> #}
+            <p><small>Souhaitez-vous rester en contact avec cette personne, et lui envoyer vos coordonnées ?<small>
+            </p>
+            <div class="avatar-membre">
+            <a href="{{ path('accepte_pote', {'id': pote.pote.id|base64encode}) }}" class="small-btn">Oui je le veux</a>
+            <a href="{{ path('refuse_pote', {'id': pote.pote.id|base64encode}) }}" class="small-btn">Euh... Non.</a>
+            </div>
+        </div>
+        {% endfor %}
+</div>
+    {% endif %}
 
 
     {# ***************************** AMI.ES ************************** #}

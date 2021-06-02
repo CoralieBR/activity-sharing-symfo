@@ -148,20 +148,20 @@ class Membre implements UserInterface
      */
     private $info;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Pote::class, mappedBy="Membre", orphanRemoval=true)
-     */
     // lien à la table pote :
     //  - accepte == 0 : lorsqu'un groupe est passé, "poteDemandes" c'est la liste des membres avec qui j'étais en groupe, et la question : "Souhaitez-vous rester en contact avec cette personne en lui envoyant vos coordonnées ?" -> si je réponds oui "accepte" passe à 1, sinon mon "poteDemandes" disparait
     //  - accepte == 1 : j'ai donné mes coordonnées à qqn, rien d'autre ne se passe de mon coté
+    /**
+     * @ORM\OneToMany(targetEntity=Pote::class, mappedBy="Membre", orphanRemoval=true)
+     */
     private $poteDemandes;
 
+    // lien à la table pote :
+   //  - accepte == 0 : rien ne se passe de mon coté
+   //  - accepte == 1 : un membre me considère comme son.sa pote et ses coordonnées s'affichent dans ma liste d'ami.es. + une nouvelle ligne est créée dans "pote" avec la même demande mais inversée. Est-ce que je veux envoyer mes coordonnées à cette personne ? 
     /**
      * @ORM\OneToMany(targetEntity=Pote::class, mappedBy="Pote", orphanRemoval=true)
      */
-     // lien à la table pote :
-    //  - accepte == 0 : rien ne se passe de mon coté
-    //  - accepte == 1 : un membre me considère comme son.sa pote et ses coordonnées s'affichent dans ma liste d'ami.es. + une nouvelle ligne est créée dans "pote" avec la même demande mais inversée. Est-ce que je veux envoyer mes coordonnées à cette personne ? 
     private $potes;
 
     // /**
