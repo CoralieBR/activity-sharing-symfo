@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mailer\MailerInterface;
+// use Symfony\Component\Mime\Email;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 // /**
 //  * @Route("/groupe")
@@ -22,7 +25,7 @@ class GroupeController extends AbstractController
     /**
      * @Route("profile/groupe/new", name="groupe_new", methods={"GET","POST"})
      */
-    public function new(Request $request, GroupeRepository $groupeRepository): Response
+    public function new(Request $request, GroupeRepository $groupeRepository, MailerInterface $mailer): Response
     {
         $groupe = new Groupe();
         $form = $this->createForm(GroupeType::class, $groupe);
@@ -33,8 +36,8 @@ class GroupeController extends AbstractController
             // 
             $membresPotentiels = $groupeRepository->findGroupeMembres($groupe->getJour(),$groupe->getHeureDebut(),$groupe->getHeureFin(),$groupe->getActivite());
             //dd($membresPotentiels);
-            $bcc="";
-            $machin = [];
+            $bcc=null;
+            $adresses = [];
             foreach($membresPotentiels as $membre){
                 // dd($membre->getLatitude());
                 $latitude1 = $membre->getLatitude();
@@ -64,16 +67,34 @@ class GroupeController extends AbstractController
                     // dd($distance);
                     $groupe->addInvitation($membre);
                     //
-                    ($bcc==="") ? $bcc.=$membre->getEmail() : $bcc.=','.$membre->getEmail();
-                    // $machin[] = $membre->getPrenom();
+                    // (is_null($bcc)) ? $bcc= "'".$membre->getEmail()."'" : $bcc.=",'".$membre->getEmail()."'";
+                    array_push($adresses, $membre->getEmail());
+                    
                 }
                 
             }
-            // dd($machin);
+            //  dd(str_replace("'", '',$bcc));
             //
+            $bccAdresses = implode(",", $adresses);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($groupe);
             $entityManager->flush();
+            $email = (new TemplatedEmail())
+                    ->from('stutz.vic@gmail.com')
+                    ->to('stutz.vic@gmail.com')
+                    // ->bcc("victor.stutz@outlook.com","vs1710@hotmail.fr")
+                    // ->cc($bcc)
+                    //->bcc($bcc)
+                    ->subject('Vous avez une nouvelle invitation!')
+                    ->text('Sending emails is fun again!')
+                    ->htmlTemplate('emails/groupe_invitation.html.twig');
+            //
+            foreach($adresses as $adresse){
+                
+                $email->addCc($adresse);
+            }
+        
+            $mailer->send($email);
 
             return $this->redirectToRoute('profile');
         }
@@ -95,7 +116,8 @@ class GroupeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            
+            
             return $this->redirectToRoute('profile');
         }
 

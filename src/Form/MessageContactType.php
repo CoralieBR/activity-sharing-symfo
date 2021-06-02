@@ -13,12 +13,13 @@ class MessageContactType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('prenom')
+            ->add('prenom',null ,['label' => 'prénom'])
             ->add('email')
-            ->add('telephone')
-            ->add('message')
-            ->add('reception')
-            ->add('reponse')
+            ->add('telephone',null ,['label' => 'téléphone'])
+            ->add('message',null ,['label' => 'message de contact'])
+            ->add('reception',null ,['label' => 'réception du message'])
+            ->add('reponse',null ,['label' => 'envoi de la réponse'])
+            ->add('answer',null ,['label' => 'message de réponse'])
         ;
     }
 

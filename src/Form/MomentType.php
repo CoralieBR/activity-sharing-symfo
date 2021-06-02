@@ -26,8 +26,8 @@ class MomentType extends AbstractType
                     'dimanche' => 'dimanche',
                 ]
             ])
-            ->add('heureDebut', NumberType::class)
-            ->add('heureFin', NumberType::class)
+            ->add('heureDebut', NumberType::class, ['label' => 'heure de début de disponibilité'])
+            ->add('heureFin', NumberType::class, ['label' => 'heure de fin de disponibilité'])
             ->remove('id_membre')
         ;
     }

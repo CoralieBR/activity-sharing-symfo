@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Message Contact{% endblock %}
+{% block title %}Message de Contact{% endblock %}
 
 {% block body %}
-    <h1>Message Contact</h1>
+    <h1>Message de Contact</h1>
 
     <table class="table">
         <thead>
@@ -31,8 +31,8 @@
                 <td>{{ message_contact.reception ? message_contact.reception|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ message_contact.reponse ? message_contact.reponse|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('message_contact_show', {'id': message_contact.id}) }}">show</a>
-                    <a href="{{ path('message_contact_edit', {'id': message_contact.id}) }}">edit</a>
+                    <a href="{{ path('message_contact_show', {'id': message_contact.id}) }}">Voir</a>
+                    <a href="{{ path('message_contact_edit', {'id': message_contact.id}) }}">Répondre</a>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +43,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('message_contact_new') }}">Create new</a>
 {% endblock %}

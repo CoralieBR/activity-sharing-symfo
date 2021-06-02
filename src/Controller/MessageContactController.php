@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\MailerInterface;
 
 /**
  * @Route("/admin/message_contact")
@@ -61,14 +63,22 @@ class MessageContactController extends AbstractController
     /**
      * @Route("/{id}/edit", name="message_contact_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, MessageContact $messageContact): Response
+    public function edit(Request $request, MessageContact $messageContact, MailerInterface $mailer): Response
     {
         $form = $this->createForm(MessageContactType::class, $messageContact);
         $form->handleRequest($request);
-
+        $messageContact->setReponse(new \DateTime('now'));
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            
 
+            $email = (new Email())
+                     ->from('stutz.vic@gmail.com')
+                     ->to($messageContact->getEmail())       
+                     ->subject('Réponse à votre message')
+                     ->text($messageContact->getAnswer());
+        
+            $mailer->send($email);
             return $this->redirectToRoute('message_contact_index');
         }
 

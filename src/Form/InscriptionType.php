@@ -19,9 +19,9 @@ class InscriptionType extends AbstractType
         $builder
             ->add('email', EmailType::class)
             ->remove('roles')
-            ->add('password', PasswordType::class)
+            ->add('password', PasswordType::class,['label' => 'mot de passe'])
             ->add('nom')
-            ->add('prenom')
+            ->add('prenom',null ,['label' => 'prénom'])
             ->add('pseudo')
             ->add('photo', ChoiceType::class, [
                 'expanded' => false,
@@ -48,7 +48,7 @@ class InscriptionType extends AbstractType
             ])
             ->add('adresseNumero')
             ->add('adresseRue')
-            ->add('cp')
+            ->add('cp',null ,['label' => 'code postal'])
             ->add('ville')
             ->add('pays')
             ->add('latitude', HiddenType::class)
@@ -57,8 +57,8 @@ class InscriptionType extends AbstractType
                 'required'   => false,
                 'empty_data' => '10',])
             ->remove('badges')
-            ->add('info')
-        ;
+            ->add('info',null ,['label' => 'Cochez la case si vous acceptez de partager vos informations avec d\'autres membres']);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

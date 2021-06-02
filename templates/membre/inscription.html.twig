@@ -7,7 +7,7 @@
     <h1>Ajouter un membre</h1>
 
     {{ include('membre/_form.html.twig') }}
-
+    {# {{ form_label(form.info, 'Cochez la case si vous souhaitez partager vos information personelle avec d\'autres utilisateurs', { 'label_attr': {'class': 'CUSTOM_LABEL_CLASS'}}) }}     #}
 {% endblock %}
 {% block javascripts %}
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
