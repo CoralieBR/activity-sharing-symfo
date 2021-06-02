@@ -3,9 +3,10 @@
 {% block title %}New ActiviteCategorie{% endblock %}
 
 {% block body %}
-    <h1>Create new ActiviteCategorie</h1>
+    <a href="{{ path('activite_categorie_index') }}" class="small-btn">Retour</a>
+    <div class="formulaire1">
+    <h1>Créer une nouvelle catégorie</h1>
 
     {{ include('activite_categorie/_form.html.twig') }}
-
-    <a href="{{ path('activite_categorie_index') }}">back to list</a>
+</div>
 {% endblock %}

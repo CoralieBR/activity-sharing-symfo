@@ -18,26 +18,60 @@
         .profile-flex {
             display: flex;
             flex-wrap: wrap;
-            
+        }
+        .avatar-membre {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 16px;
         }
         .f-350 {
             flex: 1 1 350px;
+        }
+        .btn-profile {
+            border: black 2px solid;
+            color: black;
+            text-decoration: none;
+            padding: 6px;
+            margin: 16px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .btn-profile:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .btn-profile_modifier {
+            border-bottom: transparent 2px solid;
+            color: black;
+            text-decoration: none;
+            padding: 2px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .btn-profile_modifier:hover {
+            border-bottom: black 2px solid;
+            color: black;
         }
     </style>
 {% endblock %}
 
 {% block body %}
     <div class="cadre-shadow">
-        <h1>Bienvenue {{app.user.pseudo}} !</h1>
+        <h1>Bienvenue {{app.user.pseudo}} !
+    <img src="https://avatars.dicebear.com/api/{{app.user.photo}}/{{app.user.pseudo}}.svg?r=50&w=150" alt=""></h1>
     </div>
     
-    <img src="https://avatars.dicebear.com/api/{{app.user.photo}}/{{app.user.pseudo}}.svg?r=50&w=150" alt="">
     {# {{dump(app.user.groupesCrees)}} #}
     
     {% if is_granted('ROLE_SUPER_USER') %}
         <div class="cadre-shadow">
             <h2>Mes groupes créés</h2>
-            <a href="{{ path('groupe_new') }}">Créer un groupe de potes !</a>
+            <a href="{{ path('groupe_new') }}" class="btn-profile">Créer un groupe de potes !</a>
             {% if app.user.groupesCrees is defined and app.user.groupesCrees is not null  %}
             <div class="profile-flex">
 
@@ -59,11 +93,11 @@
                         
                         <h4>Les membres qui participent :</h4>
                         {% if groupe.membres is defined and groupe.membres is not null  %}
-                            <div class="d-flex flex-wrap">
+                            <div class="avatar-membre">
                             {% for membre in groupe.membres %}
-                                <div class="avatar-membre">
-                                    <img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt="">
-                                </div>
+                                
+                                <img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt="">
+                                
                             {% endfor %}
                             </div>
                         {% else %}
@@ -73,18 +107,18 @@
                         
                         <h4>Les membres invités :</h4>
                         {% if groupe.invitations is defined and groupe.invitations is not null %}
-                            <div class="d-flex flex-wrap">
+                            <div class="avatar-membre">
                             {% for membre in groupe.invitations %}
-                                <div class="avatar-membre">
-                                    <img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt="">
-                                </div>
+                                
+                                <img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt="">
+                                
                             {% endfor %}
                             </div>
                         {% else %}
                             <p>Toutes les invitations envoyées ont été acceptées ou refusées.</p> 
                         {% endif %}
                         {# {{dump(groupe)}} #}
-                    <a href="{{ path('groupe_edit', {'id': groupe.id}) }}">Modifier le groupe</a>
+                    <a href="{{ path('groupe_edit', {'id': groupe.id}) }}" class="btn-profile">Modifier le groupe</a>
                     </div>
                 {% endfor %}
                 </div>
@@ -95,73 +129,73 @@
 
 
 
-        <div class="cadre-shadow">
-            <h2>Mes groupes</h2>
-            {% if app.user.invitations is defined and app.user.invitations is not null  %}
-            <div class="profile-flex">
+<div class="cadre-shadow">
+    <h2>Mes invitations</h2>
+    {% if app.user.invitations is defined and app.user.invitations is not null  %}
+    <div class="profile-flex">
 
-                {% for groupe in app.user.invitations %}
-                    <div class="cadre-shadow f-350">
-        
-                        <h3>{{groupe.nomGroupe}}</h3>
-                        <p><i>{{groupe.activite.categorie}} - {{groupe.activite.nomActivite}}</i></p>
-                        <p>{{groupe.description}}</p>
-                        <hr>
-
-                        <p>Adresse : {{groupe.adresseNumero}}, {{groupe.adresseRue}}<br>
-                        {{groupe.cp}} {{groupe.ville}}</p>
-                        <hr>
-                        
-                        <p>Date : {{groupe.date|date("d/m/Y")}}<br>
-                        De {{groupe.heureDebut}}h à {{groupe.heureFin}}h</p>
-                        <hr>
-                        
-                        <h4>Les membres qui participent :</h4>
-                        {% if groupe.membres is defined and groupe.membres is not null  %}
-                            <div class="d-flex flex-wrap">
-                            {% for membre in groupe.membres %}
-                                <div class="avatar-membre">
-                                    <img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt="">
-                                </div>
-                            {% endfor %}
-                            </div>
-                        {% else %}
-                            <p>Pour l'instant aucun membre n'a accepté l'invitation... </p>
-                        {% endif %}
-                        <hr>
-                        
-                        <h4>Les membres invités :</h4>
-                        {% if groupe.invitations is defined and groupe.invitations is not null %}
-                            <div class="d-flex flex-wrap">
-                            {% for membre in groupe.invitations %}
-                                <div class="avatar-membre">
-                                    <img src="https://avatars.dicebear.com/api/{{membre.photo}}/{{membre.pseudo}}.svg?r=50&w=150" alt="">
-                                </div>
-                            {% endfor %}
-                            </div>
-                        {% else %}
-                            <p>Toutes les invitations envoyées ont été acceptées ou refusées.</p> 
-                        {% endif %}
-                        {# {{dump(groupe)}} #}
-                    </div>
-                {% endfor %}
+        {% for groupe in app.user.invitations %}
+            <div class="cadre-shadow f-350">
+                <h3>{{groupe.nomGroupe}}</h3>
+                <p><b>Vous avez reçu une invitation !</b></p>
+                <div class="avatar-membre">
+                    Groupe créé par : <img src="https://avatars.dicebear.com/api/{{groupe.creePar.photo}}/{{groupe.creePar.pseudo}}.svg?r=50&w=150" alt="">
                 </div>
-            {% endif %}
+                <p><i>{{groupe.activite.categorie}} - {{groupe.activite.nomActivite}}</i></p>
+                <p>{{groupe.description}}</p>
+                <hr>
+
+                <p>Adresse : {{groupe.adresseNumero}}, {{groupe.adresseRue}}<br>
+                {{groupe.cp}} {{groupe.ville}}</p>
+                <hr>
+                
+                <p>Date : {{groupe.date|date("d/m/Y")}}<br>
+                De {{groupe.heureDebut}}h à {{groupe.heureFin}}h</p>
+                <hr>
+
+                <a href="{{ path('accept_invitation', {'id': groupe.id|base64encode}) }}" class="btn-profile">Accepter</a>
+                <a href="{{ path('refuse_invitation', {'id': groupe.id|base64encode}) }}" class="btn-profile">Refuser</a>
+
+            </div>
+        {% endfor %}
         </div>
+    {% endif %}
+</div>
+
+
+<div class="cadre-shadow">
+    <h2>Mes groupes</h2>
+    {% if app.user.groupes is defined and app.user.groupes is not null  %}
+    <div class="profile-flex">
+
+        {% for groupe in app.user.groupes %}
+            <div class="cadre-shadow f-350">
+                <h3>{{groupe.nomGroupe}}</h3>
+                {# <p><b>Vous avez reçu une invitation !</b></p> #}
+                <div class="avatar-membre">
+                    Groupe créé par : <img src="https://avatars.dicebear.com/api/{{groupe.creePar.photo}}/{{groupe.creePar.pseudo}}.svg?r=50&w=150" alt="">
+                </div>
+                <p><i>{{groupe.activite.categorie}} - {{groupe.activite.nomActivite}}</i></p>
+                <p>{{groupe.description}}</p>
+                <hr>
+
+                <p>Adresse : {{groupe.adresseNumero}}, {{groupe.adresseRue}}<br>
+                {{groupe.cp}} {{groupe.ville}}</p>
+                <hr>
+                
+                <p>Date : {{groupe.date|date("d/m/Y")}}<br>
+                De {{groupe.heureDebut}}h à {{groupe.heureFin}}h</p>
+                <hr>
+
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+</div>
 
 
 
 
-
-
-
-
-
-
-
-{# <div id="div-calendrier">    
-<div id="calendar"></div>
-</div> #}
 <div class="cadre-shadow">
     <h2>Mes préférences</h2>
     <div class="profile-flex">
@@ -174,9 +208,9 @@
                     <li>{{activite.nomActivite}}</li>
                 {% endfor %}
             </ul>
-            <a href="{{ path('membre_activite_new') }}">En ajouter ? En supprimer ?</a>
+            <a href="{{ path('membre_activite_new') }}" class="btn-profile">Modifier mes activités</a>
         {% else %}
-            <p>Je n'ai pas encore choisi d'activités ! <a href="{{ path('membre_activite_new') }}">En ajouter ?</a></p>
+            <p>Je n'ai pas encore choisi d'activités ! <a href="{{ path('membre_activite_new') }}" class="btn-profile">En ajouter ?</a></p>
         {% endif %}
     </div>
 
@@ -186,12 +220,12 @@
     {% if app.user.moments is defined and app.user.moments is not null  %}
         <ul>
             {% for moment in app.user.moments %}
-                <li>Le {{moment.jour}} de {{moment.heureDebut}}h à {{moment.heureFin}}h - <a href="{{ path('moment_edit', {'id': moment.id}) }}">Modifier</a></li>
+                <li>Le {{moment.jour}} de {{moment.heureDebut}}h à {{moment.heureFin}}h - <a href="{{ path('moment_edit', {'id': moment.id}) }}" class="btn-profile_modifier">Modifier</a></li>
             {% endfor %}
         </ul>
-        <a href="{{ path('moment_new') }}">Ajouter un moment</a>
+        <a href="{{ path('moment_new') }}" class="btn-profile">Ajouter un moment</a>
     {% else %}
-        <p>Je n'ai pas encore choisi mes moments disponibles ! <a href="{{ path('moment_new') }}">En ajouter ?</a></p>
+        <p>Je n'ai pas encore choisi mes moments disponibles ! <a href="{{ path('moment_new') }}" class="btn-profile">En ajouter ?</a></p>
     {% endif %}
     </div>
 </div>
@@ -199,7 +233,7 @@
     {# ***************************** DISTANCE KM ************************** #}
     <div class="cadre-shadow f-350">
     {% if app.user.distancekm is defined and app.user.distancekm is not null  %}
-        <h5>Distance maximale autour de chez moi à laquelle je fais des activités : {{app.user.distancekm}}</h5>
+        <h5>Distance maximale autour de chez moi à laquelle je fais des activités : {{app.user.distancekm}}km - <a href="{{ path('profile_modifier') }}" class="btn-profile_modifier">Modifier</a></h5>
     {% endif %}
 </div>
 </div>
@@ -217,7 +251,7 @@
                     <li>Téléphone : {{app.user.telephone}}</li>
                     <li>Adresse : {{app.user.adresseNumero}}, {{app.user.adresseRue}}<br>{{app.user.cp}}, {{app.user.ville}}, {{app.user.pays}}</li>
                 </ul>
-                <a href="{{ path('profile_modifier') }}">Modifier mes informations personnelles</a>
+                <a href="{{ path('profile_modifier') }}" class="btn-profile">Modifier mes informations personnelles</a>
             </div>
         </div>
     </div>
@@ -234,19 +268,52 @@
         </ul>
         </div>
     {% endif %}
-    {# {% if app.user.badges.id is defined and app.user.badges.id is not null  %}
-        <h2>Mes Ami.es</h2>
-        <ul>
-            {% for badge in app.user.badges %}
-                <li>{{badge.titre}}</li>
-            {% endfor %}
-        </ul>
-    {% endif %} #}
+    {# {{dump(poto)}} #}
+
+{% if potoTruc is defined and potoTruc is not null  %}
+        <h2>Mes Potes ! </h2>
+        <p>Où du moins les personnes qui m'ont envoyé leurs coordonnées pour qu'on reste en contact 🤩</p>
+<div class="profile-flex">
+        {% for pote in potoTruc %}
+        {# {{dump(pote.pote)}} #}
+        <div class="cadre-shadow f-350 profile-flex flex-column avatar-membre">
+            <h3>{{pote.membre.pseudo}}</h3>
+            <img src="https://avatars.dicebear.com/api/{{pote.membre.photo}}/{{pote.membre.pseudo}}.svg?r=50&w=150" alt="">
+            <p>{{pote.membre.prenom}} {{pote.membre.nom|upper}}</p>
+            <p>Mail : {{pote.membre.email}}</p>
+            <p>Téléphone : {{pote.membre.telephone}}</p>
+        </div>
+        {% endfor %}
+</div>
+    {% endif %}
+
+
+    {% if poto is defined and poto is not null  %}
+        <h2>Les personnes rencontrées</h2>
+<div class="profile-flex">
+        {% for pote in poto %}
+        {# {{dump(pote.pote)}} #}
+        <div class="cadre-shadow f-350 profile-flex flex-column avatar-membre">
+            <h3>{{pote.pote.pseudo}}</h3>
+            <img src="https://avatars.dicebear.com/api/{{pote.pote.photo}}/{{pote.pote.pseudo}}.svg?r=50&w=150" alt="">
+            {# <p>{{pote.pote.prenom}} {{pote.pote.nom|upper}}</p> #}
+            {# <p>Mail : {{pote.pote.email}}</p> #}
+            {# <p>Téléphone : {{pote.pote.telephone}}</p> #}
+            <p><small>Souhaitez-vous rester en contact avec cette personne, et lui envoyer vos coordonnées ?<small>
+            </p>
+            <div class="avatar-membre">
+            <a href="{{ path('accepte_pote', {'id': pote.pote.id|base64encode}) }}" class="small-btn">Oui je le veux</a>
+            <a href="{{ path('refuse_pote', {'id': pote.pote.id|base64encode}) }}" class="small-btn">Euh... Non.</a>
+            </div>
+        </div>
+        {% endfor %}
+</div>
+    {% endif %}
 
 
     {# ***************************** AMI.ES ************************** #}
     
 </div>
-
+{{ include('membre/_delete_form.html.twig') }}
 
 {% endblock %}

@@ -4,13 +4,13 @@
 
 {% block body %}
     <h1>Badges</h1>
-
+<div class="formulaire1">
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
-                <th>Image</th>
+                {# <th>Image</th> #}
                 <th>Description</th>
                 <th>Valide</th>
                 <th>actions</th>
@@ -21,12 +21,12 @@
             <tr>
                 <td>{{ badge.id }}</td>
                 <td>{{ badge.titre }}</td>
-                <td>{{ badge.image }}</td>
+                {# <td>{{ badge.image }}</td> #}
                 <td>{{ badge.description }}</td>
                 <td>{{ badge.valide ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ path('badge_show', {'id': badge.id}) }}">Voir</a>
-                    <a href="{{ path('badge_edit', {'id': badge.id}) }}">Modifier</a>
+                    <a href="{{ path('badge_show', {'id': badge.id}) }}" class="small-btn_inline">Voir</a>
+                    <a href="{{ path('badge_edit', {'id': badge.id}) }}" class="small-btn_inline">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('badge_new') }}">Nouveau badge</a>
+    <a href="{{ path('badge_new') }}" class="small-btn">Nouveau badge</a>
+</div>
 {% endblock %}

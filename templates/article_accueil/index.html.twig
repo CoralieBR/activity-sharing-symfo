@@ -3,8 +3,11 @@
 {% block title %}Admin Articles{% endblock %}
 
 {% block body %}
+<style>
+.formulaire1 {max-width: 1200px}
+</style>
     <h1>Articles de l'accueil</h1>
-
+<div class="formulaire1">
     <table class="table">
         <thead>
             <tr>
@@ -31,8 +34,8 @@
                 <td>{{ article_accueil.boutonTexte }}</td>
                 <td>{{ article_accueil.boutonLien }}</td>
                 <td>
-                    <a href="{{ path('article_accueil_show', {'id': article_accueil.id}) }}">Voir</a>
-                    <a href="{{ path('article_accueil_edit', {'id': article_accueil.id}) }}">Modifier</a>
+                    <a href="{{ path('article_accueil_show', {'id': article_accueil.id}) }}" class="small-btn_inline">Voir</a>
+                    <a href="{{ path('article_accueil_edit', {'id': article_accueil.id}) }}" class="small-btn_inline">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +46,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('article_accueil_new') }}">Nouvel article</a>
+    <a href="{{ path('article_accueil_new') }}" class="small-btn">Nouvel article</a>
+</div>
 {% endblock %}

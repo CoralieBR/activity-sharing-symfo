@@ -1,10 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}Membre index{% endblock %}
 
 {% block body %}
-    <h1>Membre index</h1>
-
+    
+    <h1>Index des membres</h1>
+<div class="formulaire1">
     <table class="table">
         <thead>
             <tr>
@@ -12,9 +13,9 @@
                 <th>Email</th>
                 <th>Roles</th>
                 <th>Nom</th>
-                <th>Prenom</th>
+                <th>Prénom</th>
                 <th>Pseudo</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +28,8 @@
                 <td>{{ membre.prenom }}</td>
                 <td>{{ membre.pseudo }}</td>
                 <td>
-                    <a href="{{ path('membre_show', {'id': membre.id}) }}">Voir</a>
-                    <a href="{{ path('membre_edit', {'id': membre.id}) }}">Modifier le rôle</a>
+                    <a href="{{ path('membre_show', {'id': membre.id}) }}" class="small-btn_inline">Voir</a>
+                    <a href="{{ path('membre_edit', {'id': membre.id}) }}" class="small-btn_inline">Modifier le rôle</a>
                 </td>
             </tr>
         {% else %}
@@ -38,5 +39,5 @@
         {% endfor %}
         </tbody>
     </table>
-
+</div>
 {% endblock %}

@@ -13,9 +13,6 @@ use Symfony\Component\Mailer\MailerInterface;
 // use Symfony\Component\Mime\Email;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
-// /**
-//  * @Route("/groupe")
-//  */
 class GroupeController extends AbstractController
 {
     // ====================================================== //
@@ -111,7 +108,7 @@ class GroupeController extends AbstractController
      */
     public function edit(Request $request, Groupe $groupe): Response
     {
-        $form = $this->createForm(Groupe1Type::class, $groupe);
+        $form = $this->createForm(GroupeType::class, $groupe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

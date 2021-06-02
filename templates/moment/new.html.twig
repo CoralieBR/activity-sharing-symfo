@@ -3,9 +3,12 @@
 {% block title %}New Moment{% endblock %}
 
 {% block body %}
-    <h1>Create new Moment</h1>
-
+<div class="formulaire1">
+    <h1 class="tittle">ajouter un nouveau creneau</h1>
+    <br>
     {{ include('moment/_form.html.twig') }}
-
+    <br>
+    </div>
     <a href="{{ path('profile') }}">Retour</a>
+
 {% endblock %}

@@ -3,11 +3,13 @@
 {% block title %}Edit ActiviteCategorie{% endblock %}
 
 {% block body %}
-    <h1>Edit ActiviteCategorie</h1>
+    <a href="{{ path('activite_categorie_index') }}" class="small-btn">Retour</a>
+    <div class="formulaire1">
+    <h1>Créer une nouvelle catégorie</h1>
 
     {{ include('activite_categorie/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('activite_categorie_index') }}">back to list</a>
 
     {{ include('activite_categorie/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

@@ -3,6 +3,8 @@
 {% block title %}Groupe{% endblock %}
 
 {% block body %}
+<a href="{{ path('groupe_index') }}" class="small-btn">Retour</a>
+<div class="formulaire1">
     <h1>Groupe</h1>
 
     <table class="table">
@@ -17,7 +19,7 @@
             </tr>
             <tr>
                 <th>Date</th>
-                <td>{{ groupe.date ? groupe.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ groupe.date ? groupe.date|date('d/m/Y') : '' }}</td>
             </tr>
             <tr>
                 <th>Jour</th>
@@ -61,10 +63,10 @@
             </tr>
             <tr>
                 <th>Valide</th>
-                <td>{{ groupe.valide ? 'Yes' : 'No' }}</td>
+                <td>{{ groupe.valide ? 'Oui' : 'Non' }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('groupe_index') }}">Retour</a>
+</div>
+    
 {% endblock %}
